@@ -10,6 +10,7 @@ https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.101-windows-x64-i
 Avant d'ouvrire le projet
 Creer le fichier 
 appsettings.json
+dans le dossier WebAPI
 contenant:
 
 {
