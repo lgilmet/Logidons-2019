@@ -1,6 +1,9 @@
 # Logidons-2019
 Site web de gestion de dons et de distribution de donations. 
 
+Le tutoriel utilisé:
+https://www.youtube.com/watch?v=9WVG-tXl7XA&t
+
 REQUISITES - 
 Visual Studio Community 2017 - C#
 Microsft SQL Management Studio
