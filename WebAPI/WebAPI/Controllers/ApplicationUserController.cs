@@ -22,13 +22,12 @@ namespace WebAPI.Controllers
             _signInManager = signInManager;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Register")]
-        //POST :api/ApplicationUser/Register
+        //POST : /api/ApplicationUser/Register
         public async Task<Object> PostApplicationUser(ApplicationUserModel model)
         {
-            var applicationUser = new ApplicationUser()
-            {
+            var applicationUser = new ApplicationUser() {
                 UserName = model.UserName,
                 Email = model.Email,
                 FullName = model.FullName

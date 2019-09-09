@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+	background-color: #E5E8E8;
+}
+
+.regi-side {
+	background-color: #BFC9CA;
+}
+
+div.form-group.required>label:first-child:after{
+	content:'*';
+	color: red;
+	padding-left: 5px;
+}

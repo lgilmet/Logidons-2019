@@ -34,6 +34,8 @@ namespace WebAPI
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
+            
+
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -44,6 +46,15 @@ namespace WebAPI
                 options.Password.RequiredLength = 4;
             }
             );
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +67,19 @@ namespace WebAPI
 
             app.UseAuthentication();
 
+            app.Use(async (ctx, next) =>
+            {
+                await next();
+                if (ctx.Response.StatusCode == 204)
+                {
+                    ctx.Response.ContentLength = 0;
+                }
+            });
+
+            app.UseCors("CorsPolicy");
+
             app.UseMvc();
+
         }
     }
 }
