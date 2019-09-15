@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LogiDonsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="article">
+    <Key>
+      <PropertyRef Name="IDarticle" />
+    </Key>
+    <Property Name="IDarticle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDcategorie" Type="Int32" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="category" Relationship="Self.FK_article_categorie" FromRole="articles" ToRole="categories" />
+    <NavigationProperty Name="donArticles" Relationship="Self.FK_donArticle_article1" FromRole="articles" ToRole="donArticles" />
+  </EntityType>
+  <EntityType Name="beneficiare">
+    <Key>
+      <PropertyRef Name="IDbeneficiare" />
+    </Key>
+    <Property Name="IDbeneficiare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sexe" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="dateDeNaissance" Type="DateTime" Precision="3" />
+    <Property Name="situation" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="adresse" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="livraisons" Relationship="Self.FK_livraison_beneficiare1" FromRole="beneficiares" ToRole="livraisons" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="IDcategorie" />
+    </Key>
+    <Property Name="IDcategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="articles" Relationship="Self.FK_article_categorie" FromRole="categories" ToRole="articles" />
+  </EntityType>
+  <EntityType Name="donArticle">
+    <Key>
+      <PropertyRef Name="IDarticleDon" />
+    </Key>
+    <Property Name="IDarticle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDdon" Type="Int32" Nullable="false" />
+    <Property Name="valeur" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="quantite" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDarticleDon" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="article" Relationship="Self.FK_donArticle_article1" FromRole="donArticles" ToRole="articles" />
+    <NavigationProperty Name="don" Relationship="Self.FK_donArticle_don1" FromRole="donArticles" ToRole="dons" />
+    <NavigationProperty Name="livraisonDonArticles" Relationship="Self.FK_livraisonDonArticle_donArticle" FromRole="donArticles" ToRole="livraisonDonArticles" />
+  </EntityType>
+  <EntityType Name="don">
+    <Key>
+      <PropertyRef Name="IDdon" />
+    </Key>
+    <Property Name="IDdon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datePromesse" Type="DateTime" Precision="3" />
+    <Property Name="dateReception" Type="DateTime" Precision="3" />
+    <Property Name="dateAccepter" Type="DateTime" Precision="3" />
+    <Property Name="etat" Type="Int64" />
+    <Property Name="IDDonateur" Type="Int32" />
+    <Property Name="IDEmploye" Type="Int32" />
+    <NavigationProperty Name="donArticles" Relationship="Self.FK_donArticle_don1" FromRole="dons" ToRole="donArticles" />
+    <NavigationProperty Name="utilisateur" Relationship="Self.FK_don_utilisateur" FromRole="dons" ToRole="utilisateurs" />
+    <NavigationProperty Name="utilisateur1" Relationship="Self.FK_don_utilisateur1" FromRole="dons" ToRole="utilisateurs" />
+  </EntityType>
+  <EntityType Name="livraisonDonArticle">
+    <Key>
+      <PropertyRef Name="IDlivraison" />
+      <PropertyRef Name="IDarticleDon" />
+    </Key>
+    <Property Name="IDlivraison" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDarticleDon" Type="Int32" Nullable="false" />
+    <Property Name="quantite" Type="Int32" />
+    <NavigationProperty Name="donArticle" Relationship="Self.FK_livraisonDonArticle_donArticle" FromRole="livraisonDonArticles" ToRole="donArticles" />
+    <NavigationProperty Name="livraison" Relationship="Self.FK_livraisonDonArticle_livraison" FromRole="livraisonDonArticles" ToRole="livraisons" />
+  </EntityType>
+  <EntityType Name="livraison">
+    <Key>
+      <PropertyRef Name="IDlivraison" />
+    </Key>
+    <Property Name="IDlivraison" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datelivraison" Type="DateTime" Precision="3" />
+    <Property Name="IDbeneficiaire" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="beneficiare" Relationship="Self.FK_livraison_beneficiare1" FromRole="livraisons" ToRole="beneficiares" />
+    <NavigationProperty Name="livraisonDonArticles" Relationship="Self.FK_livraisonDonArticle_livraison" FromRole="livraisons" ToRole="livraisonDonArticles" />
+  </EntityType>
+  <EntityType Name="utilisateur">
+    <Key>
+      <PropertyRef Name="IDutilisateur" />
+    </Key>
+    <Property Name="IDutilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prenom" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="telephonetravail" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="telephoneMaison" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="telephoneMobile" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="salaire" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="adresse" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dons" Relationship="Self.FK_don_utilisateur" FromRole="utilisateurs" ToRole="dons" />
+    <NavigationProperty Name="dons1" Relationship="Self.FK_don_utilisateur1" FromRole="utilisateurs" ToRole="dons" />
+  </EntityType>
+  <Association Name="FK_article_categorie">
+    <End Role="categories" Type="Self.category" Multiplicity="0..1" />
+    <End Role="articles" Type="Self.article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="IDcategorie" />
+      </Principal>
+      <Dependent Role="articles">
+        <PropertyRef Name="IDcategorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_donArticle_article1">
+    <End Role="articles" Type="Self.article" Multiplicity="1" />
+    <End Role="donArticles" Type="Self.donArticle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articles">
+        <PropertyRef Name="IDarticle" />
+      </Principal>
+      <Dependent Role="donArticles">
+        <PropertyRef Name="IDarticle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_livraison_beneficiare1">
+    <End Role="beneficiares" Type="Self.beneficiare" Multiplicity="1" />
+    <End Role="livraisons" Type="Self.livraison" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="beneficiares">
+        <PropertyRef Name="IDbeneficiare" />
+      </Principal>
+      <Dependent Role="livraisons">
+        <PropertyRef Name="IDbeneficiaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_donArticle_don1">
+    <End Role="dons" Type="Self.don" Multiplicity="1" />
+    <End Role="donArticles" Type="Self.donArticle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dons">
+        <PropertyRef Name="IDdon" />
+      </Principal>
+      <Dependent Role="donArticles">
+        <PropertyRef Name="IDdon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_livraisonDonArticle_donArticle">
+    <End Role="donArticles" Type="Self.donArticle" Multiplicity="1" />
+    <End Role="livraisonDonArticles" Type="Self.livraisonDonArticle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="donArticles">
+        <PropertyRef Name="IDarticleDon" />
+      </Principal>
+      <Dependent Role="livraisonDonArticles">
+        <PropertyRef Name="IDarticleDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_don_utilisateur">
+    <End Role="utilisateurs" Type="Self.utilisateur" Multiplicity="0..1" />
+    <End Role="dons" Type="Self.don" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="utilisateurs">
+        <PropertyRef Name="IDutilisateur" />
+      </Principal>
+      <Dependent Role="dons">
+        <PropertyRef Name="IDDonateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_don_utilisateur1">
+    <End Role="utilisateurs" Type="Self.utilisateur" Multiplicity="0..1" />
+    <End Role="dons" Type="Self.don" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="utilisateurs">
+        <PropertyRef Name="IDutilisateur" />
+      </Principal>
+      <Dependent Role="dons">
+        <PropertyRef Name="IDEmploye" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_livraisonDonArticle_livraison">
+    <End Role="livraisons" Type="Self.livraison" Multiplicity="1" />
+    <End Role="livraisonDonArticles" Type="Self.livraisonDonArticle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livraisons">
+        <PropertyRef Name="IDlivraison" />
+      </Principal>
+      <Dependent Role="livraisonDonArticles">
+        <PropertyRef Name="IDlivraison" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LogiDonsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="articles" EntityType="Self.article" />
+    <EntitySet Name="beneficiares" EntityType="Self.beneficiare" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="donArticles" EntityType="Self.donArticle" />
+    <EntitySet Name="dons" EntityType="Self.don" />
+    <EntitySet Name="livraisonDonArticles" EntityType="Self.livraisonDonArticle" />
+    <EntitySet Name="livraisons" EntityType="Self.livraison" />
+    <EntitySet Name="utilisateurs" EntityType="Self.utilisateur" />
+    <AssociationSet Name="FK_article_categorie" Association="Self.FK_article_categorie">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="articles" EntitySet="articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_donArticle_article1" Association="Self.FK_donArticle_article1">
+      <End Role="articles" EntitySet="articles" />
+      <End Role="donArticles" EntitySet="donArticles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_livraison_beneficiare1" Association="Self.FK_livraison_beneficiare1">
+      <End Role="beneficiares" EntitySet="beneficiares" />
+      <End Role="livraisons" EntitySet="livraisons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_donArticle_don1" Association="Self.FK_donArticle_don1">
+      <End Role="dons" EntitySet="dons" />
+      <End Role="donArticles" EntitySet="donArticles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_livraisonDonArticle_donArticle" Association="Self.FK_livraisonDonArticle_donArticle">
+      <End Role="donArticles" EntitySet="donArticles" />
+      <End Role="livraisonDonArticles" EntitySet="livraisonDonArticles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_don_utilisateur" Association="Self.FK_don_utilisateur">
+      <End Role="utilisateurs" EntitySet="utilisateurs" />
+      <End Role="dons" EntitySet="dons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_don_utilisateur1" Association="Self.FK_don_utilisateur1">
+      <End Role="utilisateurs" EntitySet="utilisateurs" />
+      <End Role="dons" EntitySet="dons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_livraisonDonArticle_livraison" Association="Self.FK_livraisonDonArticle_livraison">
+      <End Role="livraisons" EntitySet="livraisons" />
+      <End Role="livraisonDonArticles" EntitySet="livraisonDonArticles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

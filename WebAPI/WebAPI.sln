@@ -3,12 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{0AED64CA-2C19-436C-8155-02B3ECA6D451}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{258DDE0B-FBF5-4AEC-9DFA-6385EC871102}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{B77D4714-EFC6-407A-9C2B-327A7F634101}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0AED64CA-2C19-436C-8155-02B3ECA6D451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0AED64CA-2C19-436C-8155-02B3ECA6D451}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0AED64CA-2C19-436C-8155-02B3ECA6D451}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0AED64CA-2C19-436C-8155-02B3ECA6D451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77D4714-EFC6-407A-9C2B-327A7F634101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77D4714-EFC6-407A-9C2B-327A7F634101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77D4714-EFC6-407A-9C2B-327A7F634101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77D4714-EFC6-407A-9C2B-327A7F634101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F5845CE0-2E55-4109-849D-716CD32C346F}
+		SolutionGuid = {4145D800-C4B6-4272-9546-3FCB69ABA337}
 	EndGlobalSection
 EndGlobal
