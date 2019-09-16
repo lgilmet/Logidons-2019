@@ -1,6 +1,8 @@
 # Logidons-2019
 Site web de gestion de dons et de distribution de donations. 
 
+npm install @angular/cli@7.x.x
+
 Le tutoriel utilisé:
 Partie 1
 https://www.youtube.com/watch?v=R2dOyHJu4a8
