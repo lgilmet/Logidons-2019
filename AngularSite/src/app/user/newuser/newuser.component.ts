@@ -9,6 +9,7 @@ import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 })
 export class NewuserComponent implements OnInit {
   formData:Utilisateur;
+  name :string = '';
 
   constructor(private service:UtilisateurService) { }
 
