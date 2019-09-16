@@ -8,6 +8,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+<<<<<<< HEAD
+=======
+using WebAPI;
+>>>>>>> f208136b5e52a24d6ff55ebe10c1b845cecb1773
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
