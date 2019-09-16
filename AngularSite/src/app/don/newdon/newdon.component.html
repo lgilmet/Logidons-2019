@@ -1,4 +1,11 @@
+<p *ngFor=" let item of this.articleList">{{item.IDarticle}} - {{item.nom}}</p>
 
-
-  <p *ngFor=" let item of this.articleList">{{item.IDarticle}} - {{item.nom}}</p>
+<form #form="ngForm" (submit)="onSubmit(form)">
+  <input 
+  name="nom" 
+  ngDefaultControl
+  [(ngModel)]="a_service.formArticle.nom"
+  />
+  <button type="submit" class="btn">submit</button>
+</form>
 
