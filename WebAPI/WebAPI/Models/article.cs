@@ -7,25 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebAPI
+namespace WebAPI.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class livraison
+    public partial class article
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public livraison()
+        public article()
         {
-            this.livraisonDonArticles = new HashSet<livraisonDonArticle>();
+            this.donArticles = new HashSet<donArticle>();
         }
     
-        public int IDlivraison { get; set; }
-        public Nullable<System.DateTime> datelivraison { get; set; }
-        public int IDbeneficiaire { get; set; }
+        public int IDarticle { get; set; }
+        public Nullable<int> IDcategorie { get; set; }
+        public string nom { get; set; }
     
-        public virtual beneficiare beneficiare { get; set; }
+        public virtual category category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<livraisonDonArticle> livraisonDonArticles { get; set; }
+        public virtual ICollection<donArticle> donArticles { get; set; }
     }
 }

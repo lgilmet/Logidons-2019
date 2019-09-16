@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LogiDonsModelStoreContainer" CdmEntityContainer="LogiDonsEntities">
+    <EntitySetMapping Name="articles">
+      <EntityTypeMapping TypeName="LogiDonsModel.article">
+        <MappingFragment StoreEntitySet="articles">
+          <ScalarProperty Name="IDarticle" ColumnName="IDarticle" />
+          <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="beneficiares">
+      <EntityTypeMapping TypeName="LogiDonsModel.beneficiare">
+        <MappingFragment StoreEntitySet="beneficiares">
+          <ScalarProperty Name="IDbeneficiare" ColumnName="IDbeneficiare" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="sexe" ColumnName="sexe" />
+          <ScalarProperty Name="dateDeNaissance" ColumnName="dateDeNaissance" />
+          <ScalarProperty Name="situation" ColumnName="situation" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="LogiDonsModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="donArticles">
+      <EntityTypeMapping TypeName="LogiDonsModel.donArticle">
+        <MappingFragment StoreEntitySet="donArticles">
+          <ScalarProperty Name="IDarticle" ColumnName="IDarticle" />
+          <ScalarProperty Name="IDdon" ColumnName="IDdon" />
+          <ScalarProperty Name="valeur" ColumnName="valeur" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="IDarticleDon" ColumnName="IDarticleDon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dons">
+      <EntityTypeMapping TypeName="LogiDonsModel.don">
+        <MappingFragment StoreEntitySet="dons">
+          <ScalarProperty Name="IDdon" ColumnName="IDdon" />
+          <ScalarProperty Name="datePromesse" ColumnName="datePromesse" />
+          <ScalarProperty Name="dateReception" ColumnName="dateReception" />
+          <ScalarProperty Name="dateAccepter" ColumnName="dateAccepter" />
+          <ScalarProperty Name="etat" ColumnName="etat" />
+          <ScalarProperty Name="IDDonateur" ColumnName="IDDonateur" />
+          <ScalarProperty Name="IDEmploye" ColumnName="IDEmploye" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="livraisonDonArticles">
+      <EntityTypeMapping TypeName="LogiDonsModel.livraisonDonArticle">
+        <MappingFragment StoreEntitySet="livraisonDonArticles">
+          <ScalarProperty Name="IDlivraison" ColumnName="IDlivraison" />
+          <ScalarProperty Name="IDarticleDon" ColumnName="IDarticleDon" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="livraisons">
+      <EntityTypeMapping TypeName="LogiDonsModel.livraison">
+        <MappingFragment StoreEntitySet="livraisons">
+          <ScalarProperty Name="IDlivraison" ColumnName="IDlivraison" />
+          <ScalarProperty Name="datelivraison" ColumnName="datelivraison" />
+          <ScalarProperty Name="IDbeneficiaire" ColumnName="IDbeneficiaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="utilisateurs">
+      <EntityTypeMapping TypeName="LogiDonsModel.utilisateur">
+        <MappingFragment StoreEntitySet="utilisateurs">
+          <ScalarProperty Name="IDutilisateur" ColumnName="IDutilisateur" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="telephonetravail" ColumnName="telephonetravail" />
+          <ScalarProperty Name="telephoneMaison" ColumnName="telephoneMaison" />
+          <ScalarProperty Name="telephoneMobile" ColumnName="telephoneMobile" />
+          <ScalarProperty Name="salaire" ColumnName="salaire" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

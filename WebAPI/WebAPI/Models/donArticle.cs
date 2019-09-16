@@ -7,30 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebAPI
+namespace WebAPI.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class don
+    public partial class donArticle
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public don()
+        public donArticle()
         {
-            this.donArticles = new HashSet<donArticle>();
+            this.livraisonDonArticles = new HashSet<livraisonDonArticle>();
         }
     
+        public int IDarticle { get; set; }
         public int IDdon { get; set; }
-        public Nullable<System.DateTime> datePromesse { get; set; }
-        public Nullable<System.DateTime> dateReception { get; set; }
-        public Nullable<System.DateTime> dateAccepter { get; set; }
-        public Nullable<long> etat { get; set; }
-        public Nullable<int> IDDonateur { get; set; }
-        public Nullable<int> IDEmploye { get; set; }
+        public Nullable<decimal> valeur { get; set; }
+        public Nullable<int> quantite { get; set; }
+        public string description { get; set; }
+        public int IDarticleDon { get; set; }
     
+        public virtual article article { get; set; }
+        public virtual don don { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<donArticle> donArticles { get; set; }
-        public virtual utilisateur utilisateur { get; set; }
-        public virtual utilisateur utilisateur1 { get; set; }
+        public virtual ICollection<livraisonDonArticle> livraisonDonArticles { get; set; }
     }
 }

@@ -17,8 +17,8 @@ Cliquer Previous > New Connection
 Ensuite executer le script "DDL" dans SQL Server
 
 Les modeles et services: 
-ng g s shared/non-du-service --spec=false
-ng g cl shared/non-du-modele type=model --spec=false
+ng g s shared/non-de-la-classe --spec=false
+ng g cl shared/non-du-la-classe type=model --spec=false
 
 Executer le site AngularSite:
 Ouvrir le cmd ou terminal de VS Code dans le dossier AngularSite > entrez
