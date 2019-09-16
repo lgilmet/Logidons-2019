@@ -1,36 +1,31 @@
-<form #form="ngForm">
+<form #form="ngForm" autocomplete="off" *ngIf="formData">
   <legend>Créer un nouveau compte</legend>
-  <div class="form-group">
+  <div class="form-group  required">
     <label>Email:</label>
-    <div class="input-group">
+    <div class="input-group ">
       <div class="input-group-prepend">
         <div class="input-group-text">@</div>
       </div>
-      <input type="email" class="form-control" 
-      [(ngModel)]="formData.email"  
-      name="email"
-      ngDefaultControl
-      aria-describedby="emailHelp" 
-      placeholder="Entrer email">
-       <!-- <input name="email" #email="ngModel" [(ngModel)]="fromData.email" class="form-control">  
-        name="DonateurID"
-        ngDefaultControl
-        [(ngModel)]="service.formData.DonateurID" -->
+      <input type="email" class="form-control" [(ngModel)]="formData.email" name="email" ngDefaultControl
+        aria-describedby="emailHelp" placeholder="Entrer email">
+
     </div>
   </div>
-
-  {{ banane }}
  
-  <div class="form-group">
-      <label for="Password1">Password</label>
-      <input type="password" class="form-control" id="Password1" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="Password2">Password</label>
-        <input type="password" class="form-control" id="Password2" placeholder="Password">
-      </div>
 
-      <button type="submit" class="btn btn-success">Submit</button>
-<button type="submit" class="btn btn-danger">Cancel</button>
- 
+  <div class="form-group required">
+    <label for="Password1">Password :</label>
+    <input type="password" class="form-control" id="Password1" placeholder="Entrer password">
+  </div>
+  <div class="form-group required">
+    <label for="Password2">Confirmer Password :</label>
+    <input type="password" class="form-control" id="Password2" placeholder="Confirmer password">
+  </div>
+
+  <div>
+      <button type="submit" class="btn  btn-dark mr-3">Submit</button>
+      <button type="submit" class="btn btn-outline-dark">Cancel</button>
+  </div>
+  
+
 </form>
