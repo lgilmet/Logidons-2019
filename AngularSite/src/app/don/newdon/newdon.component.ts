@@ -17,8 +17,19 @@ export class NewdonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.a_service.formArticle = {
+      IDarticle: 1,
+      IDcategorie: 1,
+      nom: ''
+    }
 
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
+  }
+
+  onSubmit(form: NgForm){
+    this.a_service.addArticle().subscribe(res => {
+      
+    })
   }
 
 }
