@@ -168,3 +168,6 @@ C:\Users\wendw\Desktop\SCHOOL\PROJET-GIT\Logidons-2019\WebAPI\WebAPI\bin\System.
 C:\Users\wendw\Desktop\SCHOOL\PROJET-GIT\Logidons-2019\WebAPI\WebAPI\bin\System.Web.WebPages.Razor.xml
 C:\Users\wendw\Desktop\SCHOOL\PROJET-GIT\Logidons-2019\WebAPI\WebAPI\bin\Antlr3.Runtime.pdb
 C:\Users\wendw\Desktop\SCHOOL\PROJET-GIT\Logidons-2019\WebAPI\WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\bin\System.Web.Cors.dll
+C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\bin\System.Web.Http.Cors.dll
+C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\bin\System.Web.Http.Cors.xml
