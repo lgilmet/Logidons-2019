@@ -12,7 +12,7 @@ namespace WebAPI
         {
             // Enable CORS to access from angular project
             var cors = new EnableCorsAttribute(
-                origins: "*",
+                origins: "http://localhost:4200",
                 headers: "*",
                 methods: "*");
 
@@ -28,6 +28,12 @@ namespace WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-        }
+
+			config.Routes.MapHttpRoute(
+				name: "LoginApi",
+				routeTemplate: "api/{controller}/{request}",
+				defaults: new { request = RouteParameter.Optional  }
+			);
+		}
     }
 }

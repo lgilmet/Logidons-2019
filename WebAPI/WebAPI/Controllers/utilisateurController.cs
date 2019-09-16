@@ -18,6 +18,35 @@ namespace WebAPI.Controllers
     {
         private LogiDonsEntities db = new LogiDonsEntities();
 
+		public class LoginRequest
+		{
+			public string Username { get; set; }
+			public string Password { get; set; }
+		}
+
+		// Post : api/utilisateur/login
+		[Route("~/api/utilisateur/login")]
+		[HttpPost]
+		public IHttpActionResult verifyUser(LoginRequest request)
+		{
+			bool found = false;
+			int id = 0;
+			foreach(utilisateur u in db.utilisateurs)
+			{
+				if (u.username == request.Username && u.password == request.Password)
+				{
+					id = u.IDutilisateur;
+					found = true;
+				}
+			}
+
+			if (found)
+				return Ok(id);
+			else
+				return NotFound();
+			//return Ok(request.Username);
+		}
+
         // GET: api/utilisateur
         public IQueryable<utilisateur> Getutilisateurs()
         {
