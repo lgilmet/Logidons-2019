@@ -162,6 +162,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Controllers\articleController.cs" />
     <Compile Include="Controllers\beneficiareController.cs" />
     <Compile Include="Controllers\categorieController.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="Controllers\donController.cs" />
     <Compile Include="Controllers\livraisonController.cs" />
     <Compile Include="Controllers\livraisonDonArticleController.cs" />
+>>>>>>> f208136b5e52a24d6ff55ebe10c1b845cecb1773
     <Compile Include="Controllers\utilisateurController.cs" />
     <Compile Include="Models\article.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
