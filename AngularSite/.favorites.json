@@ -16,5 +16,32 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "yNGJVeHtKEhX45xz"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "9InSukmR6A0s7j38"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "Aik1W4oXqHen6KQu"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "QbaZC6xsJuTv1VjO"
     }
 ]
