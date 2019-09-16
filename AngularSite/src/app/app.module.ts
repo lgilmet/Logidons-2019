@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
 import { NewuserComponent } from './user/newuser/newuser.component';
@@ -23,7 +25,9 @@ import { UtilisateurService } from './shared/utilisateur.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UtilisateurService],
   bootstrap: [AppComponent]
