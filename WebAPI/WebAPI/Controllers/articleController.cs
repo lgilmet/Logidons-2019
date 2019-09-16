@@ -23,6 +23,8 @@ namespace WebAPI.Controllers
             return db.articles;
         }
 
+        
+
         // GET: api/article/5
         [ResponseType(typeof(article))]
         public IHttpActionResult Getarticle(int id)
@@ -75,15 +77,13 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(article))]
         public IHttpActionResult Postarticle(article article)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             db.articles.Add(article);
+
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = article.IDarticle }, article);
+            //return CreatedAtRoute("DefaultApi", new { id = article.IDarticle }, article);
+            //article newArticle = db.articles.Last();
+            return Ok(article);
         }
 
         // DELETE: api/article/5

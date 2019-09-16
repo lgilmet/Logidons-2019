@@ -11,6 +11,7 @@ import { ArticleService } from 'src/app/shared/article.service';
 })
 export class NewdonComponent implements OnInit {
   articleList: Article[];
+  dernier: Article;
 
   constructor(
     private a_service: ArticleService
@@ -26,9 +27,14 @@ export class NewdonComponent implements OnInit {
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
   }
 
+  resetForm(){
+
+  }
+
   onSubmit(form: NgForm){
     this.a_service.addArticle().subscribe(res => {
-      
+      this.articleList.push(res as Article);
+      this.a_service.formArticle.nom = '';
     })
   }
 
