@@ -12,6 +12,8 @@ import { DonComponent } from './don/don.component';
 import { NewdonComponent } from './don/newdon/newdon.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UtilisateurService } from './shared/utilisateur.service';
+ 
+ 
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { UtilisateurService } from './shared/utilisateur.service';
     NewuserComponent,
     DonComponent,
     NewdonComponent,
-    NavbarComponent
+    NavbarComponent,
+     
+
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { UtilisateurService } from './shared/utilisateur.service';
     HttpClientModule,
     FormsModule
   ],
+ 
   providers: [UtilisateurService],
   bootstrap: [AppComponent]
 })

@@ -8,11 +8,29 @@ import { UtilisateurService } from 'src/app/shared/utilisateur.service';
   styles: []
 })
 export class NewuserComponent implements OnInit {
-  formData:Utilisateur;
+  formData: Utilisateur;
+  name: string = '';
 
-  constructor(private service:UtilisateurService) { }
+  constructor(private service: UtilisateurService) { }
 
   ngOnInit() {
+    this.resetForm();
   }
 
+  resetForm() {
+    this.formData = {
+      IDutilisateur:0,
+      type: '',
+      nom: '',
+      prenom: '',
+      telephonetravail: '',
+      telephoneMaison: '',
+      telephoneMobile: '',
+      salaire: 0,
+      adresse: '',
+      email: '',
+      username: '',
+      password: '',
+    }
+  }
 }
