@@ -2,36 +2,29 @@
 Site web de gestion de dons et de distribution de donations. 
 
 Le tutoriel utilisé:
-https://www.youtube.com/watch?v=9WVG-tXl7XA&t
+Partie 1
+https://www.youtube.com/watch?v=R2dOyHJu4a8
+Partie 2
+https://www.youtube.com/watch?v=8tMmqswQTl0
 
-REQUISITES - 
-Visual Studio Community 2017 - C#
-Microsft SQL Management Studio
-ASP.Net Core 2.2 - SDK 2.2.101
-https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.101-windows-x64-installer
+git pull origin master
 
-Pour utiliser la partier Angular 7
-Installer Node.js
-ensuite lancer la commande dans le Powershell
-npm install -g @angular/cli@7.x.x
+Ouvrir le WebAPI
+Double cliquer sur DBModel.edmx
+Clique droit sur le diagramme > Generate database from model
+Cliquer Previous > New Connection
+. > "Select or enter database name: " LogiDons > Ok
+Ensuite executer le script "DDL" dans SQL Server
 
-Avant d'ouvrire le projet
-Creer le fichier 
-appsettings.json
-dans le dossier WebAPI
-contenant:
+Les modeles et services: 
+ng g s shared/non-du-service --spec=false
+ng g cl shared/non-du-modele type=model --spec=false
 
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Warning"
-    }
-  },
-  "AllowedHosts": "*",
-  "ConnectionStrings": {
-    "IdentityConnection": "Server=NON_DE_VOTRE_SERVER; Database=LOGIDONS; Trusted_Connection=True; MultipleActiveResultSets=True;"
-  }
-}
+Executer le site AngularSite:
+Ouvrir le cmd ou terminal de VS Code dans le dossier AngularSite > entrez
+ng serve --o
+pour arreter le site > tenir les touches
+Ctrl + c
 
-Pour utiliser la partier Angular 7
+
 
