@@ -1,3 +1,26 @@
-<p>
-  newuser works!
-</p>
+<form>
+  <legend>Créer un nouveau compte</legend>
+  <div class="form-group">
+    <label>Email:</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">@</div>
+      </div>
+      <input type="email" class="form-control"   aria-describedby="emailHelp" placeholder="Entrer email">
+      <!-- <input name="email" #email="ngModel" [(ngModel)]="fromData.email" class="form-control"> -->
+    </div>
+  </div>
+ 
+  <div class="form-group">
+      <label for="Password1">Password</label>
+      <input type="password" class="form-control" id="Password1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="Password2">Password</label>
+        <input type="password" class="form-control" id="Password2" placeholder="Password">
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+<button type="submit" class="btn btn-danger">Cancel</button>
+ 
+</form>

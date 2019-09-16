@@ -9,6 +9,7 @@ import { NewuserComponent } from './user/newuser/newuser.component';
 import { DonComponent } from './don/don.component';
 import { NewdonComponent } from './don/newdon/newdon.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UtilisateurService } from './shared/utilisateur.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UtilisateurService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

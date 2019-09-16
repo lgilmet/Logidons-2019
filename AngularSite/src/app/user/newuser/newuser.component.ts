@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Utilisateur } from 'src/app/shared/utilisateur.model';
+import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 
 @Component({
   selector: 'app-newuser',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class NewuserComponent implements OnInit {
+  formData:Utilisateur;
 
-  constructor() { }
+  constructor(private service:UtilisateurService) { }
 
   ngOnInit() {
   }
