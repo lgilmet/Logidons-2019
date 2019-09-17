@@ -12,6 +12,7 @@ import { DonComponent } from './don/don.component';
 import { NewdonComponent } from './don/newdon/newdon.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UtilisateurService } from './shared/utilisateur.service';
+import { MustMatchDirective } from './user/newuser/header/must-match.directive';
  
  
 
@@ -24,6 +25,7 @@ import { UtilisateurService } from './shared/utilisateur.service';
     DonComponent,
     NewdonComponent,
     NavbarComponent,
+    MustMatchDirective
      
 
   ],
@@ -33,8 +35,10 @@ import { UtilisateurService } from './shared/utilisateur.service';
     HttpClientModule,
     FormsModule
   ],
+  
  
   providers: [UtilisateurService],
   bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }
