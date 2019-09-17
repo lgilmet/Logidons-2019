@@ -10,10 +10,24 @@ import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 })
 export class LoginComponent implements OnInit {
   form: Utilisateur;
+  passwordValid: boolean;
+  userValid: boolean;
   constructor(private service: UtilisateurService) { }
 
   ngOnInit() {
     this.resetForm();
+  }
+
+  checkValid()
+  {
+    if(this.form.username.length >= 4)
+      this.userValid = true;
+    else
+      this.userValid = false;
+    if(this.form.password.length >= 4)
+      this.passwordValid = true;
+    else
+      this.passwordValid = false;
   }
 
   public soumettre(form:Form)
@@ -23,6 +37,8 @@ export class LoginComponent implements OnInit {
 
   public resetForm()
   {
+    this.passwordValid = false;
+    this.userValid = false;
     this.form = {
       IDutilisateur: 0,
       type: "",
