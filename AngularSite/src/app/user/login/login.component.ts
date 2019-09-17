@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Form } from '@angular/forms';
 import { Utilisateur } from 'src/app/shared/utilisateur.model';
 import { UtilisateurService } from 'src/app/shared/utilisateur.service';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,12 @@ export class LoginComponent implements OnInit {
   form: Utilisateur;
   passwordValid: boolean;
   userValid: boolean;
-  constructor(private service: UtilisateurService) { }
+  test: number;
+  constructor(private user_service: UtilisateurService, private auth_service: AuthService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.test = 0;
   }
 
   checkValid()
@@ -30,9 +33,14 @@ export class LoginComponent implements OnInit {
       this.passwordValid = false;
   }
 
-  public soumettre(form:Form)
+  public soumettre()
   {
-    
+    console.log("soumettre IF?");
+    if(this.userValid && this.passwordValid)
+    {
+      console.log("soumettre IN");
+      this.auth_service.login(this.form.username, this.form.password);
+    }
   }
 
   public resetForm()

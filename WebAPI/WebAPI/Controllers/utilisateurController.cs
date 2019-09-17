@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
 			if (found)
 				return Ok(id);
 			else
-				return NotFound();
+				return Ok(-1);
 			//return Ok(request.Username);
 		}
 

@@ -1,6 +1,13 @@
 <div class="row justify-content-md-center">
   <div class="col-md-6">
-    <form class="text-center border border-gray p-5" (onSubmit)="soumettre(form)" #loginForm="ngForm">
+    <div>TEST : {{auth_service.userID}}</div>
+    <div class="card" *ngIf="auth_service.isLoggedIn()">
+      You are logged in!
+    </div>
+    <div class="card" *ngIf="!auth_service.isLoggedIn()">
+        You are NOT logged in!
+    </div>
+    <form class="text-center border border-gray p-5" (submit)="soumettre()" #loginForm="ngForm">
         <div class="form-group mb-4">
           <label for="username">Nom d'utilisateur</label>
           <input name="username"
@@ -35,7 +42,7 @@
           </div>
         </div>
       
-        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-dark">Se connecter</button>
+        <button type="submit" [disabled]="!(passwordValid && userValid)" class="btn btn-dark">Se connecter</button>
         <button type="button" class="btn btn-outline-dark ml-3">Annuler</button>
       </form>
   </div>

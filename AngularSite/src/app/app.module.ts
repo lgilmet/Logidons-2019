@@ -13,6 +13,7 @@ import { NewdonComponent } from './don/newdon/newdon.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UtilisateurService } from './shared/utilisateur.service';
 import { MustMatchDirective } from './user/newuser/header/must-match.directive';
+import { AuthService } from './shared/auth.service';
  
  
 
@@ -37,7 +38,7 @@ import { MustMatchDirective } from './user/newuser/header/must-match.directive';
   ],
   
  
-  providers: [UtilisateurService],
+  providers: [UtilisateurService, AuthService],
   bootstrap: [AppComponent]
  
 })

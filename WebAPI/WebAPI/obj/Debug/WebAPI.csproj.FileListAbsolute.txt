@@ -86,7 +86,6 @@ C:\Users\Admin\ProjetsGit\logidons\WebAPI\WebAPI\obj\Debug\WebAPI.csproj.CoreCom
 C:\Users\Admin\ProjetsGit\logidons\WebAPI\WebAPI\obj\Debug\WebAPI.csproj.CopyComplete
 C:\Users\Admin\ProjetsGit\logidons\WebAPI\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\Admin\ProjetsGit\logidons\WebAPI\WebAPI\obj\Debug\WebAPI.pdb
-C:\Users\Admin\ProjetsGit\logidons\WebAPI\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache
 C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\bin\WebAPI.dll.config
 C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\bin\WebAPI.dll
 C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\bin\WebAPI.pdb
