@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 
 import { Article } from 'src/app/shared/article.model';
 import { ArticleService } from 'src/app/shared/article.service';
+import { DonService } from 'src/app/shared/don.service';
+import { DonArticle } from 'src/app/shared/don-article.model';
 
 @Component({
   selector: 'app-newdon',
@@ -11,18 +13,19 @@ import { ArticleService } from 'src/app/shared/article.service';
 })
 export class NewdonComponent implements OnInit {
   articleList: Article[];
-  dernier: Article;
+  donArticleList: DonArticle[]; 
+  newArticleID: number;
+  newArticleValeur: number;
+  art: DonArticle;
 
   constructor(
-    private a_service: ArticleService
+    private a_service: ArticleService,
+    private d_service: DonService
   ) { }
 
   ngOnInit() {
-    this.a_service.formArticle = {
-      IDarticle: 1,
-      IDcategorie: 1,
-      nom: ''
-    }
+
+    this.donArticleList = [];
 
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
   }
@@ -31,11 +34,19 @@ export class NewdonComponent implements OnInit {
 
   }
 
-  onSubmit(form: NgForm){
-    this.a_service.addArticle().subscribe(res => {
-      this.articleList.push(res as Article);
-      this.a_service.formArticle.nom = '';
-    })
+
+
+  onSubmit(){
+    this.art = { 
+      IDarticle : this.newArticleID,
+      valeur: this.newArticleValeur
+    } as DonArticle;
+
+    this.donArticleList.push(this.art);
+
+    // this.d_service.addDon().subscribe(res => {
+    //   console.log(res)
+    // })
   }
 
 }
