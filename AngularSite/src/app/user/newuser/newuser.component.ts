@@ -10,6 +10,11 @@ import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 export class NewuserComponent implements OnInit {
   formData: Utilisateur;
   name: string = '';
+  //model: any = {};
+
+  onSubmit() {
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.formData));
+  }
 
   constructor(private service: UtilisateurService) { }
 

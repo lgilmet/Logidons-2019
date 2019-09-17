@@ -1,31 +1,50 @@
-<form #form="ngForm" autocomplete="off" *ngIf="formData">
-  <legend>Créer un nouveau compte</legend>
-  <div class="form-group  required">
-    <label>Email:</label>
-    <div class="input-group ">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-      </div>
-      <input type="email" class="form-control" [(ngModel)]="formData.email" name="email" ngDefaultControl
-        aria-describedby="emailHelp" placeholder="Entrer email">
-
-    </div>
-  </div>
  
 
-  <div class="form-group required">
-    <label for="Password1">Password :</label>
-    <input type="password" class="form-control" id="Password1" placeholder="Entrer password">
-  </div>
-  <div class="form-group required">
-    <label for="Password2">Confirmer Password :</label>
-    <input type="password" class="form-control" id="Password2" placeholder="Confirmer password">
-  </div>
+<form #form="ngForm" (ngSubmit)="form.form.valid && onSubmit()" autocomplete="off" *ngIf="formData"
+    [mustMatch]="['password', 'confirmPassword']" novalidate>
+    <legend>Créer un nouveau compte</legend>
+    <div class="form-group required">
+        <label for="email">Email</label>
 
-  <div>
-      <button type="submit" class="btn  btn-dark mr-3">Submit</button>
-      <button type="submit" class="btn btn-outline-dark">Cancel</button>
-  </div>
-  
-
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+            </div>
+            <input type="text" class="form-control" name="email" [(ngModel)]="formData.email" #email="ngModel"
+                [ngClass]="{ 'is-invalid': form.submitted && email.invalid }" required email />
+        </div>
+        <div *ngIf="form.submitted && email.invalid" class="invalid-feedback">
+            <div *ngIf="email.errors.required">Email est requis</div>
+            <div *ngIf="email.errors.email">Email doit être valide</div>
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="password">Mot de Passe</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="formData.password" #password="ngModel"
+            [ngClass]="{ 'is-invalid': form.submitted && password.invalid }" required minlength="6" />
+        <div *ngIf="form.submitted && password.invalid" class="invalid-feedback">
+            <div *ngIf="password.errors.required">Mot de passe requis</div>
+            <div *ngIf="password.errors.minlength">Mot de passe minimun 6 Caractères</div>
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="confirmPassword">Confirme Mot de Passe</label>
+        <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="formData.confirmPassword"
+            #confirmPassword="ngModel" [ngClass]="{ 'is-invalid': form.submitted && confirmPassword.invalid }"
+            required />
+        <div *ngIf="form.submitted && confirmPassword.invalid" class="invalid-feedback">
+            <div *ngIf="confirmPassword.errors.required">Confirmation de mot de passe requise</div>
+            <div *ngIf="confirmPassword.errors.mustMatch">Mot de passe doit etre conforme</div>
+        </div>
+    </div>
+    <div class="form-group">
+       
+        <button type="submit" class="btn  btn-dark mr-3">Submit</button>
+        <button type="button" class="btn btn-outline-dark">Cancel</button>
+    </div>
 </form>
+ 
+
+
+
+ 
