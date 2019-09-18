@@ -89,7 +89,8 @@
       </div>
 
       <div class="form-group">
-        <button (click)="onSubmit()" class="btn btn-dark">Submit</button>
+        <button (click)="onSubmit()" class="btn btn-primary float-right">Ajouter l'article</button>
+        <button (click)="onSubmit()" class="btn btn-outline-secondary">Annuler l'article</button>
       </div>
     </div>
     <div class="col-md-6">
@@ -117,8 +118,9 @@
   <div class="row mx-2 mb-4">
   
     <div class="col">
-      <hr>a
-      <button (click)="promesse()" class="btn btn-dark float-right">Promettre</button>
+      <hr>
+      <button (click)="promesse()" class="btn btn-success float-right">Promettre le don</button>
+      <button (click)="onSubmit()" class="btn btn-light float-right mr-5">Annuler le don</button>
     </div>    
   </div>
 </form>

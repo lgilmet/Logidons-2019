@@ -8,6 +8,7 @@ import { DonService } from 'src/app/shared/don.service';
 import { DonArticle } from 'src/app/shared/don-article.model';
 import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 import { Utilisateur } from 'src/app/shared/utilisateur.model';
+import { Don } from 'src/app/shared/don.model';
 
 @Component({
   selector: 'app-newdon',
@@ -24,7 +25,7 @@ export class NewdonComponent implements OnInit {
   total: number;
   art: DonArticle;
 
-  
+  nouveauDon: Don;
 
   listeDonateurs: Utilisateur[];
   listeEmployes: Utilisateur[];
@@ -39,9 +40,19 @@ export class NewdonComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
-
     this.donArticleList = [];
     this.listeDonateurs = [];
+    this.nouveauDon = {
+      IDdon: null,
+    datePromesse: null,
+    dateReception: null,
+    dateAccepter: null,
+    etat: null,
+    IDDonateur: 0,
+    IDEmploye: 0,
+    donArticles: []
+
+    };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
     this.u_service.getDonateurs().then(res => this.listeDonateurs = res as Utilisateur[]);
   }
@@ -64,7 +75,6 @@ export class NewdonComponent implements OnInit {
 
   onSubmit(){
     if(this.validate() == true){
-
       this.art = { 
         IDarticle : this.newArticleID,
         valeur: this.newArticleValeur,
@@ -72,21 +82,16 @@ export class NewdonComponent implements OnInit {
         nom: this.getArtName(this.newArticleID),
         description: this.newArticleDesc
       } as DonArticle;
-
       this.donArticleList.push(this.art);
-
       this.resetForm();
     } else {
-
     }
-
   }
 
   
 
   validate(){
     this.isValid = true;
-
     if(this.newArticleID == 0 || 
       this.newArticleValeur == null ||
       this.newArticleQte == null ||
@@ -94,18 +99,18 @@ export class NewdonComponent implements OnInit {
       {
         this.isValid = false;
       }
-      
-  
-      return this.isValid;
-
-      
-
+    return this.isValid;
   }
 
   updateTotal(prix: number, qte: number){
     this.total = prix * qte;
-    
   }
 
-  
+  promesse(){
+    console.log(this.donArticleList);
+    this.nouveauDon.donArticles = this.donArticleList as DonArticle[];
+    this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
+      console.log(res);
+    });
+  }
 }

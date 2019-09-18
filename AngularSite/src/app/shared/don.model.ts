@@ -1,3 +1,5 @@
+import { DonArticle } from './don-article.model';
+
 export class Don {
     IDdon: number;
     datePromesse: Date;
@@ -6,4 +8,5 @@ export class Don {
     etat: number;
     IDDonateur: number;
     IDEmploye: number;
+    donArticles: DonArticle[];
 }
