@@ -1,6 +1,6 @@
-<!--  
+ 
 <div class="row">
-    <div class="col-md-6 offset-md-6"> -->
+    <div class="col-md-6 offset-md-6">
 
 <form #form="ngForm" (ngSubmit)="form.form.valid && onSubmit()" autocomplete="off" *ngIf="formData"
     [mustMatch]="['password', 'confirmPassword']" novalidate>
@@ -34,7 +34,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text">@</div>
             </div>
-            <input type="text" class="form-control" name="email" [(ngModel)]="formData.email" #email="ngModel"
+            <input type="email" class="form-control" name="email" [(ngModel)]="formData.email" #email="ngModel"
                 [ngClass]="{ 'is-invalid': form.submitted && email.invalid }" required email />
         </div>
         <div *ngIf="form.submitted && email.invalid" class="invalid-feedback">
@@ -67,5 +67,5 @@
         <button type="button" class="btn btn-outline-dark">Cancel</button>
     </div>
 </form>
-<!-- </div>
-</div>   -->
+</div>
+</div>  
