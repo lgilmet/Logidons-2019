@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as $ from 'jquery';
 
 import { Article } from 'src/app/shared/article.model';
 import { ArticleService } from 'src/app/shared/article.service';
 import { DonService } from 'src/app/shared/don.service';
 import { DonArticle } from 'src/app/shared/don-article.model';
+import { UtilisateurService } from 'src/app/shared/utilisateur.service';
+import { Utilisateur } from 'src/app/shared/utilisateur.model';
 
 @Component({
   selector: 'app-newdon',
@@ -16,37 +19,93 @@ export class NewdonComponent implements OnInit {
   donArticleList: DonArticle[]; 
   newArticleID: number;
   newArticleValeur: number;
+  newArticleQte: number;
+  newArticleDesc: string;
+  total: number;
   art: DonArticle;
+
+  
+
+  listeDonateurs: Utilisateur[];
+  listeEmployes: Utilisateur[];
+
+  isValid: boolean;
 
   constructor(
     private a_service: ArticleService,
-    private d_service: DonService
+    private d_service: DonService,
+    private u_service: UtilisateurService
   ) { }
 
   ngOnInit() {
+    this.resetForm();
 
     this.donArticleList = [];
-
+    this.listeDonateurs = [];
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
+    this.u_service.getDonateurs().then(res => this.listeDonateurs = res as Utilisateur[]);
   }
 
   resetForm(){
-
+    this.newArticleID = 0;
+    this.newArticleValeur = null;
+    this.newArticleQte = null;
+    this.newArticleDesc = null;
+    this.total = null;
   }
 
-
+  getArtName(id: number){
+    var obj = this.articleList.filter(function(item:Article){
+      return item.IDarticle==id;
+    });
+    console.log(obj[0].nom);
+    return obj[0].nom;
+  }
 
   onSubmit(){
-    this.art = { 
-      IDarticle : this.newArticleID,
-      valeur: this.newArticleValeur
-    } as DonArticle;
+    if(this.validate() == true){
 
-    this.donArticleList.push(this.art);
+      this.art = { 
+        IDarticle : this.newArticleID,
+        valeur: this.newArticleValeur,
+        quantite: this.newArticleQte,
+        nom: this.getArtName(this.newArticleID),
+        description: this.newArticleDesc
+      } as DonArticle;
 
-    // this.d_service.addDon().subscribe(res => {
-    //   console.log(res)
-    // })
+      this.donArticleList.push(this.art);
+
+      this.resetForm();
+    } else {
+
+    }
+
   }
 
+  
+
+  validate(){
+    this.isValid = true;
+
+    if(this.newArticleID == 0 || 
+      this.newArticleValeur == null ||
+      this.newArticleQte == null ||
+      this.newArticleDesc == null)
+      {
+        this.isValid = false;
+      }
+      
+  
+      return this.isValid;
+
+      
+
+  }
+
+  updateTotal(prix: number, qte: number){
+    this.total = prix * qte;
+    
+  }
+
+  
 }

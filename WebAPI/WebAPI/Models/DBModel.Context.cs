@@ -13,10 +13,10 @@ namespace WebAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LogiDonsEntities : DbContext
+    public partial class LogiDons : DbContext
     {
-        public LogiDonsEntities()
-            : base("name=LogiDonsEntities")
+        public LogiDons()
+            : base("name=LogiDons")
         {
         }
     
@@ -32,6 +32,7 @@ namespace WebAPI.Models
         public virtual DbSet<don> dons { get; set; }
         public virtual DbSet<livraisonDonArticle> livraisonDonArticles { get; set; }
         public virtual DbSet<livraison> livraisons { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<utilisateur> utilisateurs { get; set; }
     }
 }

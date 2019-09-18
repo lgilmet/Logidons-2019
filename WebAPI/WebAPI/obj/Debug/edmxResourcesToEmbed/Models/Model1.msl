@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LogiDonsEntitiesStoreContainer" CdmEntityContainer="LogiDons">
+  <EntityContainerMapping StorageEntityContainer="LogiDonsModelStoreContainer" CdmEntityContainer="LogiDonsEntities1">
     <EntitySetMapping Name="articles">
-      <EntityTypeMapping TypeName="LogiDonsEntities.article">
+      <EntityTypeMapping TypeName="LogiDonsModel.article">
         <MappingFragment StoreEntitySet="articles">
           <ScalarProperty Name="IDarticle" ColumnName="IDarticle" />
           <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="beneficiares">
-      <EntityTypeMapping TypeName="LogiDonsEntities.beneficiare">
+      <EntityTypeMapping TypeName="LogiDonsModel.beneficiare">
         <MappingFragment StoreEntitySet="beneficiares">
           <ScalarProperty Name="IDbeneficiare" ColumnName="IDbeneficiare" />
           <ScalarProperty Name="nom" ColumnName="nom" />
@@ -25,7 +25,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="categories">
-      <EntityTypeMapping TypeName="LogiDonsEntities.category">
+      <EntityTypeMapping TypeName="LogiDonsModel.category">
         <MappingFragment StoreEntitySet="categories">
           <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
           <ScalarProperty Name="description" ColumnName="description" />
@@ -33,7 +33,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="donArticles">
-      <EntityTypeMapping TypeName="LogiDonsEntities.donArticle">
+      <EntityTypeMapping TypeName="LogiDonsModel.donArticle">
         <MappingFragment StoreEntitySet="donArticles">
           <ScalarProperty Name="IDarticle" ColumnName="IDarticle" />
           <ScalarProperty Name="IDdon" ColumnName="IDdon" />
@@ -45,7 +45,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="dons">
-      <EntityTypeMapping TypeName="LogiDonsEntities.don">
+      <EntityTypeMapping TypeName="LogiDonsModel.don">
         <MappingFragment StoreEntitySet="dons">
           <ScalarProperty Name="IDdon" ColumnName="IDdon" />
           <ScalarProperty Name="datePromesse" ColumnName="datePromesse" />
@@ -58,7 +58,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="livraisonDonArticles">
-      <EntityTypeMapping TypeName="LogiDonsEntities.livraisonDonArticle">
+      <EntityTypeMapping TypeName="LogiDonsModel.livraisonDonArticle">
         <MappingFragment StoreEntitySet="livraisonDonArticles">
           <ScalarProperty Name="IDlivraison" ColumnName="IDlivraison" />
           <ScalarProperty Name="IDarticleDon" ColumnName="IDarticleDon" />
@@ -67,7 +67,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="livraisons">
-      <EntityTypeMapping TypeName="LogiDonsEntities.livraison">
+      <EntityTypeMapping TypeName="LogiDonsModel.livraison">
         <MappingFragment StoreEntitySet="livraisons">
           <ScalarProperty Name="IDlivraison" ColumnName="IDlivraison" />
           <ScalarProperty Name="datelivraison" ColumnName="datelivraison" />
@@ -76,7 +76,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="LogiDonsEntities.sysdiagram">
+      <EntityTypeMapping TypeName="LogiDonsModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -87,7 +87,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="utilisateurs">
-      <EntityTypeMapping TypeName="LogiDonsEntities.utilisateur">
+      <EntityTypeMapping TypeName="LogiDonsModel.utilisateur">
         <MappingFragment StoreEntitySet="utilisateurs">
           <ScalarProperty Name="IDutilisateur" ColumnName="IDutilisateur" />
           <ScalarProperty Name="type" ColumnName="type" />

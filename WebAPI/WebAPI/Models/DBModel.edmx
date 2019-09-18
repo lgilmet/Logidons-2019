@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LogiDonsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LogiDonsEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="articles">
           <Key>
             <PropertyRef Name="IDarticle" />
@@ -37,12 +37,12 @@
           <Key>
             <PropertyRef Name="IDarticleDon" />
           </Key>
-          <Property Name="IDarticle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDarticle" Type="int" Nullable="false" />
           <Property Name="IDdon" Type="int" Nullable="false" />
           <Property Name="valeur" Type="decimal" Precision="18" Scale="0" />
           <Property Name="quantite" Type="int" />
           <Property Name="description" Type="varchar" MaxLength="50" />
-          <Property Name="IDarticleDon" Type="int" Nullable="false" />
+          <Property Name="IDarticleDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="dons">
           <Key>
@@ -72,6 +72,16 @@
           <Property Name="IDlivraison" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datelivraison" Type="datetime" />
           <Property Name="IDbeneficiaire" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="utilisateurs">
           <Key>
@@ -186,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LogiDonsModelStoreContainer">
+        <EntityContainer Name="LogiDonsEntitiesStoreContainer">
           <EntitySet Name="articles" EntityType="Self.articles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="beneficiares" EntityType="Self.beneficiares" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
@@ -194,6 +204,7 @@
           <EntitySet Name="dons" EntityType="Self.dons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="livraisonDonArticles" EntityType="Self.livraisonDonArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="livraisons" EntityType="Self.livraisons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="utilisateurs" EntityType="Self.utilisateurs" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_article_categorie" Association="Self.FK_article_categorie">
             <End Role="categories" EntitySet="categories" />
@@ -232,7 +243,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LogiDonsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="LogiDonsEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="article">
           <Key>
             <PropertyRef Name="IDarticle" />
@@ -269,12 +280,12 @@
           <Key>
             <PropertyRef Name="IDarticleDon" />
           </Key>
-          <Property Name="IDarticle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDarticle" Type="Int32" Nullable="false" />
           <Property Name="IDdon" Type="Int32" Nullable="false" />
           <Property Name="valeur" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="quantite" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IDarticleDon" Type="Int32" Nullable="false" />
+          <Property Name="IDarticleDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="article" Relationship="Self.FK_donArticle_article1" FromRole="donArticles" ToRole="articles" />
           <NavigationProperty Name="don" Relationship="Self.FK_donArticle_don1" FromRole="donArticles" ToRole="dons" />
           <NavigationProperty Name="livraisonDonArticles" Relationship="Self.FK_livraisonDonArticle_donArticle" FromRole="donArticles" ToRole="livraisonDonArticles" />
@@ -314,6 +325,16 @@
           <Property Name="IDbeneficiaire" Type="Int32" Nullable="false" />
           <NavigationProperty Name="beneficiare" Relationship="Self.FK_livraison_beneficiare1" FromRole="livraisons" ToRole="beneficiares" />
           <NavigationProperty Name="livraisonDonArticles" Relationship="Self.FK_livraisonDonArticle_livraison" FromRole="livraisons" ToRole="livraisonDonArticles" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="utilisateur">
           <Key>
@@ -430,7 +451,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LogiDonsEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LogiDons" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="articles" EntityType="Self.article" />
           <EntitySet Name="beneficiares" EntityType="Self.beneficiare" />
           <EntitySet Name="categories" EntityType="Self.category" />
@@ -438,6 +459,7 @@
           <EntitySet Name="dons" EntityType="Self.don" />
           <EntitySet Name="livraisonDonArticles" EntityType="Self.livraisonDonArticle" />
           <EntitySet Name="livraisons" EntityType="Self.livraison" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="utilisateurs" EntityType="Self.utilisateur" />
           <AssociationSet Name="FK_article_categorie" Association="Self.FK_article_categorie">
             <End Role="categories" EntitySet="categories" />
@@ -477,9 +499,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LogiDonsModelStoreContainer" CdmEntityContainer="LogiDonsEntities">
+        <EntityContainerMapping StorageEntityContainer="LogiDonsEntitiesStoreContainer" CdmEntityContainer="LogiDons">
           <EntitySetMapping Name="articles">
-            <EntityTypeMapping TypeName="LogiDonsModel.article">
+            <EntityTypeMapping TypeName="LogiDonsEntities.article">
               <MappingFragment StoreEntitySet="articles">
                 <ScalarProperty Name="IDarticle" ColumnName="IDarticle" />
                 <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
@@ -488,7 +510,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="beneficiares">
-            <EntityTypeMapping TypeName="LogiDonsModel.beneficiare">
+            <EntityTypeMapping TypeName="LogiDonsEntities.beneficiare">
               <MappingFragment StoreEntitySet="beneficiares">
                 <ScalarProperty Name="IDbeneficiare" ColumnName="IDbeneficiare" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
@@ -502,7 +524,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="categories">
-            <EntityTypeMapping TypeName="LogiDonsModel.category">
+            <EntityTypeMapping TypeName="LogiDonsEntities.category">
               <MappingFragment StoreEntitySet="categories">
                 <ScalarProperty Name="IDcategorie" ColumnName="IDcategorie" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -510,7 +532,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="donArticles">
-            <EntityTypeMapping TypeName="LogiDonsModel.donArticle">
+            <EntityTypeMapping TypeName="LogiDonsEntities.donArticle">
               <MappingFragment StoreEntitySet="donArticles">
                 <ScalarProperty Name="IDarticle" ColumnName="IDarticle" />
                 <ScalarProperty Name="IDdon" ColumnName="IDdon" />
@@ -522,7 +544,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="dons">
-            <EntityTypeMapping TypeName="LogiDonsModel.don">
+            <EntityTypeMapping TypeName="LogiDonsEntities.don">
               <MappingFragment StoreEntitySet="dons">
                 <ScalarProperty Name="IDdon" ColumnName="IDdon" />
                 <ScalarProperty Name="datePromesse" ColumnName="datePromesse" />
@@ -535,7 +557,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="livraisonDonArticles">
-            <EntityTypeMapping TypeName="LogiDonsModel.livraisonDonArticle">
+            <EntityTypeMapping TypeName="LogiDonsEntities.livraisonDonArticle">
               <MappingFragment StoreEntitySet="livraisonDonArticles">
                 <ScalarProperty Name="IDlivraison" ColumnName="IDlivraison" />
                 <ScalarProperty Name="IDarticleDon" ColumnName="IDarticleDon" />
@@ -544,7 +566,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="livraisons">
-            <EntityTypeMapping TypeName="LogiDonsModel.livraison">
+            <EntityTypeMapping TypeName="LogiDonsEntities.livraison">
               <MappingFragment StoreEntitySet="livraisons">
                 <ScalarProperty Name="IDlivraison" ColumnName="IDlivraison" />
                 <ScalarProperty Name="datelivraison" ColumnName="datelivraison" />
@@ -552,8 +574,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LogiDonsEntities.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="utilisateurs">
-            <EntityTypeMapping TypeName="LogiDonsModel.utilisateur">
+            <EntityTypeMapping TypeName="LogiDonsEntities.utilisateur">
               <MappingFragment StoreEntitySet="utilisateurs">
                 <ScalarProperty Name="IDutilisateur" ColumnName="IDutilisateur" />
                 <ScalarProperty Name="type" ColumnName="type" />

@@ -1,39 +1,125 @@
 <h3>Formulaire nouveau don</h3>
 
-<form #form="ngForm" autocomplete="off">
-
-    <label>Articles</label>
-    <select class="form-control" name="donateurID" [(ngModel)]="donateurID" >
-      <option value="0">- Selectionnez un article -</option>
-      <option *ngFor=" let item of this.donateurList" value="{{item.IDarticle}}">{{item.IDarticle}} - {{item.nom}}</option>
-    </select>
-
-  <div class="row">
-    <div class="col-md-3 form-group">
-      <label>Articles</label>
-      <select class="form-control" name="newArticleID" [(ngModel)]="newArticleID" >
+<form class="card" #form="ngForm" autocomplete="off">
+  <div class="row card-body">
+    <div class="col-md-4">
+      <h3>sujet don</h3>
+      <label>Donateur</label>
+      <select class="form-control" name="donateurID" [(ngModel)]="donateurID">
         <option value="0">- Selectionnez un article -</option>
-        <option *ngFor=" let item of this.articleList" value="{{item.IDarticle}}">{{item.IDarticle}} - {{item.nom}}</option>
+        <option
+          *ngFor="let user of this.listeDonateurs"
+          value="{{ user.IDutilisateur }}"
+          >{{ user.IDutilisateur }} - {{ user.nom }}</option
+        >
       </select>
     </div>
-    <div class="col-md-3 form-group">
-      <label>Valeur</label>
-      <input type="number" class="form-control"
-      name="newArticleValeur" [(ngModel)]=newArticleValeur>
+    <div class="col-md-4">
+      <h3>Besoin de disponibilite</h3>
     </div>
-    <div class="col-md-3 form-group">
-      <label>Valeur</label>
-      <input type="number" class="form-control"
-      name="newArticleValeur" [(ngModel)]=newArticleValeur>
-    </div>
-    
-    
-    <div class="form-group">
-      <button (click)="onSubmit()" class="btn btn-dark">Submit</button>
+    <div class="col-md-4">
+      <h3>Adresse Cueillette ou aller porter</h3>
     </div>
   </div>
+  <div class="row card-body">
+    <div class="col-md-6">
+      <h3>Formulaire don</h3>
+      <div class="form-group">
+        <label>Articles</label>
+        <select
+          class="form-control"
+          name="newArticleID"
+          [(ngModel)]="newArticleID"
+        >
+          <option value="0">- Selectionnez un article -</option>
+          <option
+            *ngFor="let item of this.articleList"
+            value="{{ item.IDarticle }}"
+            >{{ item.IDarticle }} - {{ item.nom }}</option
+          >
+        </select>
+        <label>Description</label>
+        <textarea class="form-control" rows="1"
+        name="newArticleDesc"
+        [(ngModel)]="newArticleDesc"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Valeur</label>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input
+              type="number"
+              class="form-control"
+              name="newArticleValeur"
+              [(ngModel)]="newArticleValeur"
+              (onvaluechange)="updateTotal(newArticleValeur, newArticleQte)"
+            />
+          </div>
+        </div>
+
+        <div class="form-group col">
+          <label>Quantite</label>
+          <input
+            type="number"
+            class="form-control"
+            name="newArticleQte"
+            [(ngModel)]="newArticleQte"
+            (keyup)="updateTotal(newArticleValeur, newArticleQte)"
+          />
+        </div>
+
+        <div class="form-group col">
+          <label>Total</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input
+              disabled
+              class="form-control"
+              value="{{total}}"
+            />
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button (click)="onSubmit()" class="btn btn-dark">Submit</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h3>Liste des items</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Article</th>
+            <th scope="col">Valeur</th>
+            <th scope="col">Quantite</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of this.donArticleList.reverse()">
+            <td>{{ item.IDarticle }} - {{ item.nom }}</td>
+            <td>{{ item.valeur }}</td>
+            <td>{{ item.quantite }}</td>
+            <td>{{ item.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mx-2 mb-4">
+  
+    <div class="col">
+      <hr>a
+      <button (click)="promesse()" class="btn btn-dark float-right">Promettre</button>
+    </div>    
+  </div>
 </form>
-
-<p *ngFor=" let item of this.donArticleList">Article: {{item.IDarticle}}, Valeur: {{item.valeur}}</p>
-
 

@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     public class donArticleController : ApiController
     {
-        private LogiDonsEntities db = new LogiDonsEntities();
+        private LogiDons db = new LogiDons();
 
         // GET: api/donArticle
         public IQueryable<donArticle> GetdonArticles()

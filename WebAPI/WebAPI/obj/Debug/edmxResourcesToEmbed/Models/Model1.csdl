@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="LogiDonsEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="LogiDonsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="article">
     <Key>
       <PropertyRef Name="IDarticle" />
@@ -207,7 +207,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="LogiDons" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="LogiDonsEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="articles" EntityType="Self.article" />
     <EntitySet Name="beneficiares" EntityType="Self.beneficiare" />
     <EntitySet Name="categories" EntityType="Self.category" />

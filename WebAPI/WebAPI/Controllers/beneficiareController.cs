@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     public class beneficiareController : ApiController
     {
-        private LogiDonsEntities db = new LogiDonsEntities();
+        private LogiDons db = new LogiDons();
 
         // GET: api/beneficiare
         public IQueryable<beneficiare> Getbeneficiares()

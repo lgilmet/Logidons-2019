@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     public class categorieController : ApiController
     {
-        private LogiDonsEntities db = new LogiDonsEntities();
+        private LogiDons db = new LogiDons();
 
         // GET: api/categorie
         public IQueryable<category> Getcategories()

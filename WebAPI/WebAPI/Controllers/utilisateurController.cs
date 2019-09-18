@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
 {
     public class utilisateurController : ApiController
     {
-        private LogiDonsEntities db = new LogiDonsEntities();
+        private LogiDons db = new LogiDons();
 
 		public class LoginRequest
 		{
@@ -24,8 +24,32 @@ namespace WebAPI.Controllers
 			public string Password { get; set; }
 		}
 
-		// Post : api/utilisateur/login
-		[Route("~/api/utilisateur/login")]
+        // Get : api/utilisateur/employes
+        [Route("~/api/utilisateur/employes")]
+        [HttpGet]
+        public IQueryable<utilisateur> getEmployes()
+        {
+            var listeEmp = (from l in db.utilisateurs
+                            where l.type == "employe"
+                            select l);
+
+            return listeEmp;
+        }
+
+        // Get : api/utilisateur/donateurs
+        [Route("~/api/utilisateur/donateurs")]
+        [HttpGet]
+        public IQueryable<utilisateur> getDonateurs()
+        {
+            var listeEmp = (from l in db.utilisateurs
+                            where l.type == "donateur"
+                            select l);
+
+            return listeEmp;
+        }
+
+        // Post : api/utilisateur/login
+        [Route("~/api/utilisateur/login")]
 		[HttpPost]
 		public IHttpActionResult verifyUser(LoginRequest request)
 		{

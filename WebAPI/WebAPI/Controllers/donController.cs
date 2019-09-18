@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     public class donController : ApiController
     {
-        private LogiDonsEntities db = new LogiDonsEntities();
+        private LogiDons db = new LogiDons();
 
         // GET: api/don
         public IQueryable<don> Getdons()
@@ -75,13 +75,24 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(don))]
         public IHttpActionResult Postdon(don don)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-            }
 
-            db.dons.Add(don);
-            db.SaveChanges();
+                db.dons.Add(don);
+
+                foreach (var article in don.donArticles)
+                {
+                    db.donArticles.Add(article);
+                }
+
+                don.datePromesse = DateTime.Now;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = don.IDdon }, don);
         }

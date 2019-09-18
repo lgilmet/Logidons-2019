@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     public class livraisonController : ApiController
     {
-        private LogiDonsEntities db = new LogiDonsEntities();
+        private LogiDons db = new LogiDons();
 
         // GET: api/livraison
         public IQueryable<livraison> Getlivraisons()
