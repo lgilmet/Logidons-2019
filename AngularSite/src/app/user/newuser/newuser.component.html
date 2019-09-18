@@ -34,7 +34,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text">@</div>
             </div>
-            <input type="text" class="form-control" name="email" [(ngModel)]="formData.email" #email="ngModel"
+            <input type="email" class="form-control" name="email" [(ngModel)]="formData.email" #email="ngModel"
                 [ngClass]="{ 'is-invalid': form.submitted && email.invalid }" required email />
         </div>
         <div *ngIf="form.submitted && email.invalid" class="invalid-feedback">
