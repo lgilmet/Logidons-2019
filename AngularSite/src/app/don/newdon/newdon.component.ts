@@ -25,6 +25,8 @@ export class NewdonComponent implements OnInit {
   total: number;
   art: DonArticle;
 
+  donateurID: number;
+
   nouveauDon: Don;
 
   listeDonateurs: Utilisateur[];
@@ -109,6 +111,7 @@ export class NewdonComponent implements OnInit {
   promesse(){
     console.log(this.donArticleList);
     this.nouveauDon.donArticles = this.donArticleList as DonArticle[];
+    this.nouveauDon.IDDonateur = this.donateurID;
     this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
       console.log(res);
     });

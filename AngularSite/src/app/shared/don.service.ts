@@ -12,7 +12,7 @@ export class DonService {
 
   promettreDon(don: Don){
     var body = {
-      IDDonateur: 1,
+      IDDonateur: don.IDDonateur,
       donArticles: don.donArticles
     }
 
