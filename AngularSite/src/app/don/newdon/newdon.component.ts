@@ -97,9 +97,9 @@ export class NewdonComponent implements OnInit {
   validate(){
     this.isValid = true;
     if(this.newArticleID == 0 || 
-      this.newArticleValeur == null ||
-      this.newArticleQte == null ||
-      this.newArticleDesc == null)
+      this.newArticleValeur < 1 ||
+      this.newArticleQte < 1 ||
+      this.newArticleDesc.length < 1)
       {
         this.isValid = false;
       }
@@ -111,11 +111,15 @@ export class NewdonComponent implements OnInit {
   }
 
   promesse(){
-    console.log(this.donArticleList);
-    this.nouveauDon.donArticles = this.donArticleList as DonArticle[];
-    this.nouveauDon.IDDonateur = this.donateurID;
-    this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
-      console.log(res);
-    });
+    if(this.donArticleList.length == 0){
+      alert("Ajoutez des articles a votre don avant de l'envoyer");
+    } else {
+      console.log(this.donArticleList);
+      this.nouveauDon.donArticles = this.donArticleList as DonArticle[];
+      this.nouveauDon.IDDonateur = this.donateurID;
+      this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
+        console.log(res);
+      });
+    }
   }
 }
