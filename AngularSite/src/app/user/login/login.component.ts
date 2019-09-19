@@ -3,7 +3,7 @@ import { FormGroup, Form } from '@angular/forms';
 import { Utilisateur } from 'src/app/shared/utilisateur.model';
 import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 import { AuthService } from 'src/app/shared/auth.service';
-
+// allo stash here
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   passwordValid: boolean;
   userValid: boolean;
   test: number;
-  constructor(private user_service: UtilisateurService, private auth_service: AuthService) { }
+  constructor(
+    private user_service: UtilisateurService, 
+    private auth_service: AuthService) { }
 
   ngOnInit() {
     this.resetForm();

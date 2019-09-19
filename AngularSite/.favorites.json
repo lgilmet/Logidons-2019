@@ -46,6 +46,7 @@
     },
     {
         "type": "File",
+<<<<<<< Updated upstream
         "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
         "parent_id": null,
         "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
@@ -79,5 +80,22 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "iOGbWpvx8URaomDe"
+=======
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "VWbZQcTzHEqygMOt"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.ts",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "HA5Fb68odvXiYqMr"
+>>>>>>> Stashed changes
     }
 ]
