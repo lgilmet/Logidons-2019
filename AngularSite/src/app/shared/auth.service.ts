@@ -28,6 +28,7 @@ export class AuthService {
       {
         //Connected
         this.setLoggedIn(true);
+        localStorage.setItem("userID", this.userID.toString());
       } else {
         //Not connected
         this.setLoggedIn(false);
@@ -42,6 +43,7 @@ export class AuthService {
   {
     this.loggedInStatus = value;
     localStorage.setItem('loggedIn', value.toString());
+    
   }
 
   isLoggedIn() {

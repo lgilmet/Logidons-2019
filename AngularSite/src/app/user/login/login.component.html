@@ -10,7 +10,8 @@
     <form class="text-center border border-gray p-5" (submit)="soumettre()" #loginForm="ngForm">
         <div class="form-group mb-4">
           <label for="username">Nom d'utilisateur</label>
-          <input name="username"
+          <input 
+          name="username"
           type="text"
           #username="ngModel"
           [(ngModel)]="form.username"

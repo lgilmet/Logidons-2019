@@ -44,6 +44,8 @@ export class NewdonComponent implements OnInit {
     this.resetForm();
     this.donArticleList = [];
     this.listeDonateurs = [];
+
+    this.donateurID = JSON.parse(localStorage.getItem('userID'));
     this.nouveauDon = {
       IDdon: null,
     datePromesse: null,

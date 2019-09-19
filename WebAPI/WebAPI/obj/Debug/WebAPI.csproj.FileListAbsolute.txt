@@ -174,3 +174,4 @@ C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\obj\Debug\WebAPI.csproj.
 C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\obj\Debug\WebAPI.csproj.CopyComplete
 C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\obj\Debug\WebAPI.pdb
+C:\Users\iluca\source\repos\Logidons-2019\WebAPI\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache
