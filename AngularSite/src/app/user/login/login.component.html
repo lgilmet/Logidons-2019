@@ -1,11 +1,10 @@
 <div class="row justify-content-md-center">
   <div class="col-md-6">
-    <div>TEST : {{auth_service.userID}}</div>
-    <div class="card" *ngIf="auth_service.isLoggedIn()">
-      You are logged in!
+    <div class="alert alert-success" *ngIf="auth_service.isLoggedIn() && triedLogin">
+      <strong>Succès!</strong> Vous vous êtes bien connecté.
     </div>
-    <div class="card" *ngIf="!auth_service.isLoggedIn()">
-        You are NOT logged in!
+    <div class="alert alert-danger" *ngIf="!auth_service.isLoggedIn() && triedLogin">
+      <strong>Érreur</strong> Votre nom d'utilisateur ou votre mot de passe est érroné.
     </div>
     <form class="text-center border border-gray p-5" (submit)="soumettre()" #loginForm="ngForm">
         <div class="form-group mb-4">
