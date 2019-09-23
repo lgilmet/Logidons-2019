@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   passwordValid: boolean;
   userValid: boolean;
   test: number;
+  triedLogin: boolean;
   constructor(
     private user_service: UtilisateurService, 
     private auth_service: AuthService) { }
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
     this.test = 0;
+    this.triedLogin = false;
   }
 
   checkValid()
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
     {
       console.log("soumettre IN");
       this.auth_service.login(this.form.username, this.form.password);
+      this.triedLogin = true;
     }
   }
 
