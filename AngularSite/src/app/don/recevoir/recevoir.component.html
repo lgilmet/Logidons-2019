@@ -1,3 +1,26 @@
-<p>
-  recevoir works!
-</p>
+<form #form="ngForm" autocomplete="off" *ngIf="formData" novalidate>
+  <legend>Récevoir un don</legend>
+
+  <div class="form-group required">
+    <label for="datePromesse">Date promesse  </label>
+    <input type="date" class="form-control" name="datePromesse" [(ngModel)]="formData.datePromesse"
+      #datePromesse="ngModel" required>
+
+  </div>
+
+  <div class="form-group required">
+      <label for="dateReception">Date Reception </label>
+      <input type="date" class="form-control" name="dateReception" [(ngModel)]="formData.dateReception"
+        #dateReception="ngModel" required>
+  
+    </div>
+    <div class="form-group required">
+        <label for="datePromesse">Date Accepter </label>
+        <input type="date" class="form-control" name="dateAccepter" [(ngModel)]="formData.dateAccepter"
+          #dateAccepter="ngModel" required>
+    
+      </div>
+
+
+
+</form>
