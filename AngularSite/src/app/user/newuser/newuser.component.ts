@@ -15,8 +15,10 @@ export class NewuserComponent implements OnInit {
     // this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
     //   console.log(res);
     // });
-    this.service.addUtilisateur(this.formData).then(res=>{
+    this.service.addUtilisateur(this.formData).subscribe(res=>{
       console.log(res);
+      //alert("Bonjour "+res.nom);
+      
     });
 
 

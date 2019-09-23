@@ -29,7 +29,7 @@ export class UtilisateurService {
 
 
     }
-    return this.http.post(environment.apiURL + '/utilisateur', body).toPromise();
+    return this.http.post(environment.apiURL + '/utilisateur', body);
   }
 
 }

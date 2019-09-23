@@ -1,30 +1,12 @@
 [
     {
         "type": "File",
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\navbar\\navbar.component.html",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.ts",
         "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\navbar\\navbar.component.html",
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.ts",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "ncTHZrXyxehtIJs2"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\index.html",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\index.html",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "yNGJVeHtKEhX45xz"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "9InSukmR6A0s7j38"
+        "id": "seGbvTgXy5d8j0Hz"
     },
     {
         "type": "File",
@@ -33,69 +15,6 @@
         "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "Aik1W4oXqHen6KQu"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "QbaZC6xsJuTv1VjO"
-    },
-    {
-        "type": "File",
-<<<<<<< Updated upstream
-        "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "m6s7Q1tG4yxCKdzc"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\shared\\utilisateur.service.ts",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\shared\\utilisateur.service.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "NPZ5sgtMYACq1Rrj"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.html",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.html",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "U3Qp89rC1ae0nvGd"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.ts",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "iOGbWpvx8URaomDe"
-=======
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "VWbZQcTzHEqygMOt"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.ts",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "HA5Fb68odvXiYqMr"
->>>>>>> Stashed changes
+        "id": "jNJwi3svgTefWBDC"
     }
 ]

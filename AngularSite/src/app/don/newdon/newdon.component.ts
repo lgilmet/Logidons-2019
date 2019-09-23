@@ -102,6 +102,7 @@ export class NewdonComponent implements OnInit {
       this.newArticleDesc.length < 1)
       {
         this.isValid = false;
+        alert()
       }
     return this.isValid;
   }
@@ -121,5 +122,9 @@ export class NewdonComponent implements OnInit {
         console.log(res);
       });
     }
+  }
+
+  annulerDon(){
+    
   }
 }

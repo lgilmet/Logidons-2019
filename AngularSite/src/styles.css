@@ -5,6 +5,12 @@ div.form-group.required>label:first-child:after{
     padding-left: 5px;
 
 } 
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
  
 
  
