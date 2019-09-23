@@ -14,6 +14,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UtilisateurService } from './shared/utilisateur.service';
 import { MustMatchDirective } from './user/newuser/header/must-match.directive';
 import { AuthService } from './shared/auth.service';
+import { AccueilComponent } from './pages/accueil/accueil.component';
+import { ContactezNousComponent } from './pages/contactez-nous/contactez-nous.component';
+import { RecevoirComponent } from './don/recevoir/recevoir.component';
  
  
 
@@ -26,7 +29,10 @@ import { AuthService } from './shared/auth.service';
     DonComponent,
     NewdonComponent,
     NavbarComponent,
-    MustMatchDirective
+    MustMatchDirective,
+    AccueilComponent,
+    ContactezNousComponent,
+    RecevoirComponent
      
 
   ],
