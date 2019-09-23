@@ -9,6 +9,14 @@ import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 })
 export class NewuserComponent implements OnInit {
   formData: Utilisateur;
+   
+  passwordValid: boolean;
+  confirmePasswordValid: boolean;
+  nomValid: boolean;
+  confirmPasswordText: String;
+  prenomValid: boolean;
+  emailValid: boolean;
+
  
   onSubmit() {
 
@@ -32,6 +40,32 @@ export class NewuserComponent implements OnInit {
      
   }
 
+  checkValid() {
+    if (this.formData.nom.length >= 4)
+      this.nomValid = true;
+    else
+      this.nomValid = false;
+
+    if (this.formData.prenom.length >= 4)
+      this.prenomValid = true;
+    else
+      this.prenomValid = false;
+
+    if (this.formData.email.length >= 4)
+      this.emailValid = true;
+    else
+      this.emailValid = false;
+
+    if (this.formData.password.length >= 4)
+      this.passwordValid = true;
+    else
+      this.passwordValid = false;
+
+    if (this.confirmPasswordText.length >= 4 && this.confirmPasswordText==this.formData.password)
+      this.confirmePasswordValid = true;
+    else
+      this.confirmePasswordValid = false;
+  }
   resetForm() {
     this.formData = {
       IDutilisateur:0,
@@ -47,5 +81,6 @@ export class NewuserComponent implements OnInit {
       username: '',
       password: '',
     }
+    this.confirmPasswordText="";
   }
 }
