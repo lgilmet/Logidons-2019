@@ -1,3 +1,196 @@
-<p>
-  recevoir works!
-</p>
+<form #form="ngForm" autocomplete="off" class="card" novalidate>
+
+  <h3>Formulaire de réception d'un don</h3>
+
+  <div class="card">
+    <h3>Liste</h3>
+    <hr />
+    <div class="card-body row">
+      <div class="col">
+        Donateur: <label   > id:{{don.IDDonateur}}</label>
+      </div>
+
+
+      <div class="col">
+        Valeur: <label  >$ </label>
+
+      </div>
+      <div class="col">
+        Nombre Items: <label  >Qte </label>
+      </div>
+    </div>
+
+    <div class="card-body row">
+      <div class="col">
+        Date promesse: <label >{{don.datePromesse}}</label>
+      </div>
+
+
+      <div class="col">
+        Etat: <label >{{don.etat}}</label>
+
+      </div>
+      <div class="col">
+        <button class="btn btn-success float-right">Reveoir</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="col">
+        <label>Don</label>
+      </div>
+      <div class="col">
+        <label>Date Promesse</label>
+      </div>
+      <div class="col">
+        <label>Etat</label>
+      </div>
+
+    </div>
+    <div class="col-md-8">
+        <label>Liste des items</label>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Article</th>
+              <th scope="col">Valeur</th>
+              <th scope="col">Quantite</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor=" ">
+              <td>{{ item.IDarticle }} - {{ item.nom }}</td>
+              <td>{{ item.valeur }}</td>
+              <td>{{ item.quantite }}</td>
+              <td>{{ item.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+
+  <!-- <div class="card-body">
+    <h1>Liste</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-outline-dark">Date Promesse</button>
+      </div>
+      <div class="col-md-4 col-offset-md-5">
+        <div class="form-group ">
+          <label for="datePromesse" class="sr-only">Password</label>
+          <input type="text" class="form-control" id="datePromesse" placeholder=" " disabled>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group required">
+        <label>Donateur </label>
+        <select class="form-control">
+          <option value="0">- Selectionnez un donateur -</option>
+        </select>
+      </div>
+    </div>
+
+    <div class=" col-md-4">
+      <div class="form-group required">
+        <label>Valeur </label>
+        <select class="form-control">
+          <option value="0">- Selectionnez une valeur -</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group required">
+        <label>Nombre items </label>
+        <select class="form-control">
+          <option value="0">- Selectionnez un items -</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group required">
+        <label>Date Reception </label>
+        <input type="date" class="form-control" id="dateReception" placeholder=" ">
+      </div>
+    </div>
+
+    <div class=" col-md-4">
+      <div class="form-group required">
+        <label>Etat </label>
+        <select class="form-control">
+          <option value="0">- Selectionnez un etat -</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group required">
+        <button type="submit" class="btn btn-outline-dark">Recevoir</button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="col-md-6">
+          <div class="form-group required">
+            <label for="datePromesse">Date promesse </label>
+            <input type="date" class="form-control" name="datePromesse" [(ngModel)]="formData.datePromesse"
+              #datePromesse="ngModel" required>
+          </div>
+
+          <div class="form-group required">
+            <label for="dateReception">Date Reception </label>
+            <input type="date" class="form-control" name="dateReception" [(ngModel)]="formData.dateReception"
+              #dateReception="ngModel" required>
+          </div>
+          
+          <div class="form-group required">
+            <label for="datePromesse">Date Accepter </label>
+            <input type="date" class="form-control" name="dateAccepter" [(ngModel)]="formData.dateAccepter"
+              #dateAccepter="ngModel" required>
+          </div>
+
+          <div class="form-group required">
+            <label for="etat">Etat :</label><br/>
+           Envoyer <input type="checkbox"  name="etat" [(ngModel)]="formData.etat"  #etat="ngModel" required>
+           Accepter <input type="checkbox"  name="etat" [(ngModel)]="formData.etat"  #etat="ngModel" required>
+          </div>
+
+
+          <div class="form-group required">
+              <label for="IDDonateur">ID Donateur :</label><br/>
+              <select>
+                <option>-Selectionner-</option>
+              </select>
+              <label for="IDDonateur">ID Donateur :</label><br/>
+              <select>
+                <option>-Selectionner-</option>
+              </select>
+            </div>
+          <hr>
+              
+          <button  class="btn btn-success float-right">Reveoir le don</button>
+          
+
+
+        </div>-->
+
+
+
+
+
+
+  <!-- </div> -->
+</form>

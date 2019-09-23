@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, Form } from '@angular/forms';
 import { Utilisateur } from 'src/app/shared/utilisateur.model';
 import { UtilisateurService } from 'src/app/shared/utilisateur.service';
@@ -31,31 +31,27 @@ export class LoginComponent implements OnInit {
     this.triedLogin = false;
   }
 
-  checkValid()
-  {
-    if(this.form.username.length >= 4)
+  checkValid() {
+    if (this.form.username.length >= 4)
       this.userValid = true;
     else
       this.userValid = false;
-    if(this.form.password.length >= 4)
+    if (this.form.password.length >= 4)
       this.passwordValid = true;
     else
       this.passwordValid = false;
   }
 
-  public soumettre()
-  {
+  public soumettre() {
     console.log("soumettre IF?");
-    if(this.userValid && this.passwordValid)
-    {
+    if (this.userValid && this.passwordValid) {
       console.log("soumettre IN");
       this.auth_service.login(this.form.username, this.form.password);
       this.triedLogin = true;
     }
   }
 
-  public resetForm()
-  {
+  public resetForm() {
     this.passwordValid = false;
     this.userValid = false;
     this.form = {

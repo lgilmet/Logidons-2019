@@ -17,6 +17,7 @@ import { AuthService } from './shared/auth.service';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { ContactezNousComponent } from './pages/contactez-nous/contactez-nous.component';
 import { RecevoirComponent } from './don/recevoir/recevoir.component';
+import { NewemployeComponent } from './user/newemploye/newemploye.component';
  
  
 
@@ -32,7 +33,8 @@ import { RecevoirComponent } from './don/recevoir/recevoir.component';
     MustMatchDirective,
     AccueilComponent,
     ContactezNousComponent,
-    RecevoirComponent
+    RecevoirComponent,
+    NewemployeComponent
      
 
   ],
