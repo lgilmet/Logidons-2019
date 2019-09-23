@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class AuthService {
   private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   userID: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router) { }
   
   login(username:string, password:string)
   {
@@ -29,14 +32,14 @@ export class AuthService {
         //Connected
         this.setLoggedIn(true);
         localStorage.setItem("userID", this.userID.toString());
+        console.log(this.userID);
+        window.location.href = "compte/profil";
+      // 
       } else {
         //Not connected
         this.setLoggedIn(false);
       }
-      console.log(this.userID);
     })
-
-    
   }
 
   setLoggedIn(value: boolean)

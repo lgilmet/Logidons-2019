@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, Inject } from '@angular/core';
 import { FormGroup, Form } from '@angular/forms';
 import { Utilisateur } from 'src/app/shared/utilisateur.model';
 import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 import { AuthService } from 'src/app/shared/auth.service';
-// allo stash here
+import { DOCUMENT } from '@angular/common';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styles: []
 })
 export class LoginComponent implements OnInit {
+
   form: Utilisateur;
   passwordValid: boolean;
   userValid: boolean;
@@ -17,8 +20,11 @@ export class LoginComponent implements OnInit {
   triedLogin: boolean;
   constructor(
     private user_service: UtilisateurService, 
-    private auth_service: AuthService) { }
+    private auth_service: AuthService,
+    @Inject(DOCUMENT)
+    private document: Document) { }
 
+    
   ngOnInit() {
     this.resetForm();
     this.test = 0;

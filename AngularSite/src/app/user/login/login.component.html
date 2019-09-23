@@ -41,8 +41,9 @@
             Veuillez entrer un mot de passe, minimum de 4 charactères.
           </div>
         </div>
-      
-        <button type="submit" [disabled]="!(passwordValid && userValid)" class="btn btn-dark">Se connecter</button>
+        <!-- <a role="button" class="btn btn-primary"  href="compte/profil" (click)="soumettre()" >Se connecter</a> -->
+        <button type="submit" [disabled]="!(passwordValid && userValid)" class="btn btn-dark">Se connecter
+           </button>
         <button type="button" class="btn btn-outline-dark ml-3">Annuler</button>
       </form>
   </div>

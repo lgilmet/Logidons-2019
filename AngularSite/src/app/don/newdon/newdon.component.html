@@ -1,9 +1,9 @@
-<h3>Formulaire nouveau don</h3>
+<div class="container">
+  <h3>Formulaire nouveau don</h3>
 
-<form class="card" #form="ngForm" autocomplete="off">
-  <div class="card-body">
-
-<!--   
+  <form class="card" #form="ngForm" autocomplete="off">
+    <div class="card-body">
+      <!--   
   <div class="row">
     <div class="col-md-4">
       <label>Bonjour {{donateurID}}</label>
@@ -30,121 +30,128 @@
       <label>Adresse Cueillette ou aller porter</label>
     </div>
   </div> -->
-  <hr>
+      <hr />
       <h4>Articles du don</h4>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Articles</label>
-        <select
-          class="form-control"
-          name="newArticleID"
-          [(ngModel)]="newArticleID"
-        >
-          <option value="0">- Selectionnez un article -</option>
-          <option
-            *ngFor="let item of this.articleList"
-            value="{{ item.IDarticle }}"
-            >{{ item.IDarticle }} - {{ item.nom }}</option
-          >
-        </select>
-      </div>
-        <div class="form-group">
-          
-        <label>Description</label>
-        <textarea class="form-control" rows="1"
-        name="newArticleDesc"
-        [(ngModel)]="newArticleDesc"></textarea>
-        </div>
-      <div class="form-row">
-        <div class="form-group col">
-          <label>Valeur</label>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              min="1"
-              type="number"
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Articles</label>
+            <select
               class="form-control"
-              name="newArticleValeur"
-              [(ngModel)]="newArticleValeur"
-              (onvaluechange)="updateTotal(newArticleValeur, newArticleQte)"
-            />
+              name="newArticleID"
+              [(ngModel)]="newArticleID"
+            >
+              <option value="0">- Selectionnez un article -</option>
+              <option
+                *ngFor="let item of this.articleList"
+                value="{{ item.IDarticle }}"
+                >{{ item.IDarticle }} - {{ item.nom }}</option
+              >
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea
+              class="form-control"
+              rows="1"
+              name="newArticleDesc"
+              [(ngModel)]="newArticleDesc"
+            ></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Valeur</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+                </div>
+                <input
+                  min="1"
+                  type="number"
+                  class="form-control"
+                  name="newArticleValeur"
+                  [(ngModel)]="newArticleValeur"
+                  (onvaluechange)="updateTotal(newArticleValeur, newArticleQte)"
+                />
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <label>Quantite</label>
+              <input
+                min="1"
+                type="number"
+                class="form-control"
+                name="newArticleQte"
+                [(ngModel)]="newArticleQte"
+                (keyup)="updateTotal(newArticleValeur, newArticleQte)"
+              />
+            </div>
+
+            <div class="form-group col">
+              <label>Total</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+                </div>
+                <input disabled class="form-control" value="{{ total }}" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button (click)="onSubmit()" class="btn btn-primary float-right">
+              Ajouter l'article
+            </button>
+            <button (click)="clearArticle()" class="btn btn-outline-secondary">
+              Annuler l'article
+            </button>
           </div>
         </div>
-
-        <div class="form-group col">
-          <label>Quantite</label>
-          <input
-            min="1"
-            type="number"
-            class="form-control"
-            name="newArticleQte"
-            [(ngModel)]="newArticleQte"
-            (keyup)="updateTotal(newArticleValeur, newArticleQte)"
-          />
-        </div>
-
-        <div class="form-group col">
-          <label>Total</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">$</div>
-            </div>
-            <input
-              disabled
-              class="form-control"
-              value="{{total}}"
-            />
-          </div>
-          
+        <div class="col-md-6">
+          <label>Liste des items</label>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Article</th>
+                <th scope="col">Valeur</th>
+                <th scope="col">Quantite</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of this.donArticleList.reverse()">
+                <td>{{ item.IDarticle }} - {{ item.nom }}</td>
+                <td>{{ item.valeur }}</td>
+                <td>{{ item.quantite }}</td>
+                <td>{{ item.description }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-
-      <div class="form-group">
-        <button (click)="onSubmit()" class="btn btn-primary float-right">Ajouter l'article</button>
-        <button (click)="clearArticle()" class="btn btn-outline-secondary">Annuler l'article</button>
+      <div class="row">
+        <div class="col">
+          <hr />
+          <button (click)="promesse()" class="btn btn-success float-right">
+            Promettre le don
+          </button>
+          <button (click)="annulerDon()" class="btn btn-outline-secondary">
+            Annuler le don
+          </button>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <label>Liste des items</label>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Article</th>
-            <th scope="col">Valeur</th>
-            <th scope="col">Quantite</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of this.donArticleList.reverse()">
-            <td>{{ item.IDarticle }} - {{ item.nom }}</td>
-            <td>{{ item.valeur }}</td>
-            <td>{{ item.quantite }}</td>
-            <td>{{ item.description }}</td>
-          </tr>
-        </tbody>
-      </table>
+  </form>
+  <div class="bg-light mt-3">
+    <div class="card-body">
+      <p class="m-0">Termes et conditions:</p>
+      <p class="my-0 ml-3">
+        Les vetements doivent etre propre. Aucun sous-vetements.
+      </p>
+      <p class="my-0 ml-3">
+        Seulement la nourriture en canne. La nourriture fraiche n'est pas
+        accepte.
+      </p>
     </div>
   </div>
-  <div class="row">
-  
-    <div class="col">
-      <hr>
-      
-      <button (click)="promesse()" class="btn btn-success float-right">Promettre le don</button>
-      <button (click)="annulerDon()" class="btn btn-outline-secondary">Annuler le don</button>
-    </div>    
-  </div>
 </div>
-</form>
-<div class="bg-light mt-3">
-  <div class="card-body">
-    Les vetements doivent etre propre, la nourriture fraiche n'est pas accepte.
-
-  </div>
-</div>
-

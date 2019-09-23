@@ -16,5 +16,23 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "jNJwi3svgTefWBDC"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\pages\\accueil\\accueil.component.html",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\pages\\accueil\\accueil.component.html",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "jb7C3T0mNWVMZrwU"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\navbar\\navbar.component.html",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\navbar\\navbar.component.html",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "3b95VXJPuNUlRtHm"
     }
 ]
