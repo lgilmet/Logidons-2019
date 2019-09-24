@@ -9,63 +9,46 @@ import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 })
 export class NewuserComponent implements OnInit {
   formData: Utilisateur;
-   
   passwordValid: boolean;
   confirmePasswordValid: boolean;
   nomValid: boolean;
   confirmPasswordText: String;
   prenomValid: boolean;
   emailValid: boolean;
-
+  typeUser: string;
  
-  onSubmit() {
-
-    // this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
-    //   console.log(res);
-    // });
-    this.service.addUtilisateur(this.formData).subscribe(res=>{
-      console.log(res);
-      //alert("Bonjour "+res.nom);
-      
-    });
-
-
-    ///alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.formData));
-  }
-
   constructor(private service: UtilisateurService) { }
 
   ngOnInit() {
     this.resetForm();
-     
+    this.typeUser = '';
+    this.typeUser = this.service.newUser;
+    console.log(this.service.newUser);
   }
 
   checkValid() {
+      this.nomValid = false;
+      this.prenomValid = false;
+      this.emailValid = false;
+      this.passwordValid = false;
+      this.confirmePasswordValid = false;
+
     if (this.formData.nom.length >= 4)
       this.nomValid = true;
-    else
-      this.nomValid = false;
 
     if (this.formData.prenom.length >= 4)
       this.prenomValid = true;
-    else
-      this.prenomValid = false;
 
     if (this.formData.email.length >= 4)
       this.emailValid = true;
-    else
-      this.emailValid = false;
 
     if (this.formData.password.length >= 4)
       this.passwordValid = true;
-    else
-      this.passwordValid = false;
 
     if (this.confirmPasswordText.length >= 4 && this.confirmPasswordText==this.formData.password)
       this.confirmePasswordValid = true;
-    else
-      this.confirmePasswordValid = false;
   }
+
   resetForm() {
     this.formData = {
       IDutilisateur:0,
@@ -82,5 +65,15 @@ export class NewuserComponent implements OnInit {
       password: '',
     }
     this.confirmPasswordText="";
+  }
+
+  onSubmit() {
+    this.service.addUtilisateur(this.formData).subscribe(res=>{
+      console.log(res);
+    });
+  }
+
+  annuler(){
+    window.location.href = "#";
   }
 }

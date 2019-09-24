@@ -7,6 +7,7 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 import { ContactezNousComponent } from './pages/contactez-nous/contactez-nous.component';
 import { UserComponent } from './user/user.component';
 import { RecevoirComponent } from './don/recevoir/recevoir.component';
+import { NewemployeComponent } from './user/newemploye/newemploye.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'nouveaucompte', component: NewuserComponent},
     {path: 'profil', component: UserComponent},
+    {path: 'nouvelemploye', component: NewemployeComponent}
   ]},
   {path: 'don', children:[
     {path: '', component: NewdonComponent},

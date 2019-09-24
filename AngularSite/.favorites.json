@@ -34,5 +34,14 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "3b95VXJPuNUlRtHm"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "kWFljxVzTsg3en98"
     }
 ]

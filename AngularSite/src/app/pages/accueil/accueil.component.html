@@ -1,6 +1,11 @@
 <div class="masthead">
-  <div class="row container">
-    <div class="jumbotron col-md-5 offset-md-1">
+  <div class="container">
+    <div class="row">
+    <div class="jumbotron col-md-5" style="
+    position: absolute;
+    top: 20%;
+    background-color:rgba(255, 255, 255, 0.9);
+    color: black;">
       <h1 class="display-4">Donnez, ça aide.</h1>
       <p class="lead">
         Tous les dons aident des personnes gens dans le besoin.
@@ -17,22 +22,21 @@
   </button>
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Avez-vous un compte?</h5>
-          <button type="button" class="btn btn-primary mr-0" data-dismiss="modal">Oui, me connecter</button>
+          <button type="button" class="btn btn-outline-primary mr-0" (click)="login()" data-dismiss="modal">Oui, me connecter</button>
         </div>
-          <h5 class="mt-3">Non?</h5>
+          <h5 class="mt-3">Non? Je veux devenir: </h5>
         <div class="modal-body row">
           <div class="col-md-6 border-right">
-            Nouveau Donateur?
+              <a href="compte/nouveaucompte" (click)="newDonateur()" class="btn btn-primary">Donateur</a>
           </div>
           <div class="col-md-6">
-              Nouveau Bénévole?
-              <button type="button" class="btn btn-primary">
-                <a href="don">don</a></button>
+              <a href="compte/nouveaucompte" (click)="newBenevole()" class="btn btn-primary">Bénévole</a>
             </div>
         </div>
         <div class="modal-footer">
@@ -46,4 +50,5 @@
         </div>
     </div>
   </div>
+</div>
 </div>

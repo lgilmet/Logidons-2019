@@ -24,11 +24,3 @@ input[type="number"]::-webkit-outer-spin-button {
   background-repeat: no-repeat;
   position: relative;
 }
-
-
-.jumbotron {
-  position: absolute;
-  top: 20%;
-  background-color:rgba(255, 255, 255, 0.8);
-  color: black;
-}

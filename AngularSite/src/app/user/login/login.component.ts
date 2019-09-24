@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   userValid: boolean;
   test: number;
   triedLogin: boolean;
+  userLogin: number;
   constructor(
     private user_service: UtilisateurService, 
     private auth_service: AuthService,
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.resetForm();
     this.test = 0;
     this.triedLogin = false;
+    this.userLogin = 0;
   }
 
   checkValid() {
@@ -68,6 +70,10 @@ export class LoginComponent implements OnInit {
       username: "",
       password: ""
     }
+  }
+
+  annuler(){
+    window.location.href = "#";
   }
 
 }

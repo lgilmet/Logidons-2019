@@ -7,6 +7,7 @@ import { Utilisateur } from './utilisateur.model';
   providedIn: 'root'
 })
 export class UtilisateurService {
+  newUser: string;
 
   constructor(private http: HttpClient) { }
 
@@ -32,4 +33,11 @@ export class UtilisateurService {
     return this.http.post(environment.apiURL + '/utilisateur', body);
   }
 
+  newDonateur(){
+    this.newUser = "donateur";
+  }
+
+  newBenevole(){
+    this.newUser = "benevole";
+  }
 }

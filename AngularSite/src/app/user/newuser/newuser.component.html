@@ -1,10 +1,13 @@
- 
+<div class="container">
 <div class="row">
-    <div class="col-md-6 offset-md-6">
+    <div class="col-md-6 align-middle" style="height: 100%;">
+        <h2 style="margin-top: 200px;">Joignez-votre effort au nôtre</h2>
+    </div>
+    <div class="col-md-6">
 
 <form #form="ngForm" (ngSubmit)="form.form.valid && onSubmit()" autocomplete="off" *ngIf="formData"
      novalidate>
-    <legend>Créer un nouveau compte</legend>
+    <legend>Nouveau {{service.newUser}}</legend>
 
     <div class="form-group required">
         <label for="nom">Nom </label>
@@ -98,9 +101,10 @@
     </div>
     <div class="form-group">
 
-        <button type="submit" class="btn btn-dark mr-3">Submit</button>
-        <button type="button" class="btn btn-outline-dark">Cancel</button>
+        <button type="submit" class="btn btn-dark mr-3">Soumettre</button>
+        <button type="button" (click)="annuler()" class="btn btn-outline-dark">Annuler</button>
     </div>
 </form>
 </div>
 </div>  
+</div>
