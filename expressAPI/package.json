@@ -1,0 +1,18 @@
+{
+  "name": "expressapi",
+  "version": "1.0.0",
+  "description": "Very simple API using express.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"no test\\\" && exit 1"
+  },
+  "author": "VyTale",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mariadb": "^2.1.1",
+    "sequelize": "^5.19.0"
+  }
+}
