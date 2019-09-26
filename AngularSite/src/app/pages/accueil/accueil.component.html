@@ -30,14 +30,11 @@
           <h5 class="modal-title" id="exampleModalLabel">Avez-vous un compte?</h5>
           <button type="button" class="btn btn-outline-primary mr-0" (click)="login()" data-dismiss="modal">Oui, me connecter</button>
         </div>
-          <h5 class="mt-3">Non? Je veux devenir: </h5>
-        <div class="modal-body row">
-          <div class="col-md-6 border-right">
-              <a href="compte/nouveaucompte" (click)="newDonateur()" class="btn btn-primary">Donateur</a>
-          </div>
-          <div class="col-md-6">
-              <a href="compte/nouveaucompte" (click)="newBenevole()" class="btn btn-primary">Bénévole</a>
-            </div>
+        <div class="modal-body">
+          <span class="mt-3">Non? </span>
+          <a href="compte/nouveaucompte"  role="button" class="btn btn-primary">Créez un compte</a>
+          <h5 class="mt-3">Pour devenir Donateur ou Bénévole</h5>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn" data-dismiss="modal">Annuler &times;</button>
