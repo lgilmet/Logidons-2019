@@ -47,14 +47,14 @@ export class NewdonComponent implements OnInit {
 
     this.donateurID = JSON.parse(localStorage.getItem('userID'));
     this.nouveauDon = {
-      IDdon: null,
-    datePromesse: null,
-    dateReception: null,
-    dateAccepter: null,
-    etat: null,
-    IDDonateur: 0,
-    IDEmploye: 0,
-    donArticles: []
+      id: null,
+      datePromesse: null,
+      dateReception: null,
+      dateAccepter: null,
+      etat: null,
+      idDonateur: 0,
+      idResponsable: 0,
+      donArticles: []
 
     };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
@@ -71,7 +71,7 @@ export class NewdonComponent implements OnInit {
 
   getArtName(id: number){
     var obj = this.articleList.filter(function(item:Article){
-      return item.IDarticle==id;
+      return item.id==id;
     });
     console.log(obj[0].nom);
     return obj[0].nom;
@@ -80,7 +80,7 @@ export class NewdonComponent implements OnInit {
   onSubmit(){
     if(this.validate() == true){
       this.art = { 
-        IDarticle : this.newArticleID,
+        idArticle : this.newArticleID,
         valeur: this.newArticleValeur,
         quantite: this.newArticleQte,
         nom: this.getArtName(this.newArticleID),
@@ -117,9 +117,15 @@ export class NewdonComponent implements OnInit {
     } else {
       console.log(this.donArticleList);
       this.nouveauDon.donArticles = this.donArticleList as DonArticle[];
-      this.nouveauDon.IDDonateur = this.donateurID;
+      this.nouveauDon.idDonateur = this.donateurID;
       this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
         console.log(res);
+        var newId = (res as Don).id;
+        this.donArticleList.forEach(a => {
+          this.d_service.ajouterArticle(a, newId).subscribe(respo => {
+            console.log("Added object " + respo + " to Don #" + newId);
+          });
+        })
       });
     }
   }

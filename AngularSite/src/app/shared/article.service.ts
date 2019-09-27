@@ -13,7 +13,7 @@ export class ArticleService {
   
   getListeArticles(){
     //http:
-    return this.http.get(environment.apiURL + '/article').toPromise();
+    return this.http.get(environment.apiURL + '/articles').toPromise();
   }
 
   addArticle(){
@@ -21,7 +21,7 @@ export class ArticleService {
       nom: this.formArticle.nom
     }
 
-    return this.http.post(environment.apiURL + '/article', body);
+    return this.http.post(environment.apiURL + '/articles', body);
 
     
   }

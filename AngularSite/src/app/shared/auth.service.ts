@@ -15,13 +15,13 @@ export class AuthService {
   login(username:string, password:string)
   {
     var body = {
-      Username : username,
-      Password : password
+      username : username,
+      password : password
     }
 
     console.log("login: " + username + " " + password)
     
-    this.http.post(environment.apiURL + "/utilisateur/login", body).toPromise()
+    this.http.post(environment.apiURL + "/utilisateurs/login", body).toPromise()
     .then( res => {
       this.userID = res as number;
       if(this.userID >= 1)

@@ -51,7 +51,7 @@ export class NewuserComponent implements OnInit {
 
   resetForm() {
     this.formData = {
-      IDutilisateur:0,
+      id:0,
       type: '',
       nom: '',
       prenom: '',

@@ -12,11 +12,11 @@ export class UtilisateurService {
   constructor(private http: HttpClient) { }
 
   getEmployes() {
-    return this.http.get(environment.apiURL + '/utilisateur/employes').toPromise();
+    return this.http.get(environment.apiURL + '/utilisateurs/employes').toPromise();
   }
 
   getDonateurs() {
-    return this.http.get(environment.apiURL + '/utilisateur/donateurs').toPromise();
+    return this.http.get(environment.apiURL + '/utilisateurs/donateurs').toPromise();
   }
 
   addUtilisateur(user: Utilisateur) {
@@ -30,7 +30,7 @@ export class UtilisateurService {
 
 
     }
-    return this.http.post(environment.apiURL + '/utilisateur', body);
+    return this.http.post(environment.apiURL + '/utilisateurs', body);
   }
 
   newDonateur(){

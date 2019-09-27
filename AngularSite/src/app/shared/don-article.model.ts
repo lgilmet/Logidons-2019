@@ -1,9 +1,9 @@
 export class DonArticle {
-    IDarticle: number;
-    IDdon: number;
+    id: number;
+    idArticle: number;
+    idDon: number;
     nom: string;
     valeur: number;
     quantite: number;
     description: string;
-    IDarticleDon: number;
 }

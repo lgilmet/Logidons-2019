@@ -1,12 +1,12 @@
 import { DonArticle } from './don-article.model';
 
 export class Don {
-    IDdon: number;
+    id: number;
     datePromesse: Date;
     dateReception: Date;
     dateAccepter: Date;
     etat: number;
-    IDDonateur: number;
-    IDEmploye: number;
+    idDonateur: number;
+    idResponsable: number;
     donArticles: DonArticle[];
 }
