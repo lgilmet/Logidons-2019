@@ -1,3 +1,4 @@
+ 
 <div class="container">
     <div class="card">
   
@@ -51,6 +52,7 @@
          <input type="email" class="form-control" name="email"
           [(ngModel)]="formData.email" 
           #email="ngModel"
+          
           [class.is-valid]="emailValid"
           [class.is-invalid]="!emailValid && email.touched"
           class="form-control"
@@ -98,7 +100,15 @@
       class="form-control"
       (input)="checkValid()"
       placeholder="telephone travail "
-      required>      
+      [class.is-valid]="telephonetravailValid"
+      [class.is-invalid]="!telephonetravailValid && telephonetravail.touched"
+      class="form-control"
+      (input)="checkValid()"
+      placeholder="telephone travail d'utilisateur"
+      required>
+      <div *ngIf="!telephonetravailValid" class="invalid-feedback text-left">
+        Veuillez entrer un telephone valide
+      </div>     
     </div>
 
     <div class="form-group required">
@@ -139,3 +149,4 @@
 </form>
 </div>
 </div>
+  
