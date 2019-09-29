@@ -1,8 +1,9 @@
+var settings = require("./settings");
 var db = {};
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('mytestdb', 'testuser', 'testuser', {
-    host: 'localhost',
+var sequelize = new Sequelize(settings.database, settings.user, settings.password, {
+    host: settings.host,
     dialect: 'mariadb'
 });
 
