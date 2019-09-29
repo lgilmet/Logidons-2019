@@ -14,7 +14,7 @@ export class DonService {
   promettreDon(don: Don){
     var body = {
       idDonateur: don.idDonateur,
-      donArticles: don.donArticles
+      donArticles: don.DonArticles
     }
 
     return this.http.post(environment.apiURL+'/dons', body);
@@ -33,8 +33,8 @@ export class DonService {
   }
 
   getListeDons(){
-    //http:
     return this.http.get(environment.apiURL + '/dons').toPromise();
   }
+
 
 }

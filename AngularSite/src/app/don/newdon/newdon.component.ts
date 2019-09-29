@@ -60,7 +60,8 @@ export class NewdonComponent implements OnInit {
       etat: null,
       idDonateur: 0,
       idResponsable: 0,
-      donArticles: []
+      DonArticles: [],
+      total: 0
  
     };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
@@ -152,7 +153,7 @@ export class NewdonComponent implements OnInit {
       alert("Ajoutez des articles a votre don avant de l'envoyer");
     } else {
       console.log(this.donArticleList);
-      this.nouveauDon.donArticles = this.donArticleList as DonArticle[];
+      this.nouveauDon.DonArticles = this.donArticleList as DonArticle[];
       this.nouveauDon.idDonateur = this.donateurID;
       this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
         console.log(res);
