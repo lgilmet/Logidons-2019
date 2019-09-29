@@ -1,60 +1,38 @@
 [
     {
         "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "6gNHZU0xKLhIvjQP"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "niXuYT2oQvRCadMS"
+    },
+    {
+        "type": "File",
         "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.ts",
         "parent_id": null,
         "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.ts",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "seGbvTgXy5d8j0Hz"
+        "id": "Bfr2x8WoyvL6ksIh"
     },
     {
         "type": "File",
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.html",
         "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\login\\login.component.html",
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.html",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "kWFljxVzTsg3en98"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newemploye\\newemploye.component.html",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newemploye\\newemploye.component.html",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "PEd37lsSY9toW2Dg"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newemploye\\newemploye.component.ts",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newemploye\\newemploye.component.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "ZX9GpNAhb8ciPL1y"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.html",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\wendw\\Desktop\\SCHOOL\\PROJET-GIT\\Logidons-2019\\AngularSite\\src\\app\\user\\newuser\\newuser.component.html",
-        "workspaceRoot": null,
-        "workspacePath": null,
-<<<<<<< HEAD
-        "id": "kWFljxVzTsg3en98"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\assets\\The-Benefits-of-Charity--Why-Independent-Brokerages-Should-Partner-with-Nonprofits-bg.jpg",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\assets\\The-Benefits-of-Charity--Why-Independent-Brokerages-Should-Partner-with-Nonprofits-bg.jpg",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "2kcdWzKfZ9xeRh4y"
-=======
-        "id": "fE4DXSlQyhov9G3N"
->>>>>>> 649d08d3b20bdc4549e41a05d1ceb927cdf3ea57
+        "id": "uWpOSVMc62qTN50b"
     }
 ]
