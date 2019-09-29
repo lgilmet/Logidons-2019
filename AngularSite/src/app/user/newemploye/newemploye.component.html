@@ -8,6 +8,7 @@
      
   <legend>Nouvel employé</legend>
   <hr/>
+ 
 
  <div class="form-group required">
      <label for="nom">Nom </label>
@@ -77,7 +78,7 @@
     placeholder="adresse d'utilisateur"
     required>
     <div *ngIf="!adresseValid" class="invalid-feedback text-left">
-      Veuillez entrer l'adresse de l'utilisateur
+     Minimuin 2 charactères
     </div>
   </div>
   
@@ -85,35 +86,33 @@
     <label for="telephoneMobile">telephone Mobile </label>
     <input type="text" class="form-control" name="telephoneMobile"
      [(ngModel)]="formData.telephoneMobile"
-      #telephoneMobile="ngModel"     
-      class="form-control"
-      (input)="checkValid()"
-      placeholder="telephone mobile"
-      required>      
+      #telephoneMobile="ngModel"  
+      [class.is-valid]="telephoneMobileValid"       
+      [class.is-invalid]="!telephoneMobileValid && telephoneMobile.touched"
+           (input)="checkValid()"
+           placeholder="telephone Mobile d'utilisateur"
+           required>
+           <div *ngIf="!telephoneMobileValid" class="invalid-feedback text-left">
+             Veuillez entrer  un format de telephone valide
+           </div>  
     </div>
 
-  <div class="form-group required">
+  <div class="form-group ">
     <label for="telephonetravail">telephone Travail </label>
-    <input type="text" class="form-control" name="telephonetravail"
+    <input type="number" class="form-control" name="telephonetravail"
      [(ngModel)]="formData.telephonetravail"
       #telephonetravail="ngModel"     
       class="form-control"
-      (input)="checkValid()"
+      (input)="isValidNumber()"
       placeholder="telephone travail "
-      [class.is-valid]="telephonetravailValid"
-      [class.is-invalid]="!telephonetravailValid && telephonetravail.touched"
-      class="form-control"
-      (input)="checkValid()"
-      placeholder="telephone travail d'utilisateur"
+       placeholder="telephone travail d'utilisateur"
       required>
-      <div *ngIf="!telephonetravailValid" class="invalid-feedback text-left">
-        Veuillez entrer un telephone valide
-      </div>     
+         
     </div>
 
-    <div class="form-group required">
+    <div class="form-group ">
       <label for="telephoneMaison">telephone Maison </label>
-      <input type="text" class="form-control" name="telephoneMaison"
+      <input type="number" class="form-control" name="telephoneMaison"
        [(ngModel)]="formData.telephoneMaison"
         #telephoneMaison="ngModel"     
         class="form-control"
@@ -141,8 +140,13 @@
 
  <div class="form-group">
 
-     <button type="submit" class="btn btn-dark mr-3">Soumettre</button>
-     
+     <button type="submit" (click)="onSubmit()" 
+     [disabled]="!(nomValid && prenomValid && emailValid && telephoneMobileValid && passwordValid)"
+     class="btn btn-dark mr-3">Soumettre</button>
+
+
+     <button type="button" (click)="annuler()" class="btn btn-outline-dark ml-3">Annuler</button>
+  
  </div>
 
 </div>
