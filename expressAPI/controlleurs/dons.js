@@ -3,20 +3,6 @@ var router = express.Router();
 var db = require('./../db');
 var Don = db.dons;
 
-router.post("/login", (req, res, next) => {
-    Don.findOne({
-        where: {
-            username: req.body.username,
-            password: req.body.password
-        }
-    }).then(user => {
-        if(!user)
-            res.sendStatus(500);
-        else
-            res.send(user);
-    })
-});
-
 //GET ALL
 router.get("/", (req, res, next) =>
 {
@@ -38,6 +24,30 @@ router.get("/:id", (req, res, next) =>
             res.sendStatus(500);
         });
 });
+
+//GET EMPLOYE's
+router.get("/employe/:id", (req, res, next) => 
+{
+    Don.findAll({
+        where: {
+            idResponsable : req.params.id
+        }
+    }).then(dons => {
+            res.send(dons);
+    });
+})
+
+//GET DONATEUR's
+router.get("/donateur/:id", (req, res, next) => 
+{
+    Don.findAll({
+        where: {
+            idDonateur : req.params.id
+        }
+    }).then(dons => {
+            res.send(dons);
+    });
+})
 
 //CREATE
 router.post("/", (req, res, next) =>

@@ -18,6 +18,7 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 import { ContactezNousComponent } from './pages/contactez-nous/contactez-nous.component';
 import { RecevoirComponent } from './don/recevoir/recevoir.component';
 import { NewemployeComponent } from './user/newemploye/newemploye.component';
+import { RapportsComponent } from './pages/rapports/rapports.component';
  
  
 
@@ -34,7 +35,8 @@ import { NewemployeComponent } from './user/newemploye/newemploye.component';
     AccueilComponent,
     ContactezNousComponent,
     RecevoirComponent,
-    NewemployeComponent
+    NewemployeComponent,
+    RapportsComponent
      
 
   ],

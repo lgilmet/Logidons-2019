@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Voir total des Dons</h2>
+  <button type="button" class="btn btn-primary mr-3">Pour le dernier mois </button>
+  <button type="button" class="btn btn-primary mr-3">Pour 2019</button>
+  <button type="button" class="btn btn-primary mr-3">Dons acceptes 2019</button>
+  <hr>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id donateur</th>
+          <th scope="col">Total donné</th>
+          <th scope="col">Date de promesse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let don of this.donResultat">
+          <td>{{ don.idDonateur }}</td>
+          <td>total</td>
+          <td>{{ don.datePromesse }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
