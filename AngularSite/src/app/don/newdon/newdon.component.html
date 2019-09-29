@@ -1,7 +1,8 @@
 <div class="container">
   <h3>Formulaire nouveau don</h3>
 
-  <form class="card" #form="ngForm" autocomplete="off">
+  <form class="card" #form="ngForm" autocomplete="off"
+  novalidate>
     <div class="card-body">
       <!--   
   <div class="row">
@@ -44,19 +45,27 @@
               <option value="0">- Selectionnez un article -</option>
               <option
                 *ngFor="let item of this.articleList"
+                
                 value="{{ item.id }}"
                 >{{ item.id }} - {{ item.nom }}</option
               >
             </select>
           </div>
-          <div class="form-group">
+          <div class="form-group required">
             <label>Description</label>
             <textarea
               class="form-control"
-              rows="1"
               name="newArticleDesc"
+              rows="1"
               [(ngModel)]="newArticleDesc"
+              (input)="checkValid()"
+              [class.is-valid]="descValid"
+              [class.is-invalid]="!descValid && newArticleDesc.touched"
+              required
             ></textarea>
+            <div class="invalid-feedback">
+              Please enter a message in the textarea.
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group col">
@@ -71,7 +80,7 @@
                   class="form-control"
                   name="newArticleValeur"
                   [(ngModel)]="newArticleValeur"
-                  (onvaluechange)="updateTotal(newArticleValeur, newArticleQte)"
+                  (keyup)="updateTotal(newArticleValeur, newArticleQte)"
                 />
               </div>
             </div>

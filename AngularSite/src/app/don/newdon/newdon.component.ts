@@ -16,6 +16,12 @@ import { Don } from 'src/app/shared/don.model';
   styles: []
 })
 export class NewdonComponent implements OnInit {
+  // validation
+  articleValid: boolean;
+  prixValid: boolean;
+  qteValid: boolean;
+  descValid: boolean;
+
   articleList: Article[];
   donArticleList: DonArticle[]; 
   newArticleID: number;
@@ -55,7 +61,7 @@ export class NewdonComponent implements OnInit {
       idDonateur: 0,
       idResponsable: 0,
       donArticles: []
-
+ 
     };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
     this.u_service.getDonateurs().then(res => this.listeDonateurs = res as Utilisateur[]);
@@ -63,10 +69,10 @@ export class NewdonComponent implements OnInit {
 
   resetForm(){
     this.newArticleID = 0;
-    this.newArticleValeur = null;
-    this.newArticleQte = null;
-    this.newArticleDesc = null;
-    this.total = null;
+    this.newArticleValeur = 0;
+    this.newArticleQte = 0;
+    this.newArticleDesc = '';
+    this.total = 0;
   }
 
   getArtName(id: number){
@@ -92,7 +98,37 @@ export class NewdonComponent implements OnInit {
     }
   }
 
-  
+  checkValid() {
+    this.articleValid = false;
+    this.descValid = false;
+    this.prixValid = false;
+    this.qteValid = false;
+
+    if(this.newArticleDesc.length >= 4)
+      this.descValid = true;
+
+    
+  //   this.nomValid = false;
+  //   this.prenomValid = false;
+  //   this.emailValid = false;
+  //   this.passwordValid = false;
+  //   this.confirmePasswordValid = false;
+
+  // if (this.formData.nom.length >= 4)
+  //   this.nomValid = true;
+
+  // if (this.formData.prenom.length >= 4)
+  //   this.prenomValid = true;
+
+  // if (this.formData.email.length >= 4)
+  //   this.emailValid = true;
+
+  // if (this.formData.password.length >= 4)
+  //   this.passwordValid = true;
+
+  // if (this.confirmPasswordText.length >= 4 && this.confirmPasswordText==this.formData.password)
+  //   this.confirmePasswordValid = true;
+  }
 
   validate(){
     this.isValid = true;
