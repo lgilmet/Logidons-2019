@@ -32,4 +32,9 @@ export class DonService {
     return this.http.post(environment.apiURL+'/donArticles', body);
   }
 
+  getListeDons(){
+    //http:
+    return this.http.get(environment.apiURL + '/dons').toPromise();
+  }
+
 }
