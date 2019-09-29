@@ -13,12 +13,14 @@ git commit -m "message"
 git pull
 git push
 
-Ouvrir le WebAPI
-Double cliquer sur DBModel.edmx
-Clique droit sur le diagramme > Generate database from model
-Cliquer Previous > New Connection
-. > "Select or enter database name: " LogiDons > Ok
-Ensuite executer le script "DDL" dans SQL Server
+Installer MariaDB
+Installer Heidi
+Créer db mytestdb
+Créer user testuser/testuser
+
+Ouvrir le expressAPI dans VSCode;
+npm install
+node app.js
 
 dans le projet AngularSite dans le cmd il faut installer angular
 npm install -g angular-cli
