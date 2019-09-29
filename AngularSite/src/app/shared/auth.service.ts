@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Utilisateur } from './utilisateur.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,21 @@ export class AuthService {
     
     this.http.post(environment.apiURL + "/utilisateurs/login", body).toPromise()
     .then( res => {
-      this.userID = res as number;
-      if(this.userID >= 1)
+      var isUser = false;
+      if(res == -1)
+        isUser = false;
+      else {
+        var user = res as Utilisateur;
+        var isUser = true;
+      }
+      
+      if(isUser)
       {
         //Connected
         this.setLoggedIn(true);
-        localStorage.setItem("userID", this.userID.toString());
-        console.log(this.userID);
+        localStorage.setItem("userID", user.id.toString());
+        localStorage.setItem("userType", user.type.toString());
+        console.log(user.id.toString());
         window.location.href = "compte/profil";
       // 
       } else {
@@ -48,6 +57,46 @@ export class AuthService {
 
   isLoggedIn() {
     return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString())
+  }
+
+  isDonateur() {
+    if(this.isLoggedIn)
+    {
+      if(localStorage.getItem("userType") == "donateur")
+        return true;
+      else
+        return false;
+    }
+  }
+
+  isBenevole() {
+    if(this.isLoggedIn)
+    {
+      if(localStorage.getItem("userType") == "benevole")
+        return true;
+      else
+        return false;
+    }
+  }
+
+  isEmploye() {
+    if(this.isLoggedIn)
+    {
+      if(localStorage.getItem("userType") == "employe")
+        return true;
+      else
+        return false;
+    }
+  }
+
+  isSuperviseur() {
+    if(this.isLoggedIn)
+    {
+      if(localStorage.getItem("userType") == "superviseur")
+        return true;
+      else
+        return false;
+    }
   }
 
   /*getListeArticles(){
