@@ -11,6 +11,11 @@ export class UtilisateurService {
 
   constructor(private http: HttpClient) { }
 
+  getUtilisateur(id:number)
+  {
+    return this.http.get(environment.apiURL + "/utilisateurs/" + id).toPromise();
+  }
+
   getEmployes() {
     return this.http.get(environment.apiURL + '/utilisateurs/employes').toPromise();
   }
