@@ -8,5 +8,6 @@ export class Don {
     etat: number;
     idDonateur: number;
     idResponsable: number;
-    donArticles: DonArticle[];
+    DonArticles: DonArticle[];
+    total: number;
 }
