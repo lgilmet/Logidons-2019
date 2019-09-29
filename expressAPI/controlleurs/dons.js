@@ -3,20 +3,6 @@ var router = express.Router();
 var db = require('./../db');
 var Don = db.dons;
 
-router.post("/login", (req, res, next) => {
-    Don.findOne({
-        where: {
-            username: req.body.username,
-            password: req.body.password
-        }
-    }).then(user => {
-        if(!user)
-            res.sendStatus(500);
-        else
-            res.send(user);
-    })
-});
-
 //GET ALL
 router.get("/", (req, res, next) =>
 {
