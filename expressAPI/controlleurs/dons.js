@@ -41,10 +41,9 @@ router.get("/employe/:id", (req, res, next) =>
 router.get("/donateur/:id", (req, res, next) => 
 {
     Don.findAll({
-        where: {
-            idDonateur : req.params.id
-        }
-    }).then(dons => {
+        include: [{all:true}],
+        where: { idDonateur : req.params.id}}
+    ).then(dons => {
             res.send(dons);
     });
 })
