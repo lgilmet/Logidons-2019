@@ -38,13 +38,26 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">@</div>
                         </div>
-                        <input type="email" class="form-control" name="email" [(ngModel)]="formData.email"
-                            #email="ngModel" [class.is-valid]="emailValid"
-                            [class.is-invalid]="!emailValid && email.touched" class="form-control"
-                            (input)="checkValid()" placeholder="Email d'utilisateur" required>
+                        <input type="email" 
+                        name="email" 
+                        [(ngModel)]="formData.email"
+                            #email="ngModel" 
+                            [class.is-valid]="emailValid"
+                            [class.is-invalid]="!emailValid && email.touched" 
+                            class="form-control"
+                            (input)="checkValid()" 
+                            (blur)="checkEmail()"
+                            placeholder="Email d'utilisateur" 
+                            required>
                         <div *ngIf="!emailValid" class="invalid-feedback text-left">
-                            Veuillez entrer un Email d'utilisateur requis.
+                            Email d'utilisateur requis.
                         </div>
+                        <div *ngIf="!emailValid" class="invalid-feedback text-left">
+                            Veuillez entrer un format valide.
+                        </div>
+                        <!-- <div *ngIf="!checkEmail()" class="invalid-feedback text-left">
+                            Email existe deja.
+                        </div> -->
                     </div>
                 </div>
 
@@ -75,21 +88,25 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="mx-1">
-                            <input   type="radio" value="donateur"   #type="ngModel" name="type" [(ngModel)]="formData.type">
+                            <input type="radio" value="donateur" #type="ngModel" name="type"
+                                [(ngModel)]="formData.type">
                             <label for="donateur">Donateur</label>
                         </div>
                         <div class="mx-1">
-                            <input type="radio" value="benevole" name="type" #type="ngModel"  [(ngModel)]="formData.type">
-                            <label for="donateur">Benevole</label>
+                            <input type="radio" value="benevole" name="type" #type="ngModel"
+                                [(ngModel)]="formData.type">
+                            <label for="benevole">Benevole</label>
                         </div>
-                    </div>  
+                    </div>
 
-                 </div>  
+                </div>
 
 
                 <div class="form-group">
 
-                    <button type="submit" class="btn btn-dark mr-3">Soumettre</button>
+                    <button type="submit"
+                        [disabled]="!(nomValid && prenomValid && emailValid && passwordValid && confirmePasswordValid)"
+                        class="btn btn-dark mr-3">Soumettre</button>
                     <button type="button" (click)="annuler()" class="btn btn-outline-dark">Annuler</button>
                 </div>
             </form>

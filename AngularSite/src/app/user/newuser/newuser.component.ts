@@ -16,6 +16,7 @@ export class NewuserComponent implements OnInit {
   prenomValid: boolean;
   emailValid: boolean;
   typeUser: string;
+  emailTaken:boolean;
 
   
  
@@ -25,7 +26,7 @@ export class NewuserComponent implements OnInit {
     this.resetForm();
     this.typeUser = '';
     this.typeUser = this.service.newUser;
-    console.log(this.service.newUser);
+   // console.log(this.service.newUser);
   }
 
   onChange(){
@@ -44,8 +45,11 @@ export class NewuserComponent implements OnInit {
     if (this.formData.prenom.length >= 4)
       this.prenomValid = true;
 
-    if (this.formData.email.length >= 4)
+      var regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+    if (this.formData.email.length >= 5 && this.formData.email.match(regexp))
       this.emailValid = true;
+     
 
     if (this.formData.password.length >= 4)
       this.passwordValid = true;
@@ -72,6 +76,25 @@ export class NewuserComponent implements OnInit {
       password: '',
     }
     this.confirmPasswordText="";
+  }
+
+  checkEmail(){
+    // call api to check email. -1 means email is free, otherwise, account exists
+    this.service.checkEmail(this.formData.email).then(res=>{
+      if(res==-1){
+        
+        console.log("Email libre");
+       this.emailTaken=false;
+      }     
+      
+      else{
+        console.log("Vous etes l'utilisateur "+res);
+        this.emailTaken=true;
+      }
+     
+    });
+   
+    
   }
 
   onSubmit() {

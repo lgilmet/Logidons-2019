@@ -16,6 +16,12 @@ export class UtilisateurService {
     return this.http.get(environment.apiURL + "/utilisateurs/" + id).toPromise();
   }
 
+  checkEmail(_email:string){
+    var body={
+      email:_email
+    }
+    return this.http.get(environment.apiURL+"/utilisateur/email/"+ _email).toPromise();
+  }
   getEmployes() {
     return this.http.get(environment.apiURL + '/utilisateurs/employes').toPromise();
   }
@@ -23,10 +29,11 @@ export class UtilisateurService {
   getDonateurs() {
     return this.http.get(environment.apiURL + '/utilisateurs/donateurs').toPromise();
   }
+  
 
   addUtilisateur(user: Utilisateur) {
     var body = {
-      type: 'donateur',
+      type: user.type,
       nom: user.nom,
       prenom: user.prenom,
       email: user.email,
