@@ -36,7 +36,7 @@ export class RecevoirComponent implements OnInit {
 				});
 
 				var val = 0;
-				donAff.donArticles.forEach(art => {
+				donAff.DonArticles.forEach(art => {
 					val += art.valeur;
 					console.log("VAL: " + val + " | val art : " + art.valeur);
 				});

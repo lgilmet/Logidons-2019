@@ -1,30 +1,39 @@
 [
     {
         "type": "File",
-        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
         "parent_id": null,
-        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.html",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "KNDOFIo12zR3bBS4"
+        "id": "XmxWdYUHLiN2lpQy"
     },
     {
         "type": "File",
-        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
+        "name": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
         "parent_id": null,
-        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
+        "fsPath": "c:\\Users\\iluca\\source\\repos\\Logidons-2019\\AngularSite\\src\\app\\don\\newdon\\newdon.component.ts",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "Ttuc8eCqyHgbrAwK"
+        "id": "hmMHWqKBsLC9uGO3"
     },
     {
         "type": "File",
-        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\pages\\rapports\\rapports.component.html",
+        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\user\\user.component.html",
         "parent_id": null,
-        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\pages\\rapports\\rapports.component.html",
+        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\user\\user.component.html",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "EpCA78s2nKhXlJVd"
+        "id": "OdBDpX8TJCyM561x"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\user\\user.component.ts",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\user\\user.component.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "DZXVNv1RCweyqGJT"
     },
     {
         "type": "File",
@@ -33,24 +42,15 @@
         "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\pages\\rapports\\rapports.component.ts",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "BxahHo8DURip56df"
+        "id": "VL6yBrRsOzIqHUje"
     },
     {
         "type": "File",
-        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\shared\\don.service.ts",
+        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\pages\\rapports\\rapports.component.html",
         "parent_id": null,
-        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\shared\\don.service.ts",
+        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\pages\\rapports\\rapports.component.html",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "1QxajbkYiKMguIvp"
-    },
-    {
-        "type": "File",
-        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
-        "parent_id": null,
-        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "q0ILVMh5OPntfcUJ"
+        "id": "4lvGk0dYB93A827r"
     }
 ]

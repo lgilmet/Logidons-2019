@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Voir total des Dons</h2>
-  <button type="button" class="btn btn-primary mr-3">Pour le dernier mois </button>
-  <button type="button" class="btn btn-primary mr-3">Pour 2019</button>
+  <button type="button" class="btn btn-primary mr-3" (click)="rapportDonsDernierMois()">Pour les dernier 30 jours </button>
+  <button type="button" class="btn btn-primary mr-3" (click)="rapportDonsTous()">Pour 2019</button>
   <button type="button" class="btn btn-primary mr-3">Dons acceptes 2019</button>
   <hr>
   <table class="table">
@@ -14,9 +14,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let don of this.donResultat">
-          <td>{{ don.idDonateur }}</td>
-          <td>total</td>
-          <td>{{ don.datePromesse }}</td>
+          <td>{{ don.idDonateur }} don:{{ don.id}}</td>
+          <td>{{ don.total }}$</td>
+          <td>{{ don.datePromesse | date }}</td>
         </tr>
       </tbody>
     </table>
