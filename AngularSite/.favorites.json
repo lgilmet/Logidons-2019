@@ -52,5 +52,14 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "4lvGk0dYB93A827r"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
+        "parent_id": null,
+        "fsPath": "c:\\Users\\crosemont\\Logidons-2019\\AngularSite\\src\\app\\shared\\article.service.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "i3SUugMfcRJ57YQw"
     }
 ]

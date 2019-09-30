@@ -13,11 +13,39 @@
       <div class="col-md-4">Nombre d'items: </div>
     </div>
     <div class="row align-bottom">
-      <div class="col-md-4">Date promesse: </div>
+      <div class="col-md-4">Date promesse: {{ don.datePromesse | date }}</div>
       <div class="col-md-4">Don: {{ don.id}}</div>
       <div class="col-md-4"></div>
     </div>
   </div>
+  
+    <!-- table item 
+    id , id article , valeur, q, description -->
+  <div class="col-md-6">
+    <label>Liste des items</label>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Article</th>
+          <th scope="col">Description</th>
+          <th scope="col">Valeur</th>
+          <th scope="col">Quantite</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of this.don.DonArticles">
+          <td>{{ article.id }} - {{ article.nom }}</td>
+          <td>{{ article.description }}</td>
+        
+          <td>{{ article.valeur }}$</td>
+          <td>{{ article.quantite }}</td>
+          <td>{{ article.valeur * article.quantite }}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
 </div>
