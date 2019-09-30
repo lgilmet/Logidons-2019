@@ -1,8 +1,11 @@
 <div class="container">
   <h3>Formulaire nouveau don</h3>
 
-  <form class="card" #form="ngForm" autocomplete="off"
-  novalidate>
+  <form class="card" 
+  #form="ngForm" 
+  autocomplete="off" 
+  novalidate
+  *ngIf="formData">
     <div class="card-body">
       <!--   
   <div class="row">
@@ -38,14 +41,15 @@
           <div class="form-group">
             <label>Articles</label>
             <select
+              [(ngModel)]="formData.id"
+              name="id"
+              #id="ngModel"
+
               class="form-control"
-              name="newArticleID"
-              [(ngModel)]="newArticleID"
             >
               <option value="0">- Selectionnez un article -</option>
               <option
                 *ngFor="let item of this.articleList"
-                
                 value="{{ item.id }}"
                 >{{ item.id }} - {{ item.nom }}</option
               >
@@ -54,16 +58,18 @@
           <div class="form-group required">
             <label>Description</label>
             <textarea
+              [(ngModel)]="formData.description"
+              name="description"
+              #description="ngModel"
+              
               class="form-control"
-              name="newArticleDesc"
               rows="1"
-              [(ngModel)]="newArticleDesc"
               (input)="checkValid()"
-              [class.is-valid]="descValid"
-              [class.is-invalid]="!descValid && newArticleDesc.touched"
+              [class.is-valid]="descValid && reset"
+              [class.is-invalid]="!descValid && description.touched"
               required
             ></textarea>
-            <div class="invalid-feedback">
+            <div *ngIf="!descValid"  class="invalid-feedback">
               Please enter a message in the textarea.
             </div>
           </div>
@@ -75,12 +81,13 @@
                   <div class="input-group-text">$</div>
                 </div>
                 <input
+                  [(ngModel)]="formData.valeur"
+                  name="valeur"
+                  #valeur="ngModel"
+
+                  class="form-control"
                   min="1"
                   type="number"
-                  class="form-control"
-                  name="newArticleValeur"
-                  [(ngModel)]="newArticleValeur"
-                  (keyup)="updateTotal(newArticleValeur, newArticleQte)"
                 />
               </div>
             </div>
@@ -88,12 +95,13 @@
             <div class="form-group col">
               <label>Quantite</label>
               <input
+                [(ngModel)]="formData.quantite"
+                name="quantite"
+                #quantite="ngModel"
+
+                class="form-control"
                 min="1"
                 type="number"
-                class="form-control"
-                name="newArticleQte"
-                [(ngModel)]="newArticleQte"
-                (keyup)="updateTotal(newArticleValeur, newArticleQte)"
               />
             </div>
 
@@ -103,7 +111,8 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">$</div>
                 </div>
-                <input disabled class="form-control" value="{{ total }}" />
+                <input disabled class="form-control" 
+                value="{{ formData.quantite * formData.valeur }}" />
               </div>
             </div>
           </div>
@@ -129,10 +138,10 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of this.donArticleList.reverse()">
-                <td>{{ item.IDarticle }} - {{ item.nom }}</td>
+                <td>{{ item.id }} - {{ item.nom }}</td>
                 <td>{{ item.valeur }}</td>
                 <td>{{ item.quantite }}</td>
-                <td>{{ item.description }}</td>
+                <td>{{ item.description }} = {{ item.valeur * item.quantite }}</td>
               </tr>
             </tbody>
           </table>

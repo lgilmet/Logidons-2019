@@ -22,21 +22,16 @@ export class NewdonComponent implements OnInit {
   qteValid: boolean;
   descValid: boolean;
 
+  formData: DonArticle;
+  reset: boolean;
+
   articleList: Article[];
   donArticleList: DonArticle[]; 
-  newArticleID: number;
-  newArticleValeur: number;
-  newArticleQte: number;
-  newArticleDesc: string;
-  total: number;
   art: DonArticle;
 
   donateurID: number;
 
   nouveauDon: Don;
-
-  listeDonateurs: Utilisateur[];
-  listeEmployes: Utilisateur[];
 
   isValid: boolean;
 
@@ -49,7 +44,7 @@ export class NewdonComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
     this.donArticleList = [];
-    this.listeDonateurs = [];
+    this.reset = false;
 
     this.donateurID = JSON.parse(localStorage.getItem('userID'));
     this.nouveauDon = {
@@ -65,15 +60,20 @@ export class NewdonComponent implements OnInit {
  
     };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
-    this.u_service.getDonateurs().then(res => this.listeDonateurs = res as Utilisateur[]);
   }
 
   resetForm(){
-    this.newArticleID = 0;
-    this.newArticleValeur = 0;
-    this.newArticleQte = 0;
-    this.newArticleDesc = '';
-    this.total = 0;
+    this.formData = {
+      id: 0,
+      idArticle: 0,
+      idDon: 0,
+      nom: '',
+      valeur: 0,
+      quantite: 0,
+      description: ''
+    }
+
+    this.reset = true;
   }
 
   getArtName(id: number){
@@ -85,15 +85,8 @@ export class NewdonComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.validate() == true){
-      this.art = { 
-        idArticle : this.newArticleID,
-        valeur: this.newArticleValeur,
-        quantite: this.newArticleQte,
-        nom: this.getArtName(this.newArticleID),
-        description: this.newArticleDesc
-      } as DonArticle;
-      this.donArticleList.push(this.art);
+    if(this.checkValid()){
+      this.donArticleList.push(this.formData);
       this.resetForm();
     } else {
     }
@@ -105,48 +98,22 @@ export class NewdonComponent implements OnInit {
     this.prixValid = false;
     this.qteValid = false;
 
-    if(this.newArticleDesc.length >= 4)
+    if(this.formData.description.length >= 4)
       this.descValid = true;
 
-    
-  //   this.nomValid = false;
-  //   this.prenomValid = false;
-  //   this.emailValid = false;
-  //   this.passwordValid = false;
-  //   this.confirmePasswordValid = false;
+    if(this.formData.id != 0)
+      this.articleValid = true;
 
-  // if (this.formData.nom.length >= 4)
-  //   this.nomValid = true;
+    if(this.formData.valeur > 0)
+      this.prixValid = true;
 
-  // if (this.formData.prenom.length >= 4)
-  //   this.prenomValid = true;
+    if(this.formData.quantite > 0)
+      this.qteValid = true;
 
-  // if (this.formData.email.length >= 4)
-  //   this.emailValid = true;
-
-  // if (this.formData.password.length >= 4)
-  //   this.passwordValid = true;
-
-  // if (this.confirmPasswordText.length >= 4 && this.confirmPasswordText==this.formData.password)
-  //   this.confirmePasswordValid = true;
+    return this.articleValid && this.descValid && this.prixValid && this.qteValid
   }
 
-  validate(){
-    this.isValid = true;
-    if(this.newArticleID == 0 || 
-      this.newArticleValeur < 1 ||
-      this.newArticleQte < 1 ||
-      this.newArticleDesc.length < 1)
-      {
-        this.isValid = false;
-        alert()
-      }
-    return this.isValid;
-  }
 
-  updateTotal(prix: number, qte: number){
-    this.total = prix * qte;
-  }
 
   promesse(){
     if(this.donArticleList.length == 0){
