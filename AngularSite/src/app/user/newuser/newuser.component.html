@@ -1,110 +1,103 @@
 <div class="container">
-<div class="row">
-    <div class="col-md-6 align-middle" style="height: 100%;">
-        <h2 style="margin-top: 200px;">Joignez-votre effort au nôtre</h2>
-    </div>
-    <div class="col-md-6">
-
-<form #form="ngForm" (ngSubmit)="form.form.valid && onSubmit()" autocomplete="off" *ngIf="formData"
-     novalidate>
-    <legend>Nouveau {{service.newUser}}</legend>
-
-    <div class="form-group required">
-        <label for="nom">Nom </label>
-        <input type="text" class="form-control" name="nom"
-         [(ngModel)]="formData.nom"
-          #nom="ngModel"
-          [class.is-valid]="nomValid"
-          [class.is-invalid]="!nomValid && nom.touched"
-          class="form-control"
-          (input)="checkValid()"
-          placeholder="Nom d'utilisateur"
-          required>
-          <div *ngIf="!nomValid" class="invalid-feedback text-left">
-            Veuillez entrer un nom d'utilisateur, minimum de 4 charactères.
-          </div>
+    <div class="row">
+        <div class="col-md-6 align-middle" style="height: 100%;">
+            <h2 style="margin-top: 200px;">Joignez-votre effort au nôtre</h2>
         </div>
+        <div class="col-md-6">
 
-    
-        <div class="form-group required">
-            <label for="prenom">Prenom </label>
-            <input type="text" class="form-control" name="prenom"
-             [(ngModel)]="formData.prenom"
-              #prenom="ngModel"
-              [class.is-valid]="prenomValid"
-              [class.is-invalid]="!prenomValid && prenom.touched"
-              class="form-control"
-              (input)="checkValid()"
-              placeholder="prenom d'utilisateur"
-              required>
-              <div *ngIf="!prenomValid" class="invalid-feedback text-left">
-                Veuillez entrer un prenom d'utilisateur, minimum de 4 charactères.
-              </div>
-            </div>
+            <form #form="ngForm" (ngSubmit)="form.form.valid && onSubmit()" autocomplete="off" *ngIf="formData"
+                novalidate>
+                <legend>Nouveau {{service.newUser}}</legend>
+
+                <div class="form-group required">
+                    <label for="nom">Nom </label>
+                    <input type="text" class="form-control" name="nom" [(ngModel)]="formData.nom" #nom="ngModel"
+                        [class.is-valid]="nomValid" [class.is-invalid]="!nomValid && nom.touched" class="form-control"
+                        (input)="checkValid()" placeholder="Nom d'utilisateur" required>
+                    <div *ngIf="!nomValid" class="invalid-feedback text-left">
+                        Veuillez entrer un nom d'utilisateur, minimum de 4 charactères.
+                    </div>
+                </div>
 
 
-    <div class="form-group required">
-        <label for="email">Email</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-            </div>
-            <input type="email" class="form-control" name="email"
-             [(ngModel)]="formData.email" 
-             #email="ngModel"
-             [class.is-valid]="emailValid"
-             [class.is-invalid]="!emailValid && email.touched"
-             class="form-control"
-             (input)="checkValid()"
-             placeholder="Email d'utilisateur"
-             required>   
-        <div *ngIf="!emailValid" class="invalid-feedback text-left">
-            Veuillez entrer un Email d'utilisateur requis.
-          </div>
+                <div class="form-group required">
+                    <label for="prenom">Prenom </label>
+                    <input type="text" class="form-control" name="prenom" [(ngModel)]="formData.prenom"
+                        #prenom="ngModel" [class.is-valid]="prenomValid"
+                        [class.is-invalid]="!prenomValid && prenom.touched" class="form-control" (input)="checkValid()"
+                        placeholder="prenom d'utilisateur" required>
+                    <div *ngIf="!prenomValid" class="invalid-feedback text-left">
+                        Veuillez entrer un prenom d'utilisateur, minimum de 4 charactères.
+                    </div>
+                </div>
+
+
+                <div class="form-group required">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="formData.email"
+                            #email="ngModel" [class.is-valid]="emailValid"
+                            [class.is-invalid]="!emailValid && email.touched" class="form-control"
+                            (input)="checkValid()" placeholder="Email d'utilisateur" required>
+                        <div *ngIf="!emailValid" class="invalid-feedback text-left">
+                            Veuillez entrer un Email d'utilisateur requis.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group required">
+                    <label for="password">Mot de Passe</label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="formData.password"
+                        #password="ngModel" [class.is-valid]="passwordValid"
+                        [class.is-invalid]="!passwordValid && password.touched" class="form-control"
+                        (input)="checkValid()" placeholder="Mot de passe d'utilisateur" required>
+                    <div *ngIf="!passwordValid" class="invalid-feedback text-left">
+                        Mot de passe d'utilisateur requis .
+                    </div>
+                </div>
+
+
+                <div class="form-group required">
+                    <label for="confirmPassword">Confirme Mot de Passe</label>
+                    <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="confirmPasswordText"
+                        #confirmPassword="ngModel" [class.is-valid]="confirmePasswordValid"
+                        [class.is-invalid]="!confirmePasswordValid && confirmPassword.touched" class="form-control"
+                        (input)="checkValid()" placeholder="Confirmez le mot de passe " required>
+                    <div *ngIf="!confirmePasswordValid" class="invalid-feedback">
+                        Mot de passe pas Conforme
+
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <div class="row">
+                        <div class="mx-1">
+                            <input type="radio" value="donateur"   #userType="ngModel"  name="userType" [(ngModel)]="formData.userType">
+                            <label for="donateur">Donateur</label>
+                        </div>
+                        <div class="mx-1">
+                            <input type="radio" value="benevole" name="userType" #userType="ngModel"  name="userType" [(ngModel)]="formData.userType">
+                            <label for="donateur">Benevole</label>
+                        </div>
+                    </div> -->
+
+                </div>
+
+
+
+
+
+
+
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-dark mr-3">Soumettre</button>
+                    <button type="button" (click)="annuler()" class="btn btn-outline-dark">Annuler</button>
+                </div>
+            </form>
         </div>
     </div>
-
-    
-    <div class="form-group required">
-        <label for="password">Mot de Passe</label>
-        <input type="password" class="form-control" name="password" 
-        [(ngModel)]="formData.password" 
-        #password="ngModel"
-        [class.is-valid]="passwordValid"
-        [class.is-invalid]="!passwordValid && password.touched"
-        class="form-control"
-        (input)="checkValid()"
-        placeholder="Mot de passe d'utilisateur"
-        required>            
-            <div *ngIf="!passwordValid" class="invalid-feedback text-left">
-                Mot de passe d'utilisateur requis .
-              </div>        
-    </div>
-
-
-    <div class="form-group required">
-        <label for="confirmPassword">Confirme Mot de Passe</label>
-        <input type="password" class="form-control" 
-        name="confirmPassword" 
-        [(ngModel)]="confirmPasswordText"
-            #confirmPassword="ngModel" 
-            [class.is-valid]="confirmePasswordValid"
-            [class.is-invalid]="!confirmePasswordValid && confirmPassword.touched"
-            class="form-control"
-            (input)="checkValid()"
-            placeholder="Confirmez le mot de passe "
-            required> 
-        <div *ngIf="!confirmePasswordValid" class="invalid-feedback">
-               Mot de passe  pas  Conforme
-            
-        </div>
-    </div>
-    <div class="form-group">
-
-        <button type="submit" class="btn btn-dark mr-3">Soumettre</button>
-        <button type="button" (click)="annuler()" class="btn btn-outline-dark">Annuler</button>
-    </div>
-</form>
-</div>
-</div>  
 </div>
