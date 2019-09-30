@@ -53,9 +53,11 @@ export class RapportsComponent implements OnInit {
   }
 
   afficherDons() {
+    console.log("donResultat");
     console.log(this.donResultat);
     this.donResultat.forEach(don => {
       don.total = 0;
+      console.log("DonArticles");
       console.log(don.DonArticles);
       don.DonArticles.forEach(donArt => {
         don.total += donArt.valeur;
