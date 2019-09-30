@@ -3,23 +3,32 @@
   <h3>Formulaire de réception d'un don</h3>
   <h3>Liste des dons a recevoir: </h3>
 
-  <div class="card mt-3">
-    <div class="card-body">
+  <div class="card mt-3" *ngFor="let don of listeDons">
+    <div class="card-header">
       <div class="row mb-2">
-        <div class="col-md-4">Donateur: </div>
-        <div class="col-md-4">Valeur: $</div>
+        <div class="col-md-4">Donateur: {{don.nomDonateur}}</div>
+        <div class="col-md-4">Valeur: {{don.valeur}}$</div>
         <div class="col-md-4">Nombre d'items: </div>
       </div>
       <div class="row align-bottom">
         <div class="col-md-4">Date promesse: </div>
-        <div class="col-md-4">Etat</div>
-        <div class="col-md-4"><button class="btn btn-success float-right ">Recevoir</button></div>
+        <div class="col-md-4">Etat: </div>
+        <div class="col-md-4">
+          <button class="btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseElement" aria-expanded="false" aria-controls="collapseElement">Collapse</button>
+          <button class="btn btn-primary red mx-1">Refuser</button>
+          <button class="btn btn-success mx-1">Recevoir</button>
+        </div>
+      </div>
+    </div>
+    <div class="collapse" id="collapseElement">
+      <div class="card-body">
+        TEST COLLAPSE
       </div>
     </div>
   </div>
 
   <div class="card mt-3">
-    <div class="card-body">
+    <div class="card-header">
       <div class="row mb-2">
         <div class="col-md-4">Donateur: </div>
         <div class="col-md-4">Valeur: $</div>
@@ -34,7 +43,7 @@
   </div>
 
   <div class="card mt-3">
-    <div class="card-body">
+    <div class="card-header">
       <div class="row mb-2">
         <div class="col-md-4">Donateur: </div>
         <div class="col-md-4">Valeur: $</div>
