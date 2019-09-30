@@ -56,8 +56,9 @@ export class NewdonComponent implements OnInit {
       idDonateur: 0,
       idResponsable: 0,
       DonArticles: [],
-      total: 0
- 
+      total: 0,
+      nomDonateur: null,
+      createdAt: null
     };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
   }
@@ -125,7 +126,9 @@ export class NewdonComponent implements OnInit {
       this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
         console.log(res);
         var newId = (res as Don).id;
+        console.log(this.donArticleList as DonArticle[]);
         this.donArticleList.forEach(a => {
+
           this.d_service.ajouterArticle(a, newId).subscribe(respo => {
             console.log("Added object " + respo + " to Don #" + newId);
           });

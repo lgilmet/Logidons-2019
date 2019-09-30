@@ -6,6 +6,7 @@ import { Don } from 'src/app/shared/don.model';
 import { ArticleService } from 'src/app/shared/article.service';
 import { DonArticle } from 'src/app/shared/don-article.model';
 import { Utilisateur } from 'src/app/shared/utilisateur.model';
+import { Article } from 'src/app/shared/article.model';
 
 @Component({
 selector: 'app-recevoir',
@@ -23,25 +24,27 @@ export class RecevoirComponent implements OnInit {
 		private userService: UtilisateurService,
 		private articleService: ArticleService) { }
 
-	listeDons : Don[];
+	listeDons : Don[] = new Array();
 
 	ngOnInit() {
 		this.donService.getListeDonsParEmploye(this.auth.getUserId()).then( res => {
 			(res as Don[]).forEach(don => {
-				var donAff = new Don();
 
 				//nomDonateur
 				this.userService.getUtilisateur(don.idDonateur).then(user => {
-					//donAff.nomDonateur = (user as Utilisateur).nom + ", " + (user as Utilisateur).prenom;
+					don.nomDonateur = (user as Utilisateur).nom + ", " + (user as Utilisateur).prenom;
 				});
 
 				var val = 0;
-				donAff.DonArticles.forEach(art => {
-					val += art.valeur;
-					console.log("VAL: " + val + " | val art : " + art.valeur);
+				don.DonArticles.forEach(art => {
+					val += (art as DonArticle).valeur;
+					this.articleService.getArticle(art.idArticle).subscribe(a => {
+						art.nom = (a as Article).nom;
+					});
 				});
+				don.total = val;
+				this.listeDons.push(don);
 			});
 		});
 	}
-
 }

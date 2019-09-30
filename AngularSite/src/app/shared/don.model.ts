@@ -10,4 +10,6 @@ export class Don {
     idResponsable: number;
     DonArticles: DonArticle[];
     total: number;
+    nomDonateur: string;
+    createdAt: Date;
 }
