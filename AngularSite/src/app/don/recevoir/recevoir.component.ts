@@ -46,5 +46,8 @@ export class RecevoirComponent implements OnInit {
 				this.listeDons.push(don);
 			});
 		});
+
+		//Plus petit au plus grand
+		this.listeDons.sort((a,b) => <any>a.createdAt - <any>b.createdAt );
 	}
 }

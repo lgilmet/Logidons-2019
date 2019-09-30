@@ -58,7 +58,8 @@ export class NewdonComponent implements OnInit {
       DonArticles: [],
       total: 0,
       nomDonateur: null,
-      createdAt: null
+      createdAt: null,
+      totalQuantite: 0
     };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
   }
