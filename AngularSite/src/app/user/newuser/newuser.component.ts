@@ -16,6 +16,8 @@ export class NewuserComponent implements OnInit {
   prenomValid: boolean;
   emailValid: boolean;
   typeUser: string;
+
+  
  
   constructor(private service: UtilisateurService) { }
 
@@ -26,6 +28,9 @@ export class NewuserComponent implements OnInit {
     console.log(this.service.newUser);
   }
 
+  onChange(){
+    console.log("Radio value : "+this.formData.type)
+}
   checkValid() {
       this.nomValid = false;
       this.prenomValid = false;
@@ -47,12 +52,14 @@ export class NewuserComponent implements OnInit {
 
     if (this.confirmPasswordText.length >= 4 && this.confirmPasswordText==this.formData.password)
       this.confirmePasswordValid = true;
+
+       
   }
 
   resetForm() {
     this.formData = {
       id:0,
-      type: '',
+      type: 'donateur',
       nom: '',
       prenom: '',
       telephonetravail: '',
