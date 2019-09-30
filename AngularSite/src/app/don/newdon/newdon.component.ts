@@ -125,7 +125,9 @@ export class NewdonComponent implements OnInit {
       this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
         console.log(res);
         var newId = (res as Don).id;
+        console.log(this.donArticleList as DonArticle[]);
         this.donArticleList.forEach(a => {
+
           this.d_service.ajouterArticle(a, newId).subscribe(respo => {
             console.log("Added object " + respo + " to Don #" + newId);
           });
