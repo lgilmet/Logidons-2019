@@ -24,8 +24,7 @@ export class NewemployeComponent implements OnInit {
   constructor(private service: UtilisateurService) { }
 
   ngOnInit() {
-    this.resetForm();
-    this.typeUser = '';
+    this.resetForm();  
     this.typeUser = this.service.newUser;
 
     console.log(this.service.newUser);

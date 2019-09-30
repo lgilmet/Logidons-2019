@@ -1,80 +1,59 @@
 <div class="container">
 
-    <div class="row jumbotron">
-        <div class="col-md-6">
-            <h1 class="display-4">Connectez-vous</h1>
-        </div>
-        <div class="col-md-6">
-
-            <div class="alert alert-success" *ngIf="auth_service.isLoggedIn() && triedLogin">
-                <strong>Succès!</strong> Vous vous êtes bien connecté.
-              </div>
-              <div class="alert alert-danger" *ngIf="!auth_service.isLoggedIn() && triedLogin">
-                <strong>Érreur</strong> Votre nom d'utilisateur ou votre mot de passe est érroné.
-              </div>
-
-          <ul class="nav nav-tabs">
-            <li class="nav-item" style="width: 33%">
-              <a class="nav-link text-center"
-              [class.active]="userLogin == 0"
-              (click)="userLogin=0">Donateur</a>
-            </li>
-            <li class="nav-item"  style="width: 33%">
-              <a class="nav-link text-center"
-              [class.active]="userLogin == 1"
-              (click)="userLogin=1">Employe</a>
-            </li>
-            <li class="nav-item"  style="width: 34%">
-              <a class="nav-link text-center"
-              [class.active]="userLogin == 2"
-              (click)="userLogin=2">Benevole</a>
-            </li>
-          </ul>
-          <div class="card  border-top-0 rounded-0 rounded-bottom">
-            <div class="">
-    <form class="card-body" (submit)="soumettre()" #loginForm="ngForm">
-        <div class="form-group mb-4">
-          <label for="username">Nom d'utilisateur</label>
-          <input 
-          name="username"
-          type="text"
-          #username="ngModel"
-          [(ngModel)]="form.username"
-          [class.is-valid]="userValid"
-          [class.is-invalid]="!userValid && username.touched"
-          class="form-control"
-          (input)="checkValid()"
-          placeholder="Nom d'utilisateur"
-          required>
-          <div *ngIf="!userValid" class="invalid-feedback text-left">
-            Veuillez entrer un nom d'utilisateur, minimum de 4 charactères.
-          </div>
-        </div>
-
-        <div class="form-group mb-4 sp-4">
-          <label>Mot de passe</label>
-          <input type="password"
-          name="password"
-          #password="ngModel"
-          [(ngModel)]="form.password"
-          [class.is-valid]="passwordValid"
-          [class.is-invalid]="!passwordValid && password.touched"
-          class="form-control"
-          placeholder="Mot de passe"
-          (input)="checkValid()"
-          required>
-          <div *ngIf="!passwordValid" class="invalid-feedback text-left">
-            Veuillez entrer un mot de passe, minimum de 4 charactères.
-          </div>
-        </div>
-        <button type="submit" [disabled]="!(passwordValid && userValid)" class="btn btn-dark">Se connecter
-           </button>
-        <button type="button" (click)="annuler()" class="btn btn-outline-dark ml-3">Annuler</button>
-      </form>
+  <div class="row jumbotron">
+    <div class="col-md-6">
+      <h1 class="display-4">Connectez-vous</h1>
     </div>
-          </div>
+    <div class="col-md-6">
+
+      <div class="alert alert-success" *ngIf="auth_service.isLoggedIn() && triedLogin">
+        <strong>Succès!</strong> Vous vous êtes bien connecté.
+      </div>
+      <div class="alert alert-danger" *ngIf="!auth_service.isLoggedIn() && triedLogin">
+        <strong>Érreur</strong> Votre nom d'utilisateur ou votre mot de passe est érroné.
+      </div>
+
+      <ul class="nav nav-tabs">
+        <li class="nav-item" style="width: 33%">
+          <a class="nav-link text-center" [class.active]="userLogin == 0" (click)="userLogin=0">Donateur</a>
+        </li>
+        <li class="nav-item" style="width: 33%">
+          <a class="nav-link text-center" [class.active]="userLogin == 1" (click)="userLogin=1">Employe</a>
+        </li>
+        <li class="nav-item" style="width: 34%">
+          <a class="nav-link text-center" [class.active]="userLogin == 2" (click)="userLogin=2">Benevole</a>
+        </li>
+      </ul>
+      <div class="card  border-top-0 rounded-0 rounded-bottom">
+        <div class="">
+          <form class="card-body" (submit)="soumettre()" #loginForm="ngForm">
+            <div class="form-group mb-4">
+              <label for="username">Nom d'utilisateur</label>
+              <input name="username" type="text" #username="ngModel" [(ngModel)]="form.username"
+                [class.is-valid]="userValid" [class.is-invalid]="!userValid && username.touched" class="form-control"
+                (input)="checkValid()" placeholder="Nom d'utilisateur" required>
+              <div *ngIf="!userValid" class="invalid-feedback text-left">
+                Veuillez entrer un nom d'utilisateur, minimum de 4 charactères.
+              </div>
+            </div>
+
+            <div class="form-group mb-4 sp-4">
+              <label>Mot de passe</label>
+              <input type="password" name="password" #password="ngModel" [(ngModel)]="form.password"
+                [class.is-valid]="passwordValid" [class.is-invalid]="!passwordValid && password.touched"
+                class="form-control" placeholder="Mot de passe" (input)="checkValid()" required>
+              <div *ngIf="!passwordValid" class="invalid-feedback text-left">
+                Veuillez entrer un mot de passe, minimum de 4 charactères.
+              </div>
+            </div>
+            <button type="submit" [disabled]="!(passwordValid && userValid)" class="btn btn-dark">Se connecter
+            </button>
+            <button type="button" (click)="annuler()" class="btn btn-outline-dark ml-3">Annuler</button>
+          </form>
         </div>
       </div>
-     
+    </div>
+  </div>
+
 
 </div>

@@ -7,6 +7,7 @@ import { Article } from './article.model';
   providedIn: 'root'
 })
 export class ArticleService {
+	
   formArticle: Article;
 
   constructor(private http: HttpClient) { }
@@ -20,9 +21,9 @@ export class ArticleService {
     var body = {
       nom: this.formArticle.nom
     }
-
     return this.http.post(environment.apiURL + '/articles', body);
-
-    
   }
+  getArticle(id: number) {
+    return this.http.get(environment.apiURL + "/articles/" + id);
+	}
 }
