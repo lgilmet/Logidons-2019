@@ -1,60 +1,41 @@
 <div class="container">
 
-  <h3>Formulaire de réception d'un don</h3>
   <h3>Liste des dons a recevoir: </h3>
 
-  <div class="card mt-3" *ngFor="let don of listeDons">
+  <div class="card mt-3" *ngFor="let don of listeDons; let i = index">
     <div class="card-header">
       <div class="row mb-2">
-        <div class="col-md-4">Donateur: {{don.nomDonateur}}</div>
-        <div class="col-md-4">Valeur: {{don.valeur}}$</div>
-        <div class="col-md-4">Nombre d'items: </div>
+        <div class="col-md-4">Donateur: <b>{{don.nomDonateur}}</b></div>
+        <div class="col-md-4">Valeur: <b>{{don.total}}$</b></div>
+        <div class="col-md-4">Nombre d'items: <b>{{don.DonArticles.length}}</b></div>
       </div>
       <div class="row align-bottom">
-        <div class="col-md-4">Date promesse: </div>
-        <div class="col-md-4">Etat: </div>
+        <div class="col-md-4">Date promesse: <b>{{don.createdAt | date}}</b></div>
+        <div class="col-md-4">Etat: <b>{{don.etat}}</b></div>
         <div class="col-md-4">
-          <button class="btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseElement" aria-expanded="false" aria-controls="collapseElement">Collapse</button>
-          <button class="btn btn-primary red mx-1">Refuser</button>
-          <button class="btn btn-success mx-1">Recevoir</button>
+          <a class="btn btn-primary mx-1 float-right" data-toggle="collapse" href="#collapse-{{i}}">Détails</a>
+          
         </div>
       </div>
     </div>
-    <div class="collapse" id="collapseElement">
-      <div class="card-body">
-        TEST COLLAPSE
+    <div class="collapse" id="collapse-{{i}}">
+      <ul class="list-group list-group-flish">
+        <li class="list-group-item" *ngFor="let donArticle of don.DonArticles; let j = index">
+            <div class="row mb-2">
+              <div class="col-md-2 font-weight-bold">{{donArticle.nom}}</div>
+              <div class="col-md-2">Valeur: <b>{{donArticle.valeur}}$</b></div>
+              <div class="col-md-2">Quantité: <b>{{donArticle.quantite}}</b></div>
+              <div class="col-md-6">
+                Description
+                <p class="font-weight-light">{{donArticle.description}}</p>
+              </div>
+            </div>
+        </li>
+      </ul>
+      <div class="card-footer p-auto text-right">
+          <button class="btn btn-danger mx-1">Refuser</button>
+          <button class="btn btn-success mx-1">Recevoir</button>
       </div>
     </div>
   </div>
-
-  <div class="card mt-3">
-    <div class="card-header">
-      <div class="row mb-2">
-        <div class="col-md-4">Donateur: </div>
-        <div class="col-md-4">Valeur: $</div>
-        <div class="col-md-4">Nombre d'items: </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">Date promesse: </div>
-        <div class="col-md-4">Etat</div>
-        <div class="col-md-4"><button class="btn btn-success bt-sm float-right">Recevoir</button></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card mt-3">
-    <div class="card-header">
-      <div class="row mb-2">
-        <div class="col-md-4">Donateur: </div>
-        <div class="col-md-4">Valeur: $</div>
-        <div class="col-md-4">Nombre d'items: </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">Date promesse: </div>
-        <div class="col-md-4">Etat</div>
-        <div class="col-md-4"><button class="btn btn-success bt-sm float-right">Recevoir</button></div>
-      </div>
-    </div>
-  </div>
-
 </div>

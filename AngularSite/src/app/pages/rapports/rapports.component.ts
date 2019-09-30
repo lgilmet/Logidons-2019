@@ -60,7 +60,7 @@ export class RapportsComponent implements OnInit {
       console.log("DonArticles");
       console.log(don.DonArticles);
       don.DonArticles.forEach(donArt => {
-        don.total += donArt.valeur;
+        don.total += donArt.valeur * donArt.quantite;
 
       });
     });
