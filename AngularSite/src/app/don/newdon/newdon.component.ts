@@ -61,8 +61,9 @@ export class NewdonComponent implements OnInit {
       idDonateur: 0,
       idResponsable: 0,
       DonArticles: [],
-      total: 0
- 
+      total: 0,
+      nomDonateur: null,
+      createdAt: null
     };
     this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
     this.u_service.getDonateurs().then(res => this.listeDonateurs = res as Utilisateur[]);
