@@ -41,16 +41,10 @@ router.get("/employe/:id", (req, res, next) =>
 router.get("/donateur/:id", (req, res, next) => 
 {
     Don.findAll({
-<<<<<<< HEAD
         where: {
             idDonateur : req.params.id
         }, include: [{all:true}]
     }).then(dons => {
-=======
-        include: [{all:true}],
-        where: { idDonateur : req.params.id}}
-    ).then(dons => {
->>>>>>> 2524be5ae235cc2399593596241e081f5d8c4063
             res.send(dons);
     });
 })
