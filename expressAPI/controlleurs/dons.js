@@ -31,7 +31,7 @@ router.get("/employe/:id", (req, res, next) =>
     Don.findAll({
         where: {
             idResponsable : req.params.id
-        }
+        }, include: [{all:true}]
     }).then(dons => {
             res.send(dons);
     });
@@ -43,7 +43,7 @@ router.get("/donateur/:id", (req, res, next) =>
     Don.findAll({
         where: {
             idDonateur : req.params.id
-        }
+        }, include: [{all:true}]
     }).then(dons => {
             res.send(dons);
     });

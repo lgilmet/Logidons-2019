@@ -38,7 +38,7 @@
     <div class="collapse navbar-collapse " id="navbarNav">
       <ul class=" navbar-nav ml-auto">
         <li class="nav-item  ">
-          <a class="nav-link" href="compte/nouveaucompte" *ngIf="!isLoggedIn"
+          <a class="nav-link" href="compte/nouveaucompte" *ngIf="!auth.isLoggedIn()"
             >Nouveau Compte</a
           >
         </li>
@@ -48,11 +48,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link " href="compte/login" *ngIf="!isLoggedIn">Login</a>
+          <a class="nav-link " href="compte/login" *ngIf="!auth.isLoggedIn()">Login</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="compte/profil" *ngIf="isLoggedIn">Profil</a>
+          <a class="nav-link" href="compte/profil" *ngIf="!auth.isLoggedIn()">Profil</a>
         </li>
         <li class="nav-item">
           <a

@@ -55,6 +55,10 @@ export class AuthService {
     
   }
 
+  getUserId() {
+    return Number(localStorage.getItem('userID'));
+  }
+
   isLoggedIn() {
     return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString())
   }
