@@ -2,8 +2,22 @@
   
 <p>
   Profil utilisateur
-
 </p>
+<h3>Liste de vos dons</h3>
 
-Liste de dons
+<div class="card mt-3" *ngFor="let don of this.dons">
+  <div class="card-body">
+    <div class="row mb-2">
+      <div class="col-md-4">Donateur: {{ don.idDonateur }}</div>
+      <div class="col-md-4">Valeur: $ {{ don.total }} </div>
+      <div class="col-md-4">Nombre d'items: </div>
+    </div>
+    <div class="row align-bottom">
+      <div class="col-md-4">Date promesse: </div>
+      <div class="col-md-4">Don: {{ don.id}}</div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>
+
 </div>

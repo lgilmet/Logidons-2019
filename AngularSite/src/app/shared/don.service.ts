@@ -36,5 +36,9 @@ export class DonService {
     return this.http.get(environment.apiURL + '/dons').toPromise();
   }
 
+  getDonsDonateur(id:number){
+    return this.http.get(environment.apiURL + '/dons/donateur/'+id).toPromise();
+  }
+
 
 }
