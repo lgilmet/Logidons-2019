@@ -17,6 +17,7 @@ export class NewuserComponent implements OnInit {
   emailValid: boolean;
   typeUser: string;
   emailTaken:boolean;
+  passwordNonConform:boolean;
   
 
   
@@ -55,7 +56,8 @@ export class NewuserComponent implements OnInit {
     if (this.formData.password.length >= 4)
       this.passwordValid = true;
 
-    if (this.confirmPasswordText.length >= 4 && this.confirmPasswordText==this.formData.password)
+      
+    if (this.confirmPasswordText==this.formData.password)
       this.confirmePasswordValid = true;
 
        
