@@ -15,11 +15,13 @@ export class UserComponent implements OnInit {
   articleList: Article[];
 
 
+
   constructor(
     private d_service: DonService,
     private a_service: ArticleService
   ) { }
 
+   
   ngOnInit() {
     this.a_service.getListeArticles().then(res=> this.articleList = res as Article[]);
 

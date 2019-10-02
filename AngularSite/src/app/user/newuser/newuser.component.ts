@@ -17,6 +17,7 @@ export class NewuserComponent implements OnInit {
   emailValid: boolean;
   typeUser: string;
   emailTaken:boolean;
+  
 
   
  
@@ -90,6 +91,7 @@ export class NewuserComponent implements OnInit {
       else{
         console.log("Vous etes l'utilisateur "+res);
         this.emailTaken=true;
+        console.log("Email pris  " +this.emailTaken);
       }
      
     });

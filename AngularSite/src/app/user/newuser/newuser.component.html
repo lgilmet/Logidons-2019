@@ -43,7 +43,7 @@
                         [(ngModel)]="formData.email"
                             #email="ngModel" 
                             [class.is-valid]="emailValid"
-                            [class.is-invalid]="!emailValid && email.touched" 
+                            [class.is-invalid]="!emailValid && email.touched || emailTaken" 
                             class="form-control"
                             (input)="checkValid()" 
                             (blur)="checkEmail()"
@@ -55,9 +55,9 @@
                         <div *ngIf="!emailValid" class="invalid-feedback text-left">
                             Veuillez entrer un format valide.
                         </div>
-                        <!-- <div *ngIf="!checkEmail()" class="invalid-feedback text-left">
+                        <div *ngIf="emailTaken" class="invalid-feedback text-left">
                             Email existe deja.
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 
@@ -105,7 +105,7 @@
                 <div class="form-group">
 
                     <button type="submit"
-                        [disabled]="!(nomValid && prenomValid && emailValid && passwordValid && confirmePasswordValid)"
+                        [disabled]="!(nomValid && prenomValid && emailValid && passwordValid && confirmePasswordValid || !emailTaken)"
                         class="btn btn-dark mr-3">Soumettre</button>
                     <button type="button" (click)="annuler()" class="btn btn-outline-dark">Annuler</button>
                 </div>

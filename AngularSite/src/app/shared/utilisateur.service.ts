@@ -20,7 +20,7 @@ export class UtilisateurService {
     var body={
       email:_email
     }
-    return this.http.get(environment.apiURL+"/utilisateur/email/"+ _email).toPromise();
+    return this.http.get(environment.apiURL+"/utilisateurs/email/"+ _email).toPromise();
   }
   getEmployes() {
     return this.http.get(environment.apiURL + '/utilisateurs/employes').toPromise();
