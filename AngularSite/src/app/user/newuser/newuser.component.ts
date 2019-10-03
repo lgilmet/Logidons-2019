@@ -57,7 +57,7 @@ export class NewuserComponent implements OnInit {
       this.passwordValid = true;
 
       
-    if (this.confirmPasswordText==this.formData.password)
+    if (this.confirmPasswordText.length >= 4 && this.confirmPasswordText==this.formData.password)
       this.confirmePasswordValid = true;
 
        

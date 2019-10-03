@@ -5,15 +5,15 @@ var Utilisateur = db.utilisateurs;
 
 router.get("/email/:email", (req, res, next) =>
 {
-    Utilisateur.findAll({
+    Utilisateur.findOne({
         where: {
             email: req.params.email
         }
-    }).then(users => {
-        if(users.length < 1)
-            res.sendStatus(200);
+    }).then(user => {
+        if(!user)
+            res.json(-1)
         else
-            res.sendStatus(500);
+            res.json(user.id);
     });
 });
 
@@ -41,7 +41,7 @@ router.post("/login", (req, res, next) => {
         if(!user)
             res.json(-1)
         else
-            res.json(user);
+            res.json(user.id);
     })
 });
 
