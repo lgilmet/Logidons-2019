@@ -41,7 +41,7 @@ router.post("/login", (req, res, next) => {
         if(!user)
             res.json(-1)
         else
-            res.json(user.id);
+            res.json(user);
     })
 });
 

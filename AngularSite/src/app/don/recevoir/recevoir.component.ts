@@ -37,7 +37,7 @@ export class RecevoirComponent implements OnInit {
 
 				var val = 0;
 				don.DonArticles.forEach(art => {
-					val += (art as DonArticle).valeur;
+					val += ((art as DonArticle).valeur * (<DonArticle>art).quantite);
 					this.articleService.getArticle(art.idArticle).subscribe(a => {
 						art.nom = (a as Article).nom;
 					});
