@@ -19,8 +19,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.setItem('userID', '0');
-    localStorage.setItem('loggedIn', 'false');
+    this.auth.logOut();
   }
 
   Loggedin(){

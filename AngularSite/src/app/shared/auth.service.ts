@@ -52,7 +52,16 @@ export class AuthService {
   {
     this.loggedInStatus = value;
     localStorage.setItem('loggedIn', value.toString());
-    
+    if(!value)
+    {
+      localStorage.setItem("userID", "-1");
+      localStorage.setItem("userType", "-1");
+    }
+  }
+
+  logOut()
+  {
+    this.setLoggedIn(false);
   }
 
   getUserId() {
@@ -66,7 +75,7 @@ export class AuthService {
   isDonateur() {
     if(this.isLoggedIn)
     {
-      if(localStorage.getItem("userType") == "donateur")
+      if(localStorage.getItem("userType") == "2")
         return true;
       else
         return false;
@@ -76,7 +85,7 @@ export class AuthService {
   isBenevole() {
     if(this.isLoggedIn)
     {
-      if(localStorage.getItem("userType") == "benevole")
+      if(localStorage.getItem("userType") == "3")
         return true;
       else
         return false;
@@ -86,7 +95,7 @@ export class AuthService {
   isEmploye() {
     if(this.isLoggedIn)
     {
-      if(localStorage.getItem("userType") == "employe")
+      if(localStorage.getItem("userType") == "1")
         return true;
       else
         return false;
@@ -96,7 +105,7 @@ export class AuthService {
   isSuperviseur() {
     if(this.isLoggedIn)
     {
-      if(localStorage.getItem("userType") == "superviseur")
+      if(localStorage.getItem("userType") == "4")
         return true;
       else
         return false;

@@ -1,7 +1,7 @@
 {
-    "database":"mytestdb",
-    "user":"testuser",
-    "password":"testuser",
+    "database":"logidonsdb",
+    "user":"admin",
+    "password":"admin",
     "host":"localhost",
     "port":3000
 }
