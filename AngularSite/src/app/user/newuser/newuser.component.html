@@ -56,7 +56,17 @@
                             Veuillez entrer un format valide.
                         </div> 
                         <div *ngIf="emailTaken" class="invalid-feedback text-left">
-                            Email existe deja.
+                            <p>Email existe deja.</p> 
+                            <div class="card bg-light mt-3">
+                                
+                            <div class="card-body text-body">
+                                <h5>Avez-vous deja un compte?</h5>
+                                
+                                
+                                <a class="btn btn-primary" href="compte/login">Login</a>
+                            </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
