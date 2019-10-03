@@ -32,6 +32,14 @@ export class DonService {
     return this.http.post(environment.apiURL+'/donArticles', body);
   }
 
+  setEtat(id : Number, statut : Number)
+  {
+    var body = {
+      etat : statut
+    }
+    return this.http.post(environment.apiURL+"/dons/"+id, body);
+  }
+
   getListeDons(){
     return this.http.get(environment.apiURL + '/dons').toPromise();
   }

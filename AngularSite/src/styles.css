@@ -24,3 +24,11 @@ input[type="number"]::-webkit-outer-spin-button {
   background-repeat: no-repeat;
   position: relative;
 }
+
+.border-3 {
+  border-width:3px !important;
+}
+
+.border-2 {
+  border-width:2px !important;
+}

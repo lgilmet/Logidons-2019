@@ -43,11 +43,40 @@ export class RecevoirComponent implements OnInit {
 					});
 				});
 				don.total = val;
-				this.listeDons.push(don);
+				this.listeDons.push(don as Don);
 			});
 		});
 
 		//Plus petit au plus grand
 		this.listeDons.sort((a,b) => <any>a.createdAt - <any>b.createdAt );
+	}
+
+	getEtat(don : Don)
+    {
+        if(don.etat == 0)
+            return "Refusé"
+        else if(don.etat == 1)
+            return "Promis";
+        else if(don.etat == 2)
+            return "Reçu";
+        else if(don.etat == 3)
+            return "Distribué"
+        else
+            return "Invalide"
+	}
+	
+	recevoir(don : Don)
+	{
+		console.log("Don:"+don+"\n tried to become 2");
+		this.donService.setEtat(don.id, 2).subscribe(newdon => {
+			don.etat = (<Don>newdon).etat;
+		});
+	}
+
+	refuser(don : Don)
+	{
+		this.donService.setEtat(don.id, 0).subscribe(newdon => {
+			don.etat = (<Don>newdon).etat;
+		});
 	}
 }
