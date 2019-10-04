@@ -22,6 +22,7 @@ export class NewdonComponent implements OnInit {
   prixValid: boolean;
   qteValid: boolean;
   descValid: boolean;
+  donSucces: boolean;
 
   formData: DonArticle;
   reset: boolean;
@@ -95,7 +96,7 @@ export class NewdonComponent implements OnInit {
       this.formData.nom = this.getArtName(this.formData.idArticle);
       this.donArticleList.push(this.formData);
       
-      this.nouveauDon.total += this.formData.valeur * this.formData.quantite;
+      this.updateTotal();
       this.resetForm();
     } else {
       console.log("check failed");
@@ -131,6 +132,14 @@ export class NewdonComponent implements OnInit {
     return false;
   }
 
+  updateTotal()
+  {
+    this.nouveauDon.total = 0;
+    this.donArticleList.forEach(art => {
+      this.nouveauDon.total += art.quantite * art.valeur;
+    })
+  }
+
 
 
   promesse(){
@@ -148,13 +157,21 @@ export class NewdonComponent implements OnInit {
 
           this.d_service.ajouterArticle(a, newId).subscribe(respo => {
             console.log("Added object " + respo + " to Don #" + newId);
+            this.updateTotal();
           });
         })
+        this.annulerDon();
+        //alert("Votre don a été soumis.");
+        this.donSucces = true;
+        setTimeout(() => {
+          this.donSucces = false;
+        }, 10000);
       });
     }
   }
 
   annulerDon(){
     this.donArticleList = [];
+    this.updateTotal();
   }
 }
