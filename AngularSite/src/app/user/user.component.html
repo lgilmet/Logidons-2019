@@ -1,11 +1,22 @@
 <div class="container">
   
-<p>
-  Profil utilisateur
-</p>
-<h3>Liste de vos dons</h3>
+<div class="card">
+  <div class="card-header">
+      <h5><i class="fa fa-address-book mr-2"></i>{{user.prenom}} {{user.nom}} <div class="float-right">{{getType()}}</div></h5>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+      <h6><p><i class="fa fa-user mr-2"></i>{{user.username}}</p></h6>
+      <h6><p><i class="fa fa-envelope mr-2"></i>{{user.email}}</p></h6>
+      <h6><p><i class="fa fa-home mr-2"></i>{{user.adresse}}</p></h6>
+      <h6><p><i class="fa fa-building mr-2"></i>{{user.telephonetravail}}</p></h6>
+      <h6><p><i class="fa fa-phone mr-2"></i>{{user.telephoneMaison}}</p></h6>
+      <h6><p><i class="fa fa-mobile mr-2"></i>{{user.telephoneMobile}}</p></h6>
+    </div>
+  </div>
+</div>
 
-<div class="card mt-3" *ngFor="let don of this.dons">
+<!-- <div class="card mt-3" *ngFor="let don of this.dons">
   <div class="card-body">
     <div class="row mb-2">
       <div class="col-md-4">Donateur: {{ don.idDonateur }}</div>
@@ -19,8 +30,6 @@
     </div>
   </div>
   
-    <!-- table item 
-    id , id article , valeur, q, description -->
   <div class="col-md-6">
     <label>Liste des items</label>
     <table class="table">
@@ -46,6 +55,6 @@
     </table>
   </div>
 
-</div>
+</div> -->
 
 </div>

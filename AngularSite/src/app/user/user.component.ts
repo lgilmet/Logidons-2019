@@ -4,6 +4,9 @@ import { DonService } from '../shared/don.service';
 import { DonArticle } from '../shared/don-article.model';
 import { Article } from '../shared/article.model';
 import { ArticleService } from '../shared/article.service';
+import { Utilisateur } from '../shared/utilisateur.model';
+import { AuthService } from '../shared/auth.service';
+import { UtilisateurService } from '../shared/utilisateur.service';
 
 @Component({
   selector: 'app-user',
@@ -14,16 +17,32 @@ export class UserComponent implements OnInit {
   dons: Don[];
   articleList: Article[];
 
+  user : Utilisateur;
+
 
 
   constructor(
     private d_service: DonService,
-    private a_service: ArticleService
+    private a_service: ArticleService,
+    private auth : AuthService,
+    private u_service : UtilisateurService
   ) { }
 
    
   ngOnInit() {
-    this.a_service.getListeArticles().then(res=> this.articleList = res as Article[]);
+    this.u_service.getUtilisateur(this.auth.getUserId()).then(res => {
+      this.user = res as Utilisateur;
+      if(!this.user.telephoneMaison)
+        this.user.telephoneMaison = "...";
+      if(!this.user.telephonetravail)
+        this.user.telephonetravail = "...";
+      if(!this.user.telephoneMobile)
+        this.user.telephoneMobile = "...";
+        
+    });
+
+    
+    /*this.a_service.getListeArticles().then(res=> this.articleList = res as Article[]);
 
     var idUser: number;
     idUser = +localStorage.getItem("userID");
@@ -44,8 +63,24 @@ export class UserComponent implements OnInit {
 
       });
     });
-  });
+  });*/
 
+  }
+
+  getType()
+  {
+    if(this.user.type == "0")
+      return "Admin";
+    else if(this.user.type == "1")
+      return "Employé";
+    else if(this.user.type == "2")
+      return "Donateur";
+    else if(this.user.type == "3")
+      return "Bénévole";
+    else if(this.user.type == "4")
+      return "Superviseur";
+    else
+      return "Invalide";
   }
 // trouver le nom d item
   getArtName(id: number){
