@@ -67,7 +67,6 @@ export class RecevoirComponent implements OnInit {
 	
 	recevoir(don : Don)
 	{
-		console.log("Don:"+don+"\n tried to become 2");
 		this.donService.setEtat(don.id, 2).subscribe(newdon => {
 			don.etat = (<Don>newdon).etat;
 		});

@@ -9,6 +9,7 @@ import { DonArticle } from 'src/app/shared/don-article.model';
 import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 import { Utilisateur } from 'src/app/shared/utilisateur.model';
 import { Don } from 'src/app/shared/don.model';
+import { collectExternalReferences } from '@angular/compiler';
 
 @Component({
   selector: 'app-newdon',
@@ -37,8 +38,7 @@ export class NewdonComponent implements OnInit {
 
   constructor(
     private a_service: ArticleService,
-    private d_service: DonService,
-    private u_service: UtilisateurService
+    private d_service: DonService
   ) { }
 
   ngOnInit() {
@@ -47,6 +47,8 @@ export class NewdonComponent implements OnInit {
     this.reset = false;
 
     this.donateurID = JSON.parse(localStorage.getItem('userID'));
+    console.log("id donateur: " +this.donateurID);
+
     this.nouveauDon = {
       id: null,
       datePromesse: null,
@@ -79,6 +81,7 @@ export class NewdonComponent implements OnInit {
   }
 
   getArtName(id: number){
+    console.log("get nom");
     var obj = this.articleList.filter(function(item:Article){
       return item.id==id;
     });
@@ -87,32 +90,45 @@ export class NewdonComponent implements OnInit {
   }
 
   onSubmit(){
+
     if(this.checkValid()){
+      this.formData.nom = this.getArtName(this.formData.idArticle);
       this.donArticleList.push(this.formData);
+      
+      this.nouveauDon.total += this.formData.valeur * this.formData.quantite;
       this.resetForm();
     } else {
+      console.log("check failed");
     }
   }
 
   checkValid() {
+    console.log("check valid");
     this.articleValid = false;
     this.descValid = false;
     this.prixValid = false;
     this.qteValid = false;
 
-    if(this.formData.description.length >= 4)
+    if(this.formData.description.length >= 4){
       this.descValid = true;
+    }
 
-    if(this.formData.id != 0)
+    if(this.formData.id != 0){
       this.articleValid = true;
+    }
 
-    if(this.formData.valeur > 0)
+    if(this.formData.valeur > 0){
       this.prixValid = true;
+    }
 
-    if(this.formData.quantite > 0)
+    if(this.formData.quantite > 0){
       this.qteValid = true;
+    }
 
-    return this.articleValid && this.descValid && this.prixValid && this.qteValid
+    if(this.descValid && this.descValid && this.prixValid && this.qteValid)
+      return true;
+
+    return false;
   }
 
 
@@ -139,6 +155,6 @@ export class NewdonComponent implements OnInit {
   }
 
   annulerDon(){
-    
+    this.donArticleList = [];
   }
 }

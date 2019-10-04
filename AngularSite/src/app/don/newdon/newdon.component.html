@@ -97,7 +97,7 @@
             <button (click)="onSubmit()" class="btn btn-primary float-right">
               Ajouter l'article
             </button>
-            <button (click)="clearArticle()" class="btn btn-outline-secondary">
+            <button (click)="resetForm()" class="btn btn-outline-secondary">
               Annuler l'article
             </button>
           </div>
@@ -107,10 +107,11 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Article</th>
-                <th scope="col">Valeur</th>
-                <th scope="col">Quantite</th>
-                <th scope="col">Description</th>
+                <th scope="col" width="20%">Article</th>
+                <th scope="col" width="50%">Description</th>
+                <th scope="col" width="10%">Valeur</th>
+                <th scope="col" width="10%">Qte</th>
+                <th scope="col" width="10%">Total</th>
               </tr>
             </thead>
             <tbody>
@@ -122,13 +123,16 @@
               </tr> -->
 
               <tr *ngFor="let item of this.donArticleList.reverse()">
-                <td>{{ item.id }} - {{ item.nom }}</td>
-                <td>{{ item.valeur }}</td>
+                <td>{{ item.nom }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.valeur }}$</td>
                 <td>{{ item.quantite }}</td>
-                <td>{{ item.description }} = {{ item.valeur * item.quantite }}</td>
+                <td>{{ item.valeur * item.quantite }}$</td>
               </tr>
             </tbody>
           </table>
+          <hr>
+          <span class="align-bottom float-right">Total du don = {{this.nouveauDon.total}}</span>
         </div>
       </div>
       <div class="row">
