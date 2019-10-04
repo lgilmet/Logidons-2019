@@ -5,7 +5,7 @@
 -- HeidiSQL Version:             10.2.0.5599
 -- --------------------------------------------------------
 
-CREATE DATABASE IF NOT EXISTS `logidonsdb`
+CREATE DATABASE IF NOT EXISTS `logidonsdb`;
 USE `logidonsdb`;
 
 CREATE USER if NOT EXISTS 'admin' IDENTIFIED BY 'admin';
