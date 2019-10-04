@@ -14,7 +14,7 @@ import { UtilisateurService } from '../shared/utilisateur.service';
   styles: []
 })
 export class UserComponent implements OnInit {
-  dons: Don[];
+  listeDons: Don[];
   articleList: Article[];
 
   user : Utilisateur;
@@ -30,8 +30,11 @@ export class UserComponent implements OnInit {
 
    
   ngOnInit() {
+    this.user = null;
+    
     this.u_service.getUtilisateur(this.auth.getUserId()).then(res => {
       this.user = res as Utilisateur;
+
       if(!this.user.telephoneMaison)
         this.user.telephoneMaison = "...";
       if(!this.user.telephonetravail)
@@ -40,19 +43,18 @@ export class UserComponent implements OnInit {
         this.user.telephoneMobile = "...";
         
     });
-
     
-    /*this.a_service.getListeArticles().then(res=> this.articleList = res as Article[]);
+    this.a_service.getListeArticles().then(res=> this.articleList = res as Article[]);
 
     var idUser: number;
     idUser = +localStorage.getItem("userID");
     this.d_service.getDonsDonateur(idUser).then(res =>  {
-    this.dons = res as Don[];
+    this.listeDons = res as Don[];
     console.log("this.dons");
-    console.log(this.dons);
-    this.dons.forEach(don => {
+    console.log(this.listeDons);
+    this.listeDons.forEach(don => {
       don.total = 0;
-
+      don.totalQuantite = 0;
       
       var donsArticles : DonArticle[];
       console.log("don.DonArticles");
@@ -60,10 +62,16 @@ export class UserComponent implements OnInit {
       don.DonArticles.forEach(donArt => {
         donArt.nom = this.getArtName(donArt.idArticle);
         don.total += donArt.valeur * donArt.quantite;
+        don.totalQuantite += donArt.quantite;
 
       });
     });
-  });*/
+  });
+
+  }
+
+  // annuler don
+  annulerDon(don: Don){
 
   }
 

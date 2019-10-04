@@ -1,60 +1,98 @@
 <div class="container">
-  
-<div class="card">
-  <div class="card-header">
-      <h5><i class="fa fa-address-book mr-2"></i>{{user.prenom}} {{user.nom}} <div class="float-right">{{getType()}}</div></h5>
-  </div>
-  <div class="card-body">
-    <div class="card-text">
-      <h6><p><i class="fa fa-user mr-2"></i>{{user.username}}</p></h6>
-      <h6><p><i class="fa fa-envelope mr-2"></i>{{user.email}}</p></h6>
-      <h6><p><i class="fa fa-home mr-2"></i>{{user.adresse}}</p></h6>
-      <h6><p><i class="fa fa-building mr-2"></i>{{user.telephonetravail}}</p></h6>
-      <h6><p><i class="fa fa-phone mr-2"></i>{{user.telephoneMaison}}</p></h6>
-      <h6><p><i class="fa fa-mobile mr-2"></i>{{user.telephoneMobile}}</p></h6>
-    </div>
-  </div>
-</div>
 
-<!-- <div class="card mt-3" *ngFor="let don of this.dons">
-  <div class="card-body">
-    <div class="row mb-2">
-      <div class="col-md-4">Donateur: {{ don.idDonateur }}</div>
-      <div class="col-md-4">Valeur: $ {{ don.total }} </div>
-      <div class="col-md-4">Nombre d'items: </div>
+  <div class="card mb-3 " *ngIf="this.user!=null">
+    <div class="card-header">
+      <h5><i class="fa fa-address-book mr-2"></i>{{user.prenom}} {{user.nom}} <div class="float-right">{{getType()}}</div>
+      </h5>
     </div>
-    <div class="row align-bottom">
-      <div class="col-md-4">Date promesse: {{ don.datePromesse | date }}</div>
-      <div class="col-md-4">Don: {{ don.id}}</div>
-      <div class="col-md-4"></div>
+    <div class="card-body">
+      <div class="card-text">
+        <h6>
+          <p><i class="fa fa-user mr-2"></i>{{user.username}}</p>
+        </h6>
+        <h6>
+          <p><i class="fa fa-envelope mr-2"></i>{{user.email}}</p>
+        </h6>
+        <h6>
+          <p><i class="fa fa-home mr-2"></i>{{user.adresse}}</p>
+        </h6>
+        <h6>
+          <p><i class="fa fa-building mr-2"></i>{{user.telephonetravail}}</p>
+        </h6>
+        <h6>
+          <p><i class="fa fa-phone mr-2"></i>{{user.telephoneMaison}}</p>
+        </h6>
+        <h6>
+          <p><i class="fa fa-mobile mr-2"></i>{{user.telephoneMobile}}</p>
+        </h6>
+      </div>
+
+
     </div>
-  </div>
-  
-  <div class="col-md-6">
-    <label>Liste des items</label>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Article</th>
-          <th scope="col">Description</th>
-          <th scope="col">Valeur</th>
-          <th scope="col">Quantite</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let article of this.don.DonArticles">
-          <td>{{ article.id }} - {{ article.nom }}</td>
-          <td>{{ article.description }}</td>
-        
-          <td>{{ article.valeur }}$</td>
-          <td>{{ article.quantite }}</td>
-          <td>{{ article.valeur * article.quantite }}$</td>
-        </tr>
-      </tbody>
-    </table>
+
   </div>
 
-</div> -->
+
+  <h2>Vos dons</h2>
+
+
+  <div *ngFor="let don of listeDons; let i = index">
+    <div class="card mt-3">
+      <div class="card-header" style="transform: rotate(0);">
+        <div class="row mb-2">
+          <div class="col-md-4">Date promesse: <b>{{don.createdAt | date}}</b></div>
+          <div class="col-md-2">Valeur: <b>{{don.total}}$</b></div>
+          <div class="col-md-6">
+            Nombre d'items: <b>{{don.totalQuantite}}</b>
+            <span class="badge badge-danger float-right p-2" *ngIf="don.etat==0">Refusé</span>
+            <span class="badge badge-primary float-right p-2" *ngIf="don.etat==1">Promis</span>
+            <span class="badge badge-success float-right p-2" *ngIf="don.etat==2">Reçu</span>
+          </div>
+        </div>
+        <div class="row align-bottom">
+          <div class="col-md-4">Date de recepction: <b>{{don.dateReception | date}}</b></div>
+          <!-- <div class="col-md-4">Etat: <b>{{getEtat(don)}}</b></div> -->
+          <div class="col-md-8">
+            <!-- <a class="btn btn-primary mx-1 float-right stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden" >Détails</a> -->
+
+          </div>
+        </div>
+        <a class="stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden"></a>
+      </div>
+      <div class="collapse" id="collapse-{{i}}">
+
+          <table class="table" >
+              <thead>
+                <tr>
+                  <th scope="col" width="20%">Article</th>
+                  <th scope="col" width="50%">Description</th>
+                  <th scope="col" width="10%">Valeur</th>
+                  <th scope="col" width="10%">Qte</th>
+                  <th scope="col" width="10%">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of don.DonArticles; let j = index">
+                  <td>{{ item.nom }}</td>
+                  <td>{{ item.description }}</td>
+                  <td class="border-left">{{ item.quantite }}</td>
+                  <td class="border-left">{{ item.valeur }}$</td>
+                  <td class="border-left">{{ item.valeur * item.quantite }}$</td>
+                </tr>
+              </tbody>
+            </table>
+        <div class="card-footer text-right" *ngIf="don.etat==1 || don.etat==2">
+          <div *ngIf="don.etat==1">
+            <button class="btn btn-outline-danger mx-1 float-left" (click)="annulerDon(don)">Annuler</button>
+            <button class="btn btn-success mx-1" (click)="recevoir(don)">Modifier</button>
+          </div>
+          <div *ngIf="don.etat==2">
+            <button class="btn btn-success mx-1" disabled>Distribuer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </div>

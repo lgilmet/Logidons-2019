@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-    "database":"logidonsDB",
-=======
     "database":"logidonsdb",
->>>>>>> a06b54e0c836fb446027a298af4521feac766658
     "user":"admin",
     "password":"admin",
     "host":"localhost",
