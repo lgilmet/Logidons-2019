@@ -1,6 +1,8 @@
 <div class="container">
   <h3>Formulaire nouveau don</h3>
-
+  <div *ngIf="donSucces" class="alert alert-success" role="alert">
+    Votre don a été envoyé avec succès!
+  </div>
   <form class="card" 
   #form="ngForm" 
   autocomplete="off" 
@@ -104,7 +106,7 @@
         </div>
         <div class="col-md-6">
           <label>Liste des items</label>
-          <table class="table">
+          <table class="table overflow-auto">
             <thead>
               <tr>
                 <th scope="col" width="20%">Article</th>
@@ -132,18 +134,29 @@
             </tbody>
           </table>
           <hr>
-          <span class="align-bottom float-right">Total du don = {{this.nouveauDon.total}}</span>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <hr />
-          <button (click)="promesse()" class="btn btn-success float-right">
-            Promettre le don
-          </button>
-          <button (click)="annulerDon()" class="btn btn-outline-secondary">
+          
+          <button (click)="annulerDon()" class="btn btn-outline-secondary float-left">
             Annuler le don
           </button>
+          <div>
+            <button (click)="promesse()" class="btn btn-success float-right">
+              Promettre le don
+            </button>
+            <div class="float-right mx-4">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Total du don $</div>
+                </div>
+                <input disabled class="form-control" 
+                value="{{this.nouveauDon.total}}" />
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
