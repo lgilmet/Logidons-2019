@@ -7,7 +7,7 @@ import { AuthService } from '../shared/auth.service';
   styles: []
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn: boolean; // 0=LoggedOut, 1=LoggedInDonateur, 2=LoggedInEmploye
+  isLoggedIn: boolean;
   loggedInID: number;
 
   constructor(private auth: AuthService) { }

@@ -53,6 +53,7 @@ router.get("/donateur/:id", (req, res, next) =>
 router.post("/", (req, res, next) =>
 {
     Don.create(req.body).then(u => {
+
         res.send(u);
     }).catch(err => {
         res.sendStatus(500);
@@ -62,9 +63,9 @@ router.post("/", (req, res, next) =>
 //UPDATE
 router.post("/:id", (req, res, next) =>
 {
-    Don.findByPk(req.params.id).then(user =>
+    Don.findByPk(req.params.id).then(don =>
         {
-            user.update(req.body).then(u => {
+            don.update(req.body).then(u => {
                 res.send(u);
             }).catch(err => {
                 res.sendStatus(500);

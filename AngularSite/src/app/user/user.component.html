@@ -40,7 +40,7 @@
     <div class="card mt-3">
       <div class="card-header" style="transform: rotate(0);">
         <div class="row mb-2">
-          <div class="col-md-4">Date promesse: <b>{{don.createdAt | date}}</b></div>
+          <div class="col-md-4">No. de don: <b>{{don.id}}</b></div>
           <div class="col-md-2">Valeur: <b>{{don.total}}$</b></div>
           <div class="col-md-6">
             Nombre d'items: <b>{{don.totalQuantite}}</b>
@@ -50,19 +50,16 @@
           </div>
         </div>
         <div class="row align-bottom">
+          <div class="col-md-4">Date promesse: <b>{{don.createdAt | date}}</b></div>
           <div class="col-md-4">Date de recepction: <b>{{don.dateReception | date}}</b></div>
-          <!-- <div class="col-md-4">Etat: <b>{{getEtat(don)}}</b></div> -->
-          <div class="col-md-8">
-            <!-- <a class="btn btn-primary mx-1 float-right stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden" >Détails</a> -->
-
-          </div>
+          
         </div>
         <a class="stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden"></a>
       </div>
-      <div class="collapse" id="collapse-{{i}}">
+      <div class="collapse p-0" id="collapse-{{i}}">
 
-          <table class="table" >
-              <thead>
+          <table class="table mb-0" >
+              <thead class="table border-top-0">
                 <tr>
                   <th scope="col" width="20%">Article</th>
                   <th scope="col" width="50%">Description</th>
@@ -84,7 +81,8 @@
         <div class="card-footer text-right" *ngIf="don.etat==1 || don.etat==2">
           <div *ngIf="don.etat==1">
             <button class="btn btn-outline-danger mx-1 float-left" (click)="annulerDon(don)">Annuler</button>
-            <button class="btn btn-success mx-1" (click)="recevoir(don)">Modifier</button>
+            <button class="btn btn-success mx-1" (click)="modifierDon(don)"
+            routerLink="/don">Modifier</button>
           </div>
           <div *ngIf="don.etat==2">
             <button class="btn btn-success mx-1" disabled>Distribuer</button>

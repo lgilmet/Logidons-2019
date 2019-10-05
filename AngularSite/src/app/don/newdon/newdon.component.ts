@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import * as $ from 'jquery';
 
 import { Article } from 'src/app/shared/article.model';
 import { ArticleService } from 'src/app/shared/article.service';
 import { DonService } from 'src/app/shared/don.service';
 import { DonArticle } from 'src/app/shared/don-article.model';
-import { UtilisateurService } from 'src/app/shared/utilisateur.service';
-import { Utilisateur } from 'src/app/shared/utilisateur.model';
 import { Don } from 'src/app/shared/don.model';
-import { collectExternalReferences } from '@angular/compiler';
+import { UtilisateurService } from 'src/app/shared/utilisateur.service';
 
 @Component({
   selector: 'app-newdon',
@@ -17,6 +13,10 @@ import { collectExternalReferences } from '@angular/compiler';
   styles: []
 })
 export class NewdonComponent implements OnInit {
+
+  // retrouver don a modifier
+  modifDon: number;
+
   // validation
   articleValid: boolean;
   prixValid: boolean;
@@ -39,16 +39,35 @@ export class NewdonComponent implements OnInit {
 
   constructor(
     private a_service: ArticleService,
-    private d_service: DonService
+    private d_service: DonService,
+    private u_service: UtilisateurService
   ) { }
 
   ngOnInit() {
+    this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
     this.resetForm();
     this.donArticleList = [];
     this.reset = false;
 
+    if(JSON.parse(localStorage.getItem('modifDon'))){
+      this.modifDon = JSON.parse(localStorage.getItem('modifDon'));
+
+      // reset form here
+      //localStorage.setItem('modifDon', null);
+      console.log("idDon" + this.modifDon);
+      
+      this.d_service.getDon(this.modifDon).subscribe(res =>{
+        this.nouveauDon = <Don>res
+        this.donArticleList = this.nouveauDon.DonArticles;
+
+        this.donArticleList.forEach(donArt => {
+          donArt.nom = this.getArtName(donArt.idArticle);
+        });
+          this.updateTotal();
+      });
+    }
+
     this.donateurID = JSON.parse(localStorage.getItem('userID'));
-    console.log("id donateur: " +this.donateurID);
 
     this.nouveauDon = {
       id: null,
@@ -64,7 +83,6 @@ export class NewdonComponent implements OnInit {
       createdAt: null,
       totalQuantite: 0
     };
-    this.a_service.getListeArticles().then(res => this.articleList = res as Article[]);
   }
 
   resetForm(){
@@ -77,21 +95,21 @@ export class NewdonComponent implements OnInit {
       quantite: 0,
       description: ''
     }
-
     this.reset = true;
   }
 
   getArtName(id: number){
-    console.log("get nom");
-    var obj = this.articleList.filter(function(item:Article){
-      return item.id==id;
-    });
-    console.log(obj[0].nom);
-    return obj[0].nom;
+    if(id!=0){
+      //console.log("get nom");
+      var obj = this.articleList.filter(function(item:Article){
+        return item.id==id;
+      });
+      //console.log(obj[0].nom);
+      return obj[0].nom;
+    }
   }
 
   onSubmit(){
-
     if(this.checkValid()){
       this.formData.nom = this.getArtName(this.formData.idArticle);
       this.donArticleList.push(this.formData);
@@ -114,8 +132,10 @@ export class NewdonComponent implements OnInit {
       this.descValid = true;
     }
 
-    if(this.formData.id != 0){
+    if(this.formData.idArticle != 0){
       this.articleValid = true;
+    } else {
+      console.log(this.articleValid);
     }
 
     if(this.formData.valeur > 0){
@@ -132,16 +152,15 @@ export class NewdonComponent implements OnInit {
     return false;
   }
 
-  updateTotal()
-  {
+  // afficher le total des articles du don
+  updateTotal(){
     this.nouveauDon.total = 0;
     this.donArticleList.forEach(art => {
       this.nouveauDon.total += art.quantite * art.valeur;
     })
   }
 
-
-
+  // envoyer le don
   promesse(){
     if(this.donArticleList.length == 0){
       alert("Ajoutez des articles a votre don avant de l'envoyer");
@@ -149,24 +168,34 @@ export class NewdonComponent implements OnInit {
       console.log(this.donArticleList);
       this.nouveauDon.DonArticles = this.donArticleList as DonArticle[];
       this.nouveauDon.idDonateur = this.donateurID;
-      this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
-        console.log(res);
-        var newId = (res as Don).id;
-        console.log(this.donArticleList as DonArticle[]);
-        this.donArticleList.forEach(a => {
+      this.nouveauDon.datePromesse = new Date();
+      this.nouveauDon.etat = 1;
 
-          this.d_service.ajouterArticle(a, newId).subscribe(respo => {
-            console.log("Added object " + respo + " to Don #" + newId);
-            this.updateTotal();
-          });
-        })
-        this.annulerDon();
-        //alert("Votre don a été soumis.");
-        this.donSucces = true;
-        setTimeout(() => {
-          this.donSucces = false;
-        }, 10000);
+      // trouver un responsable pour le don et l'assigner
+      this.d_service.trouverResponsable().subscribe(res =>{
+        this.nouveauDon.idResponsable = res as number
+
+        console.log("responsable "+this.nouveauDon.idResponsable);
+        // faire la promesse du don
+        this.d_service.promettreDon(this.nouveauDon).subscribe(res => {
+          this.donArticleList.forEach(a => {
+
+            // enregistrer les articles
+            this.d_service.ajouterArticle(a, (res as Don).id).subscribe(respo => {
+              this.updateTotal();
+            });
+          })
+
+          // vider le formulaire
+          this.annulerDon();
+
+          this.donSucces = true;
+          setTimeout(() => {
+            this.donSucces = false;
+          }, 3000);
+        });
       });
+
     }
   }
 
@@ -174,4 +203,26 @@ export class NewdonComponent implements OnInit {
     this.donArticleList = [];
     this.updateTotal();
   }
+
+  modifArticle(idArticle: number){
+
+    var obj = this.donArticleList.filter(function (item: DonArticle){
+      return item.idArticle == idArticle;
+    })
+
+    this.formData = obj[0];
+    
+  }
+
+  
+  // getArtName(id: number){
+  //   if(id!=0){
+  //     //console.log("get nom");
+  //     var obj = this.articleList.filter(function(item:Article){
+  //       return item.id==id;
+  //     });
+  //     //console.log(obj[0].nom);
+  //     return obj[0].nom;
+  //   }
+  // }
 }

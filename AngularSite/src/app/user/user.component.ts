@@ -50,15 +50,15 @@ export class UserComponent implements OnInit {
     idUser = +localStorage.getItem("userID");
     this.d_service.getDonsDonateur(idUser).then(res =>  {
     this.listeDons = res as Don[];
-    console.log("this.dons");
-    console.log(this.listeDons);
+    //console.log("this.dons");
+    //console.log(this.listeDons);
     this.listeDons.forEach(don => {
       don.total = 0;
       don.totalQuantite = 0;
       
       var donsArticles : DonArticle[];
-      console.log("don.DonArticles");
-      console.log(don.DonArticles);
+      //console.log("don.DonArticles");
+      //console.log(don.DonArticles);
       don.DonArticles.forEach(donArt => {
         donArt.nom = this.getArtName(donArt.idArticle);
         don.total += donArt.valeur * donArt.quantite;
@@ -72,7 +72,12 @@ export class UserComponent implements OnInit {
 
   // annuler don
   annulerDon(don: Don){
+    // effacer le don
+  }
 
+  // annuler don
+  modifierDon(don: Don){
+    localStorage.setItem('modifDon',don.id.toString());
   }
 
   getType()

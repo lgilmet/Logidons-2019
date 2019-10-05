@@ -7,6 +7,8 @@ import { Utilisateur } from './utilisateur.model';
   providedIn: 'root'
 })
 export class UtilisateurService {
+
+  
   newUser: string;
 
   constructor(private http: HttpClient) { }
@@ -29,7 +31,6 @@ export class UtilisateurService {
   getDonateurs() {
     return this.http.get(environment.apiURL + '/utilisateurs/donateurs').toPromise();
   }
-  
 
   addUtilisateur(user: Utilisateur) {
     var body = {

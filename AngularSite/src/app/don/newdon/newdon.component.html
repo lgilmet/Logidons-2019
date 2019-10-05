@@ -1,18 +1,18 @@
 <div class="container">
-  <h3>Formulaire nouveau don</h3>
+  <h3>Nouveau don</h3>
   <div *ngIf="donSucces" class="alert alert-success" role="alert">
     Votre don a été envoyé avec succès!
   </div>
-  <form class="card" 
+  <form class="" 
   #form="ngForm" 
   autocomplete="off" 
   novalidate
   *ngIf="formData">
     <div class="card-body">
-      <h4>Articles du don</h4>
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
+        <div class="col-lg-6 card bg-light pt-3 ">
+            <h4>Formulair d'ajout d'articles</h4>
+          <div class="form-group required">
             <label>Articles</label>
             <select
               [(ngModel)]="formData.idArticle"
@@ -39,16 +39,15 @@
               class="form-control"
               rows="1"
               (input)="checkValid()"
-              [class.is-valid]="descValid && reset"
               [class.is-invalid]="!descValid && description.touched"
               required
             ></textarea>
             <div *ngIf="!descValid"  class="invalid-feedback">
-              Please enter a message in the textarea.
+              Donnez une description de plus de charactere
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col">
+            <div class="form-group col required">
               <label>Valeur</label>
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -62,15 +61,16 @@
                   class="form-control"
                   min="1"
                   type="number"
+                  [class.is-invalid]="!prixValid && valeur.touched"
                   required
                 />
                 <div *ngIf="!prixValid"  class="invalid-feedback">
-                  Please enter a message in the textarea.
+                  Entrez une valeur supérieur a 0$.
                 </div>
               </div>
             </div>
 
-            <div class="form-group col">
+            <div class="form-group col required">
               <label>Quantite</label>
               <input
                 [(ngModel)]="formData.quantite"
@@ -104,11 +104,12 @@
             </button>
           </div>
         </div>
-        <div class="col-md-6">
-          <label>Liste des items</label>
+        <div class="col-lg-6 pt-3">
+            <h4>Liste des articles du don</h4>
           <table class="table overflow-auto">
             <thead>
-              <tr>
+              <tr >
+                
                 <th scope="col" width="20%">Article</th>
                 <th scope="col" width="50%">Description</th>
                 <th scope="col" width="10%">Valeur</th>
@@ -117,23 +118,35 @@
               </tr>
             </thead>
             <tbody>
-<!-- 
-              <tr *ngIf="service.orderItems.length==0" [class.text-danger]="!isValid && service.orderItems.length==0">
+              <tr *ngIf="this.donArticleList.length==0">
                 <td class="font-italic text-center" colspan="5">
-                  No foot item selected for this order
+                  Ajoutez des articles avant de pouvoir faire votre don.
                 </td>
-              </tr> -->
+              </tr>
 
-              <tr *ngFor="let item of this.donArticleList.reverse()">
-                <td>{{ item.nom }}</td>
+              </tbody>
+              <tbody class="accordion" id="accordionTable" *ngFor="let item of this.donArticleList.reverse(); let i = index">
+                
+              <tr style="transform: rotate(0);" class="border-0">
+                
+                <td>{{ item.nom }}
+                  <a class="stretched-link collapsed" data-toggle="collapse" href="#collapse-{{i}}" type="hidden"></a>
+                </td>
                 <td>{{ item.description }}</td>
                 <td>{{ item.valeur }}$</td>
                 <td>{{ item.quantite }}</td>
                 <td>{{ item.valeur * item.quantite }}$</td>
               </tr>
+
+              <tr class="collapse p-0 border-top-0" data-parent="#accordionTable" id="collapse-{{i}}">
+                  <td colspan="5">
+                      <button (click)="modifArticle(item.idArticle)" class="btn btn-primary float-right">
+                          Ajouter l'article
+                        </button>
+                  </td>
+              </tr>
             </tbody>
           </table>
-          <hr>
         </div>
       </div>
       <div class="row">
@@ -147,15 +160,28 @@
             <button (click)="promesse()" class="btn btn-success float-right">
               Promettre le don
             </button>
-            <div class="float-right mx-4">
-              <div class="input-group">
+
+            <div class="form-group row float-right">
+              <label class="col-md-4 offset-md-3 col-form-label text-right">Total du don:</label>
+              <div class="col-md-4 input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+                </div>
+                <input disabled class="form-control" 
+                value="{{this.nouveauDon.total}}" />
+              </div>
+            </div>
+
+            <!-- <div class="form-group float-right mx-4">
+              <div class="input-group float-right">
+                <label class="float-left">total</label>
                 <div class="input-group-prepend">
                   <div class="input-group-text">Total du don $</div>
                 </div>
                 <input disabled class="form-control" 
                 value="{{this.nouveauDon.total}}" />
-                </div>
-            </div>
+              </div>
+            </div> -->
           </div>
         </div>
       </div>

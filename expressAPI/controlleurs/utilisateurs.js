@@ -56,6 +56,41 @@ router.get("/", (req, res, next) =>
         });
 });
 
+
+//GET Responsable Dispo pour attribution de don
+router.get("/findresponsable", (req, res, next) =>
+{
+    var employeDispo;
+    Utilisateur.findAll(
+        {include: [{all:true}],
+            where: {
+                type: 1
+
+        }}).then(users =>
+        {
+            var i = 0;
+            var _donsAttribues;
+            users.forEach(user => {
+                if(i==0){
+                    employeDispo = user.id;
+                    _donsAttribues = user.DonsAttribues.length;
+                }
+
+                if(user.DonsAttribues.length < _donsAttribues){
+                    employeDispo = user.id;
+                    _donsAttribues = user.DonsAttribues.length;
+                }
+                console.log(user.DonsAttribues.length);
+
+
+                i++;
+            });
+            res.send(employeDispo + '');
+        }).catch(err => {
+            res.sendStatus(500);
+        });
+});
+
 //GET
 router.get("/:id", (req, res, next) =>
 {

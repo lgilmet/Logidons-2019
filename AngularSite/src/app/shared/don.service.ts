@@ -12,12 +12,11 @@ export class DonService {
   constructor(private http: HttpClient) { }
 
   promettreDon(don: Don){
-    var body = {
-      idDonateur: don.idDonateur,
-      donArticles: don.DonArticles
-    }
+    return this.http.post(environment.apiURL+'/dons', don)
+  }
 
-    return this.http.post(environment.apiURL+'/dons', body);
+  trouverResponsable(){
+    return this.http.get(environment.apiURL + "/utilisateurs/findresponsable");
   }
 
   ajouterArticle(article: DonArticle, id : number)
@@ -42,6 +41,10 @@ export class DonService {
 
   getListeDons(){
     return this.http.get(environment.apiURL + '/dons').toPromise();
+  }
+
+  getDon(id: number){
+    return this.http.get(environment.apiURL + '/dons/' + id);
   }
 
   getListeDonsParEmploye(id:number)
