@@ -53,7 +53,7 @@ export class NewdonComponent implements OnInit {
       this.modifDon = JSON.parse(localStorage.getItem('modifDon'));
 
       // reset form here
-      //localStorage.setItem('modifDon', null);
+      localStorage.setItem('modifDon', null);
       console.log("idDon" + this.modifDon);
       
       this.d_service.getDon(this.modifDon).subscribe(res =>{

@@ -33,8 +33,15 @@ export class DonService {
 
   setEtat(id : Number, statut : Number)
   {
+    var reception: Date;
+
+    if(statut == 2 || 0){
+      reception = new Date();
+    }
+
     var body = {
-      etat : statut
+      etat : statut,
+      dateReception : reception
     }
     return this.http.post(environment.apiURL+"/dons/"+id, body);
   }

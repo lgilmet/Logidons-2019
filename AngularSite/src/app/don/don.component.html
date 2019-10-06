@@ -1,3 +1,54 @@
-<p>
-  don works!
-</p>
+
+  <div class="card mt-3" *ngIf="don.etat==2">
+    <div class="card-header" style="transform: rotate(0);">
+      <div class="row mb-2">
+        <div class="col-md-4">No. de don: <b>{{don.id}}</b></div>
+        <div class="col-md-2">Valeur: <b>{{don.total}}$</b></div>
+        <div class="col-md-6">
+          Nombre d'items: <b>{{don.totalQuantite}}</b>
+          <span class="badge badge-danger float-right p-2" *ngIf="don.etat==0">Refusé</span>
+          <span class="badge badge-primary float-right p-2" *ngIf="don.etat==1">Promis</span>
+          <span class="badge badge-success float-right p-2" *ngIf="don.etat==2">Reçu</span>
+          <span class="badge badge-success float-right p-2" *ngIf="don.etat==3">Distribué</span>
+        </div>
+      </div>
+      <div class="row align-bottom">
+        <div class="col-md-4">Date promesse: <b>{{don.createdAt | date}}</b></div>
+        <div class="col-md-4">Date de recepction: <b>{{don.dateReception | date}}</b></div>
+        
+      </div>
+      <a class="stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden"></a>
+    </div>
+    <div class="collapse p-0" id="collapse-{{i}}">
+
+        <table class="table mb-0" >
+            <thead class="table border-top-0">
+              <tr>
+                <th scope="col" width="20%">Article</th>
+                <th scope="col" width="50%">Description</th>
+                <th scope="col" width="10%">Valeur</th>
+                <th scope="col" width="10%">Qte</th>
+                <th scope="col" width="10%">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of don.DonArticles; let j = index">
+                <td>{{ item.nom }}</td>
+                <td>{{ item.description }}</td>
+                <td class="border-left">{{ item.quantite }}</td>
+                <td class="border-left">{{ item.valeur }}$</td>
+                <td class="border-left">{{ item.valeur * item.quantite }}$</td>
+              </tr>
+            </tbody>
+          </table>
+      <div class="card-footer text-right" *ngIf="don.etat==1">
+        <div *ngIf="don.etat==1">
+          <button class="btn btn-outline-danger mx-1 float-left" (click)="annulerDon(don)">Annuler</button>
+          
+          <button class="btn btn-success mx-1" (click)="recevoir(don)">Recevoir</button>
+          <button class="btn btn-success mx-1" (click)="modifierDon(don)"
+          routerLink="/don">Modifier</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -65,7 +65,7 @@ router.get("/findresponsable", (req, res, next) =>
         {include: [{all:true}],
             where: {
                 type: 1
-
+                
         }}).then(users =>
         {
             var i = 0;

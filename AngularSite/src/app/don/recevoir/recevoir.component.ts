@@ -29,6 +29,7 @@ export class RecevoirComponent implements OnInit {
 	ngOnInit() {
 		this.donService.getListeDonsParEmploye(this.auth.getUserId()).then( res => {
 			(res as Don[]).forEach(don => {
+				don.totalQuantite = 0;
 
 				//nomDonateur
 				this.userService.getUtilisateur(don.idDonateur).then(user => {
@@ -40,7 +41,10 @@ export class RecevoirComponent implements OnInit {
 					val += ((art as DonArticle).valeur * (<DonArticle>art).quantite);
 					this.articleService.getArticle(art.idArticle).subscribe(a => {
 						art.nom = (a as Article).nom;
+						don.totalQuantite += art.quantite;
+
 					});
+
 				});
 				don.total = val;
 				this.listeDons.push(don as Don);
