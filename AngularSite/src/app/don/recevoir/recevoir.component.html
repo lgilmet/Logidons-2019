@@ -5,7 +5,7 @@
     <div class="card mt-3" *ngIf="don.etat==1">
       <div class="card-header" style="transform: rotate(0);">
         <div class="row mb-2">
-          <div class="col-md-4">No. de don: <b>{{don.id}}</b></div>
+          <div class="col-md-4">Donateur: <b>{{don.nomDonateur}}</b></div>
           <div class="col-md-2">Valeur: <b>{{don.total}}$</b></div>
           <div class="col-md-6">
             Nombre d'items: <b>{{don.totalQuantite}}</b>
@@ -29,8 +29,8 @@
                 <tr>
                   <th scope="col" width="20%">Article</th>
                   <th scope="col" width="50%">Description</th>
-                  <th scope="col" width="10%">Valeur</th>
                   <th scope="col" width="10%">Qte</th>
+                  <th scope="col" width="10%">Valeur</th>
                   <th scope="col" width="10%">Total</th>
                 </tr>
               </thead>
@@ -59,11 +59,10 @@
 
   <h3>Liste des dons accepté</h3>
   <div *ngFor="let don of listeDons.reverse(); let i = index">
-    <!-- <app-don></app-don> -->
     <div class="card mt-3" *ngIf="don.etat==2">
       <div class="card-header" style="transform: rotate(0);">
         <div class="row mb-2">
-          <div class="col-md-4">No. de don: <b>{{don.id}}</b></div>
+          <div class="col-md-4">Donateur: <b>{{don.nomDonateur}}</b></div>
           <div class="col-md-2">Valeur: <b>{{don.total}}$</b></div>
           <div class="col-md-6">
             Nombre d'items: <b>{{don.totalQuantite}}</b>
@@ -76,7 +75,7 @@
         <div class="row align-bottom">
           <div class="col-md-4">Date promesse: <b>{{don.createdAt | date}}</b></div>
           <div class="col-md-4">Date de recepction: <b>{{don.dateReception | date}}</b></div>
-          <div class="col-md-4 text-right"><strong>#{{don.id}}</strong></div>
+          
         </div>
         <a class="stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden"></a>
       </div>
@@ -87,8 +86,8 @@
                 <tr>
                   <th scope="col" width="20%">Article</th>
                   <th scope="col" width="50%">Description</th>
-                  <th scope="col" width="10%">Valeur</th>
                   <th scope="col" width="10%">Qte</th>
+                  <th scope="col" width="10%">Valeur</th>
                   <th scope="col" width="10%">Total</th>
                 </tr>
               </thead>
@@ -117,11 +116,7 @@
 
   <h3>Liste des dons refusé</h3>
   <div *ngFor="let don of listeDons; let i = index" >
-    <div class="card mt-3 border-2" 
-    *ngIf="don.etat==0"
-    [class.border-success]="don.etat==2"
-    [class.border-primary]="don.etat==1"
-    [class.border-danger]="don.etat==0">
+    <div class="card mt-3" *ngIf="don.etat==0">
       <div class="card-header" style="transform: rotate(0);">
         <div class="row mb-2">
           <div class="col-md-4">Donateur: <b>{{don.nomDonateur}}</b></div>
@@ -131,42 +126,47 @@
             <span class="badge badge-danger float-right p-2" *ngIf="don.etat==0">Refusé</span>
             <span class="badge badge-primary float-right p-2" *ngIf="don.etat==1">Promis</span>
             <span class="badge badge-success float-right p-2" *ngIf="don.etat==2">Reçu</span>
+            <span class="badge badge-success float-right p-2" *ngIf="don.etat==3">Distribué</span>
           </div>
         </div>
         <div class="row align-bottom">
           <div class="col-md-4">Date promesse: <b>{{don.createdAt | date}}</b></div>
-          <!-- <div class="col-md-4">Etat: <b>{{getEtat(don)}}</b></div> -->
-          <div class="col-md-8">
-            <!-- <a class="btn btn-primary mx-1 float-right stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden" >Détails</a> -->
-            
-          </div>
+          <div class="col-md-4">Date de recepction: <b>{{don.dateReception | date}}</b></div>
+          
         </div>
-        <a class="stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden" ></a>
+        <a class="stretched-link" data-toggle="collapse" href="#collapse-{{i}} " type="hidden"></a>
       </div>
-      <div class="collapse" id="collapse-{{i}}">
-        <ul class="list-group list-group-flish">
-          <li class="list-group-item" *ngFor="let donArticle of don.DonArticles; let j = index">
-              <div class="row mb-2">
-                <div class="col-md-2 font-weight-bold">{{donArticle.nom}}</div>
-                <div class="col-md-2">Valeur: <b>{{donArticle.valeur}}$</b></div>
-                <div class="col-md-2">Quantité: <b>{{donArticle.quantite}}</b></div>
-                <div class="col-md-6">
-                  Description
-                  <p class="font-weight-light">{{donArticle.description}}</p>
-                </div>
-              </div>
-          </li>
-        </ul>
-        <div class="card-footer text-right" *ngIf="don.etat==1 || don.etat==2">
+      <div class="collapse p-0" id="collapse-{{i}}">
+
+          <table class="table mb-0" >
+              <thead class="table border-top-0">
+                <tr>
+                  <th scope="col" width="20%">Article</th>
+                  <th scope="col" width="50%">Description</th>
+                  <th scope="col" width="10%">Qte</th>
+                  <th scope="col" width="10%">Valeur</th>
+                  <th scope="col" width="10%">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of don.DonArticles; let j = index">
+                  <td>{{ item.nom }}</td>
+                  <td>{{ item.description }}</td>
+                  <td class="border-left">{{ item.quantite }}</td>
+                  <td class="border-left">{{ item.valeur }}$</td>
+                  <td class="border-left">{{ item.valeur * item.quantite }}$</td>
+                </tr>
+              </tbody>
+            </table>
+        <div class="card-footer text-right" *ngIf="don.etat==1">
           <div *ngIf="don.etat==1">
-            <button class="btn btn-outline-danger mx-1 float-left" (click)="refuser(don)">Refuser</button>
+            <button class="btn btn-outline-danger mx-1 float-left" (click)="annulerDon(don)">Annuler</button>
+            
             <button class="btn btn-success mx-1" (click)="recevoir(don)">Recevoir</button>
-          </div>
-          <div *ngIf="don.etat==2">
-            <button class="btn btn-success mx-1" disabled>Distribuer</button>
+            <button class="btn btn-success mx-1" (click)="modifierDon(don)"
+            routerLink="/don">Modifier</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
