@@ -13,21 +13,21 @@ router.get("/email/:email", (req, res, next) =>
         if(!user)
             res.json(-1)
         else
-            res.json(user.id);
+            res.json(0)
     });
 });
 
 router.get("/username/:username", (req, res, next) =>
 {
-    Utilisateur.findAll({
+    Utilisateur.findOne({
         where: {
             username: req.params.username
         }
-    }).then(users => {
-        if(users.length < 1)
-            res.sendStatus(200);
+    }).then(user => {
+        if(!user)
+            res.json(-1)
         else
-            res.sendStatus(500);
+            res.json(0)
     });
 });
 

@@ -13,7 +13,7 @@
                     <label for="nom">Nom </label>
                     <input type="text" class="form-control" name="nom" [(ngModel)]="formData.nom" #nom="ngModel"
                         [class.is-valid]="nomValid" [class.is-invalid]="!nomValid && nom.touched" class="form-control"
-                        (input)="checkValid()" placeholder="Nom d'utilisateur" required>
+                        (input)="checkValid()" required>
                     <div *ngIf="!nomValid" class="invalid-feedback text-left">
                         Veuillez entrer un nom d'utilisateur, minimum de 4 charactères.
                     </div>
@@ -25,12 +25,35 @@
                     <input type="text" class="form-control" name="prenom" [(ngModel)]="formData.prenom"
                         #prenom="ngModel" [class.is-valid]="prenomValid"
                         [class.is-invalid]="!prenomValid && prenom.touched" class="form-control" (input)="checkValid()"
-                        placeholder="prenom d'utilisateur" required>
+                        required>
                     <div *ngIf="!prenomValid" class="invalid-feedback text-left">
                         Veuillez entrer un prenom d'utilisateur, minimum de 4 charactères.
                     </div>
                 </div>
 
+                <!-- Username -->
+                <div class="form-group required">
+                        <label for="email">Nom d'utilisateur</label>
+                        <div class="input-group">
+                            <input type="username" 
+                            name="username" 
+                            [(ngModel)]="formData.username"
+                                #username="ngModel" 
+                                [class.is-valid]="usernameValid"
+                                [class.is-invalid]="!usernameValid && username.touched || usernameTaken" 
+                                class="form-control"
+                                (input)="checkValid()" 
+                                (blur)="checkUsername()"
+                                required>
+                            <div *ngIf="!usernameValid" class="invalid-feedback text-left">
+                                Nom d'utilisateur requis.
+                            </div>
+                            <div *ngIf="usernameTaken" class="invalid-feedback text-left">
+                                <p>Ce nom d'utilisateur est deja pris, veuillez en choisir un autre.</p> 
+                                
+                            </div>
+                        </div>
+                    </div>
 
                 <div class="form-group required">
                     <label for="email">Email</label>
@@ -47,7 +70,6 @@
                             class="form-control"
                             (input)="checkValid()" 
                             (blur)="checkEmail()"
-                            placeholder="Email d'utilisateur" 
                             required>
                         <div *ngIf="!emailValid" class="invalid-feedback text-left">
                             Email d'utilisateur requis.
@@ -58,15 +80,11 @@
                         <div *ngIf="emailTaken" class="invalid-feedback text-left">
                             <p>Email existe deja.</p> 
                             <div class="card bg-light mt-3">
-                                
                             <div class="card-body text-body">
                                 <h5>Avez-vous deja un compte?</h5>
-                                
-                                
                                 <a class="btn btn-primary" href="compte/login">Login</a>
                             </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -77,33 +95,33 @@
                     <input type="password" class="form-control" name="password" [(ngModel)]="formData.password"
                         #password="ngModel" [class.is-valid]="passwordValid"
                         [class.is-invalid]="!passwordValid && password.touched" class="form-control"
-                        (input)="checkValid()" placeholder="Mot de passe d'utilisateur" required>
+                        (input)="checkValid()" required>
                     <div *ngIf="!passwordValid" class="invalid-feedback text-left">
-                        Mot de passe d'utilisateur requis .
+                        Le mot de passe est requis.
                     </div>
                 </div>
 
 
                 <div class="form-group required">
-                    <label for="confirmPassword">Confirme Mot de Passe</label>
+                    <label for="confirmPassword">Confirmation du mot de Passe</label>
                     <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="confirmPasswordText"
                         #confirmPassword="ngModel" [class.is-valid]="confirmePasswordValid"
                         [class.is-invalid]="!confirmePasswordValid && confirmPassword.touched" class="form-control"
-                        (input)="checkValid()" placeholder="Confirmez le mot de passe " required>
+                        (input)="checkValid()" required>
                     <div *ngIf="!confirmePasswordValid" class="invalid-feedback">
-                        Mot de passe pas Conforme
+                        Le mot de passe doit être identique au premier.
 
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="mx-1">
-                            <input type="radio" value="donateur" #type="ngModel" name="type"
+                            <input type="radio" value="2" #type="ngModel" name="type"
                                 [(ngModel)]="formData.type">
                             <label for="donateur">Donateur</label>
                         </div>
                         <div class="mx-1">
-                            <input type="radio" value="benevole" name="type" #type="ngModel"
+                            <input type="radio" value="3" name="type" #type="ngModel"
                                 [(ngModel)]="formData.type">
                             <label for="benevole">Benevole</label>
                         </div>

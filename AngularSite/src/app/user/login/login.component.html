@@ -38,6 +38,7 @@
               </div>
             </div>
 
+            <!-- login success -->
             <div class="alert alert-success" *ngIf="auth_service.isLoggedIn() && triedLogin">
               <strong>Succès!</strong> Vous vous êtes bien connecté.
             </div>
@@ -45,17 +46,14 @@
             <!-- login failed -->
             <div class="" *ngIf="!auth_service.isLoggedIn() && triedLogin">
               <div class="alert alert-danger">
-
                 <strong>Érreur</strong> Votre nom d'utilisateur ou votre mot de passe est érroné.
-
-
-                <p>Avez-vous <a href="#">Oublié votre mot de passe</a>?</p>
               </div>
             </div>
 
               <button type="submit" [disabled]="!(passwordValid && userValid)" class="btn btn-dark">Se connecter
               </button>
               <button type="button" (click)="annuler()" class="btn btn-outline-dark ml-3">Annuler</button>
+              <p class="mt-3">Avez-vous <a href="#">Oublié votre mot de passe</a>?</p>
           </form>
         </div>
       </div>

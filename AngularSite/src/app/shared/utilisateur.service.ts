@@ -7,10 +7,6 @@ import { Utilisateur } from './utilisateur.model';
   providedIn: 'root'
 })
 export class UtilisateurService {
-
-  
-  newUser: string;
-
   constructor(private http: HttpClient) { }
 
   getUtilisateur(id:number)
@@ -19,11 +15,13 @@ export class UtilisateurService {
   }
 
   checkEmail(_email:string){
-    var body={
-      email:_email
-    }
     return this.http.get(environment.apiURL+"/utilisateurs/email/"+ _email).toPromise();
   }
+
+  checkUsername(_username: string){
+    return this.http.get(environment.apiURL + "/utilisateurs/username/"+ _username).toPromise();
+  }
+
   getEmployes() {
     return this.http.get(environment.apiURL + '/utilisateurs/employes').toPromise();
   }
@@ -33,24 +31,7 @@ export class UtilisateurService {
   }
 
   addUtilisateur(user: Utilisateur) {
-    var body = {
-      type: user.type,
-      nom: user.nom,
-      prenom: user.prenom,
-      email: user.email,
-      username: user.prenom,
-      password: user.password
-
-
-    }
-    return this.http.post(environment.apiURL + '/utilisateurs', body);
+    return this.http.post(environment.apiURL + '/utilisateurs', user);
   }
 
-  newDonateur(){
-    this.newUser = "donateur";
-  }
-
-  newBenevole(){
-    this.newUser = "benevole";
-  }
 }
