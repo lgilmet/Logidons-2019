@@ -18,8 +18,9 @@
               [(ngModel)]="formData.idArticle"
               name="idArticle"
               #idArticle="ngModel"
-
+              (change)="checkValid()"
               class="form-control"
+              [class.is-invalid]="!articleValid && idArticle.touched"
             >
               <option value="0">- Selectionnez un article -</option>
               <option
@@ -28,6 +29,9 @@
                 >{{ item.id }} - {{ item.nom }}</option
               >
             </select>
+            <div *ngIf="!articleValid"  class="invalid-feedback">
+                Veuillez sélectionner un article.
+              </div>
           </div>
           <div class="form-group required">
             <label>Description</label>
@@ -57,7 +61,7 @@
                   [(ngModel)]="formData.valeur"
                   name="valeur"
                   #valeur="ngModel"
-
+                  (input)="checkValid()"
                   class="form-control"
                   min="1"
                   type="number"
@@ -76,13 +80,18 @@
                 [(ngModel)]="formData.quantite"
                 name="quantite"
                 #quantite="ngModel"
-
+                (input)="checkValid()"
                 class="form-control"
                 min="1"
                 type="number"
                 required
+                [class.is-invalid]="!qteValid && quantite.touched"
               />
+              <div *ngIf="!qteValid"  class="invalid-feedback">
+                  Minimum d'un article.
+                </div>
             </div>
+            
 
             <div class="form-group col">
               <label>Total</label>
@@ -140,8 +149,8 @@
 
               <tr class="collapse p-0 border-top-0" data-parent="#accordionTable" id="collapse-{{i}}">
                   <td colspan="5">
-                      <button (click)="modifArticle(item.idArticle)" class="btn btn-primary float-right">
-                          Ajouter l'article
+                      <button (click)="modifArticle(item)" class="btn btn-primary float-right">
+                          Modifier l'article
                         </button>
                   </td>
               </tr>

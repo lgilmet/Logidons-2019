@@ -48,13 +48,13 @@ export class NewdonComponent implements OnInit {
     this.resetForm();
     this.donArticleList = [];
     this.reset = false;
+    this.modifDon = -1;
 
     if(JSON.parse(localStorage.getItem('modifDon'))){
       this.modifDon = JSON.parse(localStorage.getItem('modifDon'));
 
       // reset form here
       localStorage.setItem('modifDon', null);
-      console.log("idDon" + this.modifDon);
       
       this.d_service.getDon(this.modifDon).subscribe(res =>{
         this.nouveauDon = <Don>res
@@ -135,7 +135,7 @@ export class NewdonComponent implements OnInit {
     if(this.formData.idArticle != 0){
       this.articleValid = true;
     } else {
-      console.log(this.articleValid);
+      this.articleValid = false;
     }
 
     if(this.formData.valeur > 0){
@@ -164,7 +164,7 @@ export class NewdonComponent implements OnInit {
   promesse(){
     if(this.donArticleList.length == 0){
       alert("Ajoutez des articles a votre don avant de l'envoyer");
-    } else {
+    } else if(this.modifDon == -1){
       console.log(this.donArticleList);
       this.nouveauDon.DonArticles = this.donArticleList as DonArticle[];
       this.nouveauDon.idDonateur = this.donateurID;
@@ -196,6 +196,26 @@ export class NewdonComponent implements OnInit {
         });
       });
 
+    } else {
+      this.nouveauDon.DonArticles = this.donArticleList as DonArticle[];
+
+      this.d_service.modifierDon(this.nouveauDon).subscribe(res => {
+        this.donArticleList.forEach(a => {
+
+          // enregistrer les articles
+          this.d_service.modifierArticle(a).subscribe(respo => {
+            this.updateTotal();
+          });
+        })
+
+        // vider le formulaire
+        this.annulerDon();
+
+        this.donSucces = true;
+        setTimeout(() => {
+          this.donSucces = false;
+        }, 3000);
+      });
     }
   }
 
@@ -204,13 +224,11 @@ export class NewdonComponent implements OnInit {
     this.updateTotal();
   }
 
-  modifArticle(idArticle: number){
-
-    var obj = this.donArticleList.filter(function (item: DonArticle){
-      return item.idArticle == idArticle;
-    })
-
-    this.formData = obj[0];
+  modifArticle(art : DonArticle){
+    this.formData = art;
+    const index:number = this.donArticleList.indexOf(art);
+    if(index !== -1)
+      this.donArticleList.splice(index, 1);
     
   }
 
