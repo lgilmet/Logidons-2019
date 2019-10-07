@@ -31,6 +31,16 @@ export class DonService {
     return this.http.post(environment.apiURL+'/donArticles', body);
   }
 
+  modifierArticle(article: DonArticle)
+  {
+    return this.http.post(environment.apiURL+'/donArticles/'+article.id, article);
+  }
+
+  modifierDon(don: Don)
+  {
+    return this.http.post(environment.apiURL+'/dons/'+don.id, don);
+  }
+
   setEtat(id : Number, statut : Number)
   {
     var reception: Date;
