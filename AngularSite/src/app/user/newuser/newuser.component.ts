@@ -29,8 +29,6 @@ export class NewuserComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
-    this.typeUser = '';
-    this.typeUser = this.service.newUser;
    // console.log(this.service.newUser);
   }
 

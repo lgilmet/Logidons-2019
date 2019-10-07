@@ -25,9 +25,6 @@ export class NewemployeComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();  
-    this.typeUser = this.service.newUser;
-
-    console.log(this.service.newUser);
   }
 
   checkValid() {

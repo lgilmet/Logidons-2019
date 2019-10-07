@@ -17,13 +17,4 @@ export class AccueilComponent implements OnInit {
     window.location.href = "compte/login";
   }
 
-  newDonateur(){
-    this.u_service.newUser = "donateur";
-    //this.u_service.newDonateur();
-  }
-
-  newBenevole(){
-    this.u_service.newUser = "benevole";
-    //this.u_service.newBenevole();
-  }
 }
